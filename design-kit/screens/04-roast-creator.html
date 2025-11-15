@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>RoastArena - Creator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/glassmorphism-2025.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-primary);
+      background: var(--bg-black);
+      color: white;
+      overflow-x: hidden;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .creator-container {
+      width: 100%;
+      max-width: 375px;
+      margin: 0 auto;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* AR Camera Preview */
+    .camera-preview {
+      width: 100%;
+      height: 240px;
+      background: linear-gradient(
+        135deg,
+        rgba(168, 85, 247, 0.2),
+        rgba(251, 146, 60, 0.1)
+      );
+      position: relative;
+      overflow: hidden;
+      border-radius: 0 0 32px 32px;
+      margin-bottom: 24px;
+    }
+
+    .camera-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        180deg,
+        transparent 0%,
+        rgba(0, 0, 0, 0.4) 100%
+      );
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .camera-icon {
+      font-size: 64px;
+      opacity: 0.5;
+      animation: float-text 3s ease-in-out infinite;
+    }
+
+    .camera-hint {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.6);
+      font-weight: 600;
+    }
+
+    .camera-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 12px 20px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    /* Close Button */
+    .close-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(20px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      transition: all 0.3s ease;
+    }
+
+    .close-button:active {
+      transform: scale(0.9);
+    }
+
+    /* Prompt Input Section */
+    .prompt-section {
+      padding: 0 24px;
+      margin-bottom: 24px;
+    }
+
+    .prompt-label {
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--neon-orange);
+      margin-bottom: 12px;
+    }
+
+    .prompt-textarea {
+      width: 100%;
+      min-height: 120px;
+      padding: 20px;
+      border-radius: 20px;
+      resize: none;
+      font-family: var(--font-primary);
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .prompt-counter {
+      text-align: right;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.4);
+      margin-top: 8px;
+    }
+
+    /* Style Options (Flipping Cards) */
+    .style-section {
+      padding: 0 24px;
+      margin-bottom: 24px;
+    }
+
+    .style-label {
+      font-size: 18px;
+      font-weight: 900;
+      margin-bottom: 16px;
+    }
+
+    .style-carousel {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .style-carousel::-webkit-scrollbar {
+      display: none;
+    }
+
+    .style-option {
+      flex: 0 0 240px;
+      height: 140px;
+      scroll-snap-align: start;
+      cursor: pointer;
+      transform-style: preserve-3d;
+      transition: transform 0.5s ease;
+      position: relative;
+    }
+
+    .style-option:active {
+      transform: rotateY(180deg);
+    }
+
+    .style-card-front,
+    .style-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 20px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .style-card-back {
+      transform: rotateY(180deg);
+      background: linear-gradient(
+        135deg,
+        rgba(168, 85, 247, 0.15),
+        rgba(251, 146, 60, 0.1)
+      );
+    }
+
+    .style-badge {
+      font-size: 40px;
+      margin-bottom: 8px;
+    }
+
+    .style-name {
+      font-size: 20px;
+      font-weight: 900;
+    }
+
+    .style-desc {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .style-example {
+      font-size: 13px;
+      font-style: italic;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* Generate Button */
+    .generate-section {
+      padding: 0 24px;
+      margin-bottom: 100px;
+    }
+
+    .generate-button {
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .generate-button.generating {
+      pointer-events: none;
+      opacity: 0.7;
+    }
+
+    .explosion-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    @keyframes explode-particle {
+      0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(var(--tx), var(--ty)) scale(0);
+        opacity: 0;
+      }
+    }
+
+    .explosion-particle {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--neon-purple), var(--neon-orange));
+      animation: explode-particle 1s ease-out forwards;
+    }
+
+    /* Result Preview */
+    .result-preview {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      max-width: 375px;
+      margin: 0 auto;
+      background: linear-gradient(
+        180deg,
+        transparent 0%,
+        rgba(15, 15, 15, 0.95) 10%,
+        rgba(15, 15, 15, 1) 100%
+      );
+      backdrop-filter: blur(30px);
+      padding: 24px;
+      transform: translateY(100%);
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 100;
+    }
+
+    .result-preview.show {
+      transform: translateY(0);
+    }
+
+    .result-text {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      padding: 20px;
+      border-radius: 20px;
+      background: rgba(168, 85, 247, 0.1);
+      border: 1px solid rgba(168, 85, 247, 0.3);
+    }
+
+    .result-actions {
+      display: flex;
+      gap: 12px;
+    }
+
+    .result-button {
+      flex: 1;
+      padding: 16px;
+      border-radius: 16px;
+      font-weight: 700;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .result-button-secondary {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .result-button-secondary:active {
+      transform: scale(0.98);
+    }
+  </style>
+</head>
+<body>
+  <div class="creator-container">
+    <!-- AR Camera Preview -->
+    <div class="camera-preview">
+      <button class="close-button" onclick="goBack()">✕</button>
+      <button class="glass-card camera-toggle ripple-effect" onclick="toggleCamera()">
+        📸 AR Filter
+      </button>
+      <div class="camera-overlay">
+        <div class="camera-icon">📷</div>
+        <div class="camera-hint">Zapni kameru pro roast filter</div>
+      </div>
+    </div>
+
+    <!-- Prompt Input -->
+    <div class="prompt-section">
+      <div class="prompt-label">💭 Co chceš roastnout?</div>
+      <textarea
+        class="glass-input prompt-textarea"
+        placeholder="Např: Moje ranní káva je tak slabá..."
+        maxlength="200"
+        oninput="updateCounter(this)"
+        id="promptInput"
+      ></textarea>
+      <div class="prompt-counter">
+        <span id="charCount">0</span>/200
+      </div>
+    </div>
+
+    <!-- Style Options -->
+    <div class="style-section">
+      <div class="style-label">🎨 Vyber styl roastu</div>
+      <div class="style-carousel">
+        <!-- Mild Style -->
+        <div class="style-option ripple-effect" onclick="selectStyle(this, 'mild')">
+          <div class="glass-card style-card-front lighting-depth">
+            <div>
+              <div class="style-badge">😊</div>
+              <div class="style-name">Mild</div>
+              <div class="style-desc">Lehké, zábavné</div>
+            </div>
+          </div>
+          <div class="glass-card style-card-back">
+            <div>
+              <div class="style-example">
+                "Tvoje káva je tak slabá, že by mohla potřebovat kávu."
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Savage Style -->
+        <div class="style-option ripple-effect" onclick="selectStyle(this, 'savage')">
+          <div class="glass-card-neon style-card-front lighting-depth">
+            <div>
+              <div class="style-badge">🔥</div>
+              <div class="style-name">Savage</div>
+              <div class="style-desc">Drsné, brutální</div>
+            </div>
+          </div>
+          <div class="glass-card-neon style-card-back">
+            <div>
+              <div class="style-example">
+                "Ty vole, ta káva je slabší než tvoje argumenty!"
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MMA Style -->
+        <div class="style-option ripple-effect" onclick="selectStyle(this, 'mma')">
+          <div class="glass-card-neon style-card-front lighting-depth">
+            <div>
+              <div class="style-badge">🥊</div>
+              <div class="style-name">MMA/AEW</div>
+              <div class="style-desc">Jako Vémola</div>
+            </div>
+          </div>
+          <div class="glass-card-neon style-card-back">
+            <div>
+              <div class="style-example">
+                "Tahle káva má jen polovinu síly - jako tvoje výmluvy v ringu!"
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Generate Button -->
+    <div class="generate-section">
+      <button
+        class="halo-button generate-button ripple-effect"
+        id="generateBtn"
+        onclick="generateRoast()"
+      >
+        <span id="btnText">ROAST! 🔥</span>
+      </button>
+    </div>
+
+    <!-- Result Preview (Hidden by default) -->
+    <div class="result-preview" id="resultPreview">
+      <div class="result-text" id="resultText">
+        <!-- AI generated roast will appear here -->
+      </div>
+      <div class="result-actions">
+        <div class="result-button result-button-secondary ripple-effect" onclick="regenerate()">
+          🔄 Znovu
+        </div>
+        <div class="halo-button result-button ripple-effect" onclick="saveRoast()">
+          💾 Uložit
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Explosion Container -->
+  <div class="explosion-container" id="explosionContainer"></div>
+
+  <script>
+    let selectedStyle = 'savage';
+    const examples = {
+      mild: [
+        "Tvoje káva je tak slabá, že by mohla potřebovat kávu.",
+        "Ta káva má víc vody než moje bazén.",
+        "Tenhle espresso je spíš 'depresso'."
+      ],
+      savage: [
+        "Ty vole, ta káva je slabší než tvoje argumenty!",
+        "Tahle káva má méně síly než tvoje New Year rezoluce!",
+        "Radši bych pil vodu z fitka než tuhle kávu!"
+      ],
+      mma: [
+        "Tahle káva by dostala KO v prvním kole!",
+        "Vémola by tuhle kávu poslal na matraci za 10 sekund!",
+        "Tahle káva má submissi hned po prvním gluku!"
+      ]
+    };
+
+    function updateCounter(textarea) {
+      document.getElementById('charCount').textContent = textarea.value.length;
+    }
+
+    function selectStyle(card, style) {
+      selectedStyle = style;
+      // Haptic feedback
+      if ('vibrate' in navigator) {
+        navigator.vibrate(15);
+      }
+    }
+
+    function toggleCamera() {
+      alert('AR Camera funkce bude dostupná v plné verzi!');
+    }
+
+    function goBack() {
+      window.location.href = '03-home-feed.html';
+    }
+
+    function generateRoast() {
+      const prompt = document.getElementById('promptInput').value;
+      if (!prompt.trim()) {
+        alert('Napiš prosím něco k roastu!');
+        return;
+      }
+
+      // Show generating state
+      const btn = document.getElementById('generateBtn');
+      const btnText = document.getElementById('btnText');
+      btn.classList.add('generating');
+      btnText.textContent = 'Generuji... 🔥';
+
+      // Create explosion effect
+      createExplosion();
+
+      // Haptic feedback
+      if ('vibrate' in navigator) {
+        navigator.vibrate([50, 50, 50]);
+      }
+
+      // Simulate AI generation
+      setTimeout(() => {
+        const randomRoast = examples[selectedStyle][Math.floor(Math.random() * examples[selectedStyle].length)];
+        showResult(randomRoast);
+        btn.classList.remove('generating');
+        btnText.textContent = 'ROAST! 🔥';
+      }, 2000);
+    }
+
+    function createExplosion() {
+      const container = document.getElementById('explosionContainer');
+      const btn = document.getElementById('generateBtn');
+      const rect = btn.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+
+      // Create 30 particles
+      for (let i = 0; i < 30; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'explosion-particle';
+
+        const angle = (i / 30) * Math.PI * 2;
+        const distance = 150 + Math.random() * 100;
+        const tx = Math.cos(angle) * distance;
+        const ty = Math.sin(angle) * distance;
+
+        particle.style.left = centerX + 'px';
+        particle.style.top = centerY + 'px';
+        particle.style.setProperty('--tx', tx + 'px');
+        particle.style.setProperty('--ty', ty + 'px');
+
+        container.appendChild(particle);
+
+        setTimeout(() => particle.remove(), 1000);
+      }
+
+      // Create confetti
+      for (let i = 0; i < 20; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.left = Math.random() * 100 + '%';
+        confetti.style.animationDelay = Math.random() * 0.5 + 's';
+        document.body.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 3000);
+      }
+    }
+
+    function showResult(text) {
+      document.getElementById('resultText').textContent = text;
+      document.getElementById('resultPreview').classList.add('show');
+
+      // Confetti on result
+      for (let i = 0; i < 30; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.left = Math.random() * 100 + '%';
+        document.body.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 3000);
+      }
+    }
+
+    function regenerate() {
+      document.getElementById('resultPreview').classList.remove('show');
+      setTimeout(generateRoast, 300);
+    }
+
+    function saveRoast() {
+      // Create massive confetti
+      for (let i = 0; i < 50; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.left = Math.random() * 100 + '%';
+        confetti.style.animationDelay = Math.random() * 0.5 + 's';
+        document.body.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 3000);
+      }
+
+      setTimeout(() => {
+        alert('Roast uložen! 🔥');
+        window.location.href = '03-home-feed.html';
+      }, 500);
+    }
+  </script>
+</body>
+</html>
