@@ -1,7 +1,9 @@
-﻿import React from 'react';
+'use client';
+
+import React from 'react';
 import { motion } from 'framer-motion';
 
-type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+type Props = Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onAnimationStart' | 'onDragStart' | 'onDrag' | 'onDragEnd'> & {
   children: React.ReactNode;
 };
 
@@ -10,7 +12,7 @@ export default function HaloButton({ children, className = '', ...rest }: Props)
     <motion.button
       whileHover={{ scale: 1.03 }}
       whileTap={{ scale: 0.98 }}
-      className={elative px-4 py-2 rounded-lg text-white font-semibold transition-shadow \}
+      className={`relative px-4 py-2 rounded-lg text-white font-semibold transition-shadow ${className}`}
       style={{
         background: 'linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02))',
         boxShadow: '0 6px 20px rgba(99,102,241,0.12)',

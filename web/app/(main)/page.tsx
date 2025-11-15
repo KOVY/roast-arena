@@ -1,14 +1,16 @@
-﻿import React from 'react';
+﻿'use client';
+
+import React from 'react';
 import { motion } from 'framer-motion';
-import HaloButton from '../../components/ui/HaloButton';
-import BentoGrid from '../../components/ui/BentoGrid';
+import HaloButton from '@/components/ui/HaloButton';
+import BentoGrid from '@/components/ui/BentoGrid';
 
 type RoastPreview = { id: string; author: string; text: string };
 
 const sampleRoasts: RoastPreview[] = [
-  { id: '1', author: 'Pavel', text: \"Your code compiles... sometimes. That's special.\" },
-  { id: '2', author: 'Aneta', text: \"You're the human equivalent of a semicolon.\" },
-  { id: '3', author: 'Marek', text: \"I'd explain it to you but I left my puppet theater at home.\" },
+  { id: '1', author: 'Pavel', text: "Your code compiles... sometimes. That's special." },
+  { id: '2', author: 'Aneta', text: "You're the human equivalent of a semicolon." },
+  { id: '3', author: 'Marek', text: "I'd explain it to you but I left my puppet theater at home." },
 ];
 
 export default function HomePage() {
