@@ -1,0 +1,23 @@
+{
+  "font-family": "Inter, -apple-system, BlinkMacSystemFont, sans-serif",
+  "sizes": {
+    "xs": 12,
+    "sm": 14,
+    "base": 16,
+    "lg": 20,
+    "xl": 24,
+    "2xl": 32,
+    "3xl": 48
+  },
+  "weights": {
+    "regular": 400,
+    "semibold": 600,
+    "bold": 700,
+    "black": 900
+  },
+  "line-heights": {
+    "tight": 1.2,
+    "normal": 1.4,
+    "relaxed": 1.6
+  }
+}

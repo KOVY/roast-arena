@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>RoastArena - Feed</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/glassmorphism-2025.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-primary);
+      background: var(--bg-black);
+      color: white;
+      overflow-x: hidden;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .feed-container {
+      width: 100%;
+      max-width: 375px;
+      margin: 0 auto;
+      min-height: 100vh;
+      padding-bottom: 100px;
+    }
+
+    /* Top Banner - Daily Challenge */
+    .challenge-banner {
+      margin: 20px 16px;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .challenge-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .challenge-label {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--neon-orange);
+      margin-bottom: 8px;
+    }
+
+    .challenge-title {
+      font-size: 20px;
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+
+    .challenge-timer {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: rgba(168, 85, 247, 0.15);
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 14px;
+      animation: pulse-glow 2s ease-in-out infinite;
+    }
+
+    .timer-icon {
+      font-size: 16px;
+      animation: fire-flicker 1.5s ease-in-out infinite;
+    }
+
+    /* Bento Grid */
+    .bento-container {
+      padding: 0 16px;
+    }
+
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .roast-card {
+      aspect-ratio: 0.85;
+      padding: 16px;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transform: scale(1);
+      transition: transform 0.3s ease;
+    }
+
+    .roast-card:active {
+      transform: scale(0.98);
+    }
+
+    .roast-card-large {
+      grid-column: span 2;
+      aspect-ratio: 1.6;
+    }
+
+    .roast-thumbnail {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        135deg,
+        rgba(168, 85, 247, 0.3),
+        rgba(251, 146, 60, 0.2)
+      );
+      opacity: 0.3;
+      z-index: 1;
+    }
+
+    .roast-content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .roast-author {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .author-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--neon-purple), var(--neon-orange));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .author-name {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .roast-text {
+      font-size: 15px;
+      line-height: 1.4;
+      margin-bottom: 12px;
+      flex: 1;
+    }
+
+    .roast-overlay {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      font-size: 24px;
+      font-weight: 900;
+      z-index: 3;
+      opacity: 0.8;
+      transform: rotate(-10deg);
+    }
+
+    .roast-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .action-button {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.8);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .action-button:active {
+      transform: scale(0.9);
+      color: var(--neon-purple);
+    }
+
+    .action-icon {
+      font-size: 18px;
+    }
+
+    /* Section Headers */
+    .section-header {
+      padding: 24px 16px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: 900;
+    }
+
+    .section-link {
+      font-size: 14px;
+      color: var(--neon-purple);
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* Bottom Navigation */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      max-width: 375px;
+      margin: 0 auto;
+    }
+
+    .nav-item .nav-icon {
+      font-size: 24px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-item.active .nav-icon {
+      filter: drop-shadow(0 0 8px var(--neon-purple));
+    }
+
+    .nav-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .nav-item.active .nav-label {
+      color: white;
+    }
+
+    /* Scroll hint */
+    .scroll-hint {
+      position: fixed;
+      bottom: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.4);
+      animation: bounce-hint 2s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes bounce-hint {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-10px); }
+    }
+  </style>
+</head>
+<body>
+  <div class="feed-container">
+    <!-- Daily Challenge Banner -->
+    <div class="glass-card-neon challenge-banner">
+      <div class="challenge-content">
+        <div class="challenge-label">🏆 Denní výzva</div>
+        <div class="challenge-title">Roast svoji ranní kávu!</div>
+        <div class="challenge-timer pulse-timer">
+          <span class="timer-icon">⏱️</span>
+          <span id="timer">23:42:15</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section: Trending Now -->
+    <div class="section-header">
+      <div class="section-title kinetic-text" data-text="🔥 Trending">🔥 Trending</div>
+      <div class="section-link">Všechny →</div>
+    </div>
+
+    <!-- Bento Grid -->
+    <div class="bento-container">
+      <div class="bento-grid">
+        <!-- Large Featured Card -->
+        <div class="glass-card-neon roast-card roast-card-large ripple-effect lighting-depth" onclick="openRoast(1)">
+          <div class="roast-thumbnail"></div>
+          <div class="roast-content">
+            <div class="roast-author">
+              <div class="author-avatar">🥊</div>
+              <div class="author-name">VémolaCZ</div>
+            </div>
+            <div class="roast-text frosted-text" data-text="Ty vole!">
+              "Fitko dnes bylo jak MMA zápas - úplně jsem zabil svoji motivaci v prvním kole!"
+            </div>
+            <div class="roast-overlay czech-overlay" data-text="TY VOLE!">TY VOLE!</div>
+            <div class="roast-actions">
+              <div class="action-button">
+                <span class="action-icon">❤️</span>
+                <span>2.4k</span>
+              </div>
+              <div class="action-button">
+                <span class="action-icon">💬</span>
+                <span>187</span>
+              </div>
+              <div class="action-button">
+                <span class="action-icon">🎁</span>
+                <span>42</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Regular Cards -->
+        <div class="glass-card roast-card ripple-effect" onclick="openRoast(2)">
+          <div class="roast-thumbnail"></div>
+          <div class="roast-content">
+            <div class="roast-author">
+              <div class="author-avatar">☕</div>
+              <div class="author-name">KávaPro</div>
+            </div>
+            <div class="roast-text">
+              "Moje espresso má víc hloubky než tvoje osobnost 😂"
+            </div>
+            <div class="roast-actions">
+              <div class="action-button">
+                <span class="action-icon">❤️</span>
+                <span>892</span>
+              </div>
+              <div class="action-button">
+                <span class="action-icon">💬</span>
+                <span>34</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card roast-card ripple-effect" onclick="openRoast(3)">
+          <div class="roast-thumbnail"></div>
+          <div class="roast-content">
+            <div class="roast-author">
+              <div class="author-avatar">💪</div>
+              <div class="author-name">GymRat</div>
+            </div>
+            <div class="roast-text">
+              "Můj protein shake je chutnější než tvoje výmluvy proč nejdeš cvičit"
+            </div>
+            <div class="roast-actions">
+              <div class="action-button">
+                <span class="action-icon">❤️</span>
+                <span>654</span>
+              </div>
+              <div class="action-button">
+                <span class="action-icon">💬</span>
+                <span>28</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card roast-card ripple-effect" onclick="openRoast(4)">
+          <div class="roast-thumbnail"></div>
+          <div class="roast-content">
+            <div class="roast-author">
+              <div class="author-avatar">🍕</div>
+              <div class="author-name">PizzaKing</div>
+            </div>
+            <div class="roast-text">
+              "Tahle pizza má víc charakteru než celá tvoje kariéra 🍕"
+            </div>
+            <div class="roast-actions">
+              <div class="action-button">
+                <span class="action-icon">❤️</span>
+                <span>1.1k</span>
+              </div>
+              <div class="action-button">
+                <span class="action-icon">💬</span>
+                <span>56</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card roast-card ripple-effect" onclick="openRoast(5)">
+          <div class="roast-thumbnail"></div>
+          <div class="roast-content">
+            <div class="roast-author">
+              <div class="author-avatar">🐕</div>
+              <div class="author-name">DogLover</div>
+            </div>
+            <div class="roast-text">
+              "Můj pes má lepší sociální život než ty 🐕"
+            </div>
+            <div class="roast-actions">
+              <div class="action-button">
+                <span class="action-icon">❤️</span>
+                <span>445</span>
+              </div>
+              <div class="action-button">
+                <span class="action-icon">💬</span>
+                <span>22</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section: Your Echoes -->
+    <div class="section-header">
+      <div class="section-title">💬 Tvoje Echo</div>
+      <div class="section-link">Zobrazit vše →</div>
+    </div>
+
+    <div class="bento-container">
+      <div class="bento-grid">
+        <div class="glass-card roast-card ripple-effect" onclick="openRoast(6)">
+          <div class="roast-thumbnail"></div>
+          <div class="roast-content">
+            <div class="roast-author">
+              <div class="author-avatar">⚡</div>
+              <div class="author-name">Tu</div>
+            </div>
+            <div class="roast-text">
+              "Reagoval jsi na: 'Tvoje káva je slabší...'"
+            </div>
+            <div class="roast-actions">
+              <div class="action-button">
+                <span class="action-icon">💬</span>
+                <span>3 nové</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll Hint -->
+  <div class="scroll-hint">↓ Swipe pro další</div>
+
+  <!-- Bottom Navigation -->
+  <div class="bottom-nav">
+    <div class="nav-item active ripple-effect">
+      <div class="nav-icon">🏠</div>
+      <div class="nav-label">Feed</div>
+    </div>
+    <div class="nav-item ripple-effect" onclick="navigate('challenges')">
+      <div class="nav-icon">🏆</div>
+      <div class="nav-label">Výzvy</div>
+    </div>
+    <div class="nav-item ripple-effect" onclick="navigate('create')">
+      <div class="nav-icon">✨</div>
+      <div class="nav-label">Vytvořit</div>
+    </div>
+    <div class="nav-item ripple-effect" onclick="navigate('pizzeria')">
+      <div class="nav-icon">🍕</div>
+      <div class="nav-label">Pizzerie</div>
+    </div>
+    <div class="nav-item ripple-effect" onclick="navigate('profile')">
+      <div class="nav-icon">👤</div>
+      <div class="nav-label">Profil</div>
+    </div>
+  </div>
+
+  <script>
+    // Timer countdown
+    function updateTimer() {
+      const timer = document.getElementById('timer');
+      let time = timer.textContent.split(':');
+      let hours = parseInt(time[0]);
+      let minutes = parseInt(time[1]);
+      let seconds = parseInt(time[2]);
+
+      seconds--;
+      if (seconds < 0) {
+        seconds = 59;
+        minutes--;
+        if (minutes < 0) {
+          minutes = 59;
+          hours--;
+        }
+      }
+
+      timer.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    }
+    setInterval(updateTimer, 1000);
+
+    // Navigation
+    function navigate(page) {
+      const pages = {
+        'challenges': '06-challenges.html',
+        'create': '04-roast-creator.html',
+        'pizzeria': '08-pizzeria.html',
+        'profile': '07-profile.html'
+      };
+
+      if (pages[page]) {
+        window.location.href = pages[page];
+      }
+
+      // Haptic feedback
+      if ('vibrate' in navigator) {
+        navigator.vibrate(10);
+      }
+    }
+
+    // Open roast detail
+    function openRoast(id) {
+      window.location.href = '05-echo-chain.html?id=' + id;
+    }
+
+    // Haptic feedback on all interactive elements
+    document.querySelectorAll('.ripple-effect').forEach(el => {
+      el.addEventListener('click', () => {
+        if ('vibrate' in navigator) {
+          navigator.vibrate(10);
+        }
+      });
+    });
+
+    // Hide scroll hint after first scroll
+    let scrolled = false;
+    window.addEventListener('scroll', () => {
+      if (!scrolled) {
+        document.querySelector('.scroll-hint').style.opacity = '0';
+        scrolled = true;
+      }
+    });
+
+    // Pull to refresh hint
+    let touchStartY = 0;
+    document.addEventListener('touchstart', (e) => {
+      touchStartY = e.touches[0].clientY;
+    });
+
+    document.addEventListener('touchmove', (e) => {
+      const touchY = e.touches[0].clientY;
+      const touchDiff = touchY - touchStartY;
+
+      if (touchDiff > 100 && window.scrollY === 0) {
+        // Pull to refresh trigger
+        location.reload();
+      }
+    });
+  </script>
+</body>
+</html>

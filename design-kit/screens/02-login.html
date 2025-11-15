@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>RoastArena - Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/glassmorphism-2025.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-primary);
+      background: var(--bg-black);
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .login-container {
+      width: 375px;
+      min-height: 812px;
+      padding: 60px 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+    }
+
+    .logo-small {
+      font-size: 64px;
+      text-align: center;
+      margin-bottom: 32px;
+      animation: fire-flicker 2s ease-in-out infinite;
+    }
+
+    .headline-login {
+      font-size: 36px;
+      font-weight: 900;
+      text-align: center;
+      margin-bottom: 12px;
+      animation: fade-in 0.8s ease;
+    }
+
+    @keyframes fade-in {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .subheadline-login {
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.6);
+      text-align: center;
+      margin-bottom: 48px;
+      animation: fade-in 0.8s ease 0.2s both;
+    }
+
+    .form-container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 24px;
+      animation: fade-in 0.8s ease 0.4s both;
+    }
+
+    .social-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .social-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      font-weight: 600;
+      font-size: 16px;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .social-button:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(168, 85, 247, 0.5);
+      box-shadow: 0 0 30px rgba(168, 85, 247, 0.2);
+    }
+
+    .social-button:active {
+      transform: scale(0.98);
+    }
+
+    .social-icon {
+      font-size: 24px;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 24px 0;
+      opacity: 0.5;
+    }
+
+    .divider-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+      );
+    }
+
+    .divider-text {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .input-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.8);
+      padding-left: 4px;
+    }
+
+    .glass-input-focus {
+      position: relative;
+    }
+
+    .glass-input-focus::after {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(135deg, var(--neon-purple), var(--neon-orange));
+      border-radius: 18px;
+      opacity: 0;
+      z-index: -1;
+      filter: blur(15px);
+      transition: opacity 0.3s ease;
+    }
+
+    .glass-input:focus + .glass-input-focus::after {
+      opacity: 0.5;
+    }
+
+    .submit-button {
+      margin-top: 16px;
+    }
+
+    .footer-link {
+      text-align: center;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.6);
+      animation: fade-in 0.8s ease 0.6s both;
+    }
+
+    .footer-link a {
+      color: var(--neon-purple);
+      text-decoration: none;
+      font-weight: 600;
+      background: linear-gradient(135deg, var(--neon-purple), var(--neon-orange));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .footer-link a:active {
+      opacity: 0.7;
+    }
+
+    /* Background gradient */
+    .bg-gradient {
+      position: fixed;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(
+        circle at center,
+        rgba(168, 85, 247, 0.1) 0%,
+        transparent 50%
+      );
+      animation: rotate-gradient 20s linear infinite;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    @keyframes rotate-gradient {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* Floating particles */
+    .particle-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .float-particle {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: rgba(168, 85, 247, 0.5);
+      border-radius: 50%;
+      animation: particle-float-up 15s linear infinite;
+    }
+
+    @keyframes particle-float-up {
+      0% {
+        transform: translateY(100vh) translateX(0);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) translateX(50px);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Background Elements -->
+  <div class="bg-gradient"></div>
+  <div class="particle-container" id="particles"></div>
+
+  <div class="login-container">
+    <!-- Logo -->
+    <div class="logo-small">🔥</div>
+
+    <!-- Headline -->
+    <h1 class="headline-login kinetic-text" data-text="Přidej se k roastům">
+      Přidej se k roastům
+    </h1>
+    <p class="subheadline-login">Nejlepší AI trash talk na světě</p>
+
+    <!-- Social Login Buttons -->
+    <div class="social-buttons">
+      <button class="social-button ripple-effect" onclick="socialLogin('google')">
+        <span class="social-icon">G</span>
+        <span>Pokračovat s Google</span>
+      </button>
+
+      <button class="social-button ripple-effect" onclick="socialLogin('apple')">
+        <span class="social-icon"></span>
+        <span>Pokračovat s Apple</span>
+      </button>
+    </div>
+
+    <!-- Divider -->
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-text">nebo</div>
+      <div class="divider-line"></div>
+    </div>
+
+    <!-- Email/Password Form -->
+    <form class="form-container" onsubmit="handleLogin(event)">
+      <div class="input-group">
+        <label class="input-label" for="email">Email</label>
+        <div class="glass-input-focus">
+          <input
+            type="email"
+            id="email"
+            class="glass-input"
+            placeholder="tvuj@email.cz"
+            required
+          >
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label class="input-label" for="password">Heslo</label>
+        <div class="glass-input-focus">
+          <input
+            type="password"
+            id="password"
+            class="glass-input"
+            placeholder="••••••••"
+            required
+          >
+        </div>
+      </div>
+
+      <button type="submit" class="halo-button submit-button ripple-effect">
+        Rozjeď to! 🔥
+      </button>
+    </form>
+
+    <!-- Footer Link -->
+    <div class="footer-link">
+      Už máš účet? <a href="#" onclick="switchToRegister()">Přihlaš se</a>
+    </div>
+  </div>
+
+  <script>
+    // Create floating particles
+    const particlesContainer = document.getElementById('particles');
+    for (let i = 0; i < 15; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'float-particle';
+      particle.style.left = Math.random() * 100 + '%';
+      particle.style.animationDelay = Math.random() * 15 + 's';
+      particle.style.animationDuration = Math.random() * 10 + 15 + 's';
+      particlesContainer.appendChild(particle);
+    }
+
+    // Social login
+    function socialLogin(provider) {
+      console.log('Login with', provider);
+      // Haptic feedback
+      if ('vibrate' in navigator) {
+        navigator.vibrate(10);
+      }
+      // Redirect to home
+      setTimeout(() => {
+        window.location.href = '03-home-feed.html';
+      }, 500);
+    }
+
+    // Handle form login
+    function handleLogin(event) {
+      event.preventDefault();
+
+      // Create confetti
+      for (let i = 0; i < 30; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.left = Math.random() * 100 + '%';
+        confetti.style.animationDelay = Math.random() * 0.3 + 's';
+        document.body.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 3000);
+      }
+
+      setTimeout(() => {
+        window.location.href = '03-home-feed.html';
+      }, 800);
+    }
+
+    // Switch to register
+    function switchToRegister() {
+      document.querySelector('.headline-login').textContent = 'Vytvoř si účet';
+      document.querySelector('.subheadline-login').textContent = 'Začni roastovat za 10 sekund';
+      document.querySelector('.footer-link').innerHTML = 'Už máš účet? <a href="#" onclick="switchToLogin()">Přihlaš se</a>';
+    }
+
+    function switchToLogin() {
+      document.querySelector('.headline-login').textContent = 'Přidej se k roastům';
+      document.querySelector('.subheadline-login').textContent = 'Nejlepší AI trash talk na světě';
+      document.querySelector('.footer-link').innerHTML = 'Už máš účet? <a href="#" onclick="switchToRegister()">Přihlaš se</a>';
+    }
+
+    // Haptic feedback on inputs
+    document.querySelectorAll('.glass-input').forEach(input => {
+      input.addEventListener('focus', () => {
+        if ('vibrate' in navigator) {
+          navigator.vibrate(5);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

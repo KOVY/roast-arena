@@ -1,0 +1,510 @@
+/**
+ * RoastArena Design System
+ * Ultra-Premium Glassmorphism 2025
+ * Mobile-First (375x812)
+ */
+
+/* ================================
+   COLOR TOKENS
+================================ */
+:root {
+  /* Primary Gradients */
+  --neon-purple: #A855F7;
+  --neon-orange: #FB923C;
+  --neon-pink: #EC4899;
+  --neon-blue: #3B82F6;
+
+  /* Backgrounds */
+  --bg-black: #0F0F0F;
+  --bg-dark: #1A1A1A;
+  --bg-darker: #0A0A0A;
+
+  /* Glass Layers */
+  --glass-light: rgba(255, 255, 255, 0.05);
+  --glass-medium: rgba(255, 255, 255, 0.08);
+  --glass-heavy: rgba(255, 255, 255, 0.12);
+
+  /* Blur Intensities */
+  --blur-light: 15px;
+  --blur-medium: 25px;
+  --blur-heavy: 40px;
+
+  /* Shadows */
+  --shadow-depth: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --shadow-glow-purple: 0 0 60px rgba(168, 85, 247, 0.3);
+  --shadow-glow-orange: 0 0 60px rgba(251, 146, 60, 0.3);
+
+  /* Typography */
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-lg: 20px;
+  --font-size-xl: 24px;
+  --font-size-2xl: 32px;
+  --font-size-3xl: 48px;
+}
+
+/* ================================
+   GLASSMORPHISM BASE CLASSES
+================================ */
+
+/* Ultra-premium frosted glass with dynamic blur */
+.glass-card {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.04) 100%
+  );
+  backdrop-filter: blur(25px) saturate(180%);
+  -webkit-backdrop-filter: blur(25px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dual-layer neon halo glow */
+.glass-card-neon {
+  background: linear-gradient(
+    135deg,
+    rgba(168, 85, 247, 0.1) 0%,
+    rgba(251, 146, 60, 0.05) 100%
+  );
+  backdrop-filter: blur(30px) saturate(200%);
+  -webkit-backdrop-filter: blur(30px) saturate(200%);
+  border: 1px solid;
+  border-image: linear-gradient(
+    135deg,
+    rgba(168, 85, 247, 0.5),
+    rgba(251, 146, 60, 0.5)
+  ) 1;
+  border-radius: 24px;
+  box-shadow:
+    0 0 60px rgba(168, 85, 247, 0.3),
+    0 0 40px rgba(251, 146, 60, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  position: relative;
+}
+
+/* 3D tilt on hover */
+.glass-card-tilt {
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+
+.glass-card-tilt:hover {
+  transform: rotateX(2deg) rotateY(2deg) scale(1.02);
+}
+
+/* Active state with depth */
+.glass-card:active {
+  transform: scale(0.98);
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.5),
+    inset 0 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* ================================
+   NEON HALO COMPONENTS
+================================ */
+
+.halo-button {
+  background: linear-gradient(135deg, var(--neon-purple), var(--neon-orange));
+  backdrop-filter: blur(20px);
+  border: none;
+  border-radius: 999px;
+  padding: 16px 32px;
+  font-weight: 700;
+  font-size: var(--font-size-lg);
+  color: white;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 0 60px rgba(168, 85, 247, 0.5),
+    0 0 40px rgba(251, 146, 60, 0.4),
+    0 8px 24px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+}
+
+.halo-button::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(135deg, var(--neon-purple), var(--neon-orange));
+  border-radius: 999px;
+  z-index: -1;
+  filter: blur(20px);
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.halo-button:hover::before {
+  opacity: 1;
+  filter: blur(30px);
+}
+
+.halo-button:active {
+  transform: scale(0.95);
+  box-shadow:
+    0 0 40px rgba(168, 85, 247, 0.6),
+    0 4px 16px rgba(0, 0, 0, 0.5);
+}
+
+/* ================================
+   KINETIC TYPOGRAPHY
+================================ */
+
+.kinetic-text {
+  background: linear-gradient(
+    135deg,
+    var(--neon-purple),
+    var(--neon-orange),
+    var(--neon-pink)
+  );
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 3s ease infinite;
+  font-weight: 900;
+  position: relative;
+}
+
+.kinetic-text::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  filter: blur(20px);
+  opacity: 0.5;
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Frosted text overlay */
+.frosted-text {
+  color: white;
+  text-shadow:
+    0 0 20px rgba(168, 85, 247, 0.6),
+    0 0 40px rgba(251, 146, 60, 0.4),
+    0 2px 4px rgba(0, 0, 0, 0.8);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  position: relative;
+}
+
+.frosted-text::before {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  filter: blur(8px);
+  opacity: 0.6;
+  z-index: -1;
+}
+
+/* ================================
+   MICRO-INTERACTIONS
+================================ */
+
+/* Ripple effect on tap */
+.ripple-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple-effect::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.ripple-effect:active::after {
+  width: 300px;
+  height: 300px;
+}
+
+/* Pulse animation for timers */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(168, 85, 247, 0.8);
+  }
+}
+
+.pulse-timer {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Fire animation for streaks */
+@keyframes fire-flicker {
+  0%, 100% {
+    filter: brightness(1) saturate(1);
+    transform: scale(1);
+  }
+  50% {
+    filter: brightness(1.2) saturate(1.5);
+    transform: scale(1.05);
+  }
+}
+
+.fire-streak {
+  animation: fire-flicker 1s ease-in-out infinite;
+}
+
+/* Particle effects */
+@keyframes particle-float {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100px) scale(1);
+  }
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--neon-purple), var(--neon-orange));
+  animation: particle-float 1.5s ease-out forwards;
+  pointer-events: none;
+}
+
+/* ================================
+   ADAPTIVE TRANSPARENCY
+================================ */
+
+/* Light background variant */
+.glass-adaptive-light {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Dark background variant */
+.glass-adaptive-dark {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ================================
+   REALISTIC LIGHTING
+================================ */
+
+/* Top-left light source */
+.lighting-depth {
+  box-shadow:
+    /* Top highlight */
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    /* Left highlight */
+    inset 1px 0 0 rgba(255, 255, 255, 0.1),
+    /* Main shadow */
+    8px 8px 24px rgba(0, 0, 0, 0.4),
+    /* Secondary shadow */
+    4px 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* ================================
+   BENTO GRID LAYOUT
+================================ */
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+  padding: 16px;
+}
+
+.bento-item {
+  min-height: 180px;
+  border-radius: 24px;
+}
+
+.bento-item-featured {
+  grid-column: span 2;
+  min-height: 240px;
+}
+
+/* ================================
+   BOTTOM NAVIGATION
+================================ */
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(
+    180deg,
+    rgba(15, 15, 15, 0) 0%,
+    rgba(15, 15, 15, 0.95) 20%,
+    rgba(15, 15, 15, 1) 100%
+  );
+  backdrop-filter: blur(30px);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 24px 20px;
+  z-index: 1000;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 16px;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.nav-item:active {
+  background: rgba(168, 85, 247, 0.1);
+  transform: scale(0.95);
+}
+
+.nav-item.active {
+  background: linear-gradient(
+    135deg,
+    rgba(168, 85, 247, 0.15),
+    rgba(251, 146, 60, 0.1)
+  );
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+}
+
+/* ================================
+   RESPONSIVE UTILITIES
+================================ */
+
+@media (max-width: 375px) {
+  .glass-card {
+    border-radius: 20px;
+  }
+
+  .halo-button {
+    padding: 14px 28px;
+    font-size: var(--font-size-base);
+  }
+}
+
+@media (min-width: 768px) {
+  .bento-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .bottom-nav {
+    display: none;
+  }
+}
+
+/* ================================
+   CZECH MODE OVERLAYS
+================================ */
+
+.czech-overlay {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: linear-gradient(135deg, var(--neon-purple), var(--neon-orange));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 900;
+  font-size: var(--font-size-xl);
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  filter: drop-shadow(0 0 20px rgba(168, 85, 247, 0.6));
+  animation: float-text 3s ease-in-out infinite;
+}
+
+@keyframes float-text {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* ================================
+   CONFETTI ANIMATION
+================================ */
+
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(-100vh) rotateZ(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotateZ(720deg);
+    opacity: 0;
+  }
+}
+
+.confetti {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background: linear-gradient(135deg, var(--neon-purple), var(--neon-orange));
+  animation: confetti-fall 3s linear forwards;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ================================
+   MOBILE-FIRST INPUTS
+================================ */
+
+.glass-input {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 16px 20px;
+  color: white;
+  font-size: var(--font-size-base);
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.glass-input:focus {
+  outline: none;
+  border-color: var(--neon-purple);
+  box-shadow:
+    0 0 40px rgba(168, 85, 247, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.glass-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}

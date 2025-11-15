@@ -1,0 +1,20 @@
+{
+  "colors": {
+    "primary": {
+      "neon-purple": "#A855F7",
+      "neon-orange": "#FB923C",
+      "neon-pink": "#EC4899",
+      "neon-blue": "#3B82F6"
+    },
+    "background": {
+      "black": "#0F0F0F",
+      "dark": "#1A1A1A",
+      "darker": "#0A0A0A"
+    },
+    "glass": {
+      "light": "rgba(255, 255, 255, 0.05)",
+      "medium": "rgba(255, 255, 255, 0.08)",
+      "heavy": "rgba(255, 255, 255, 0.12)"
+    }
+  }
+}

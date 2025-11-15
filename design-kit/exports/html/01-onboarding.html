@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>RoastArena - Onboarding</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/glassmorphism-2025.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-primary);
+      background: var(--bg-black);
+      color: white;
+      overflow: hidden;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .onboarding-container {
+      width: 375px;
+      height: 812px;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .carousel {
+      display: flex;
+      width: 1125px;
+      height: 100%;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .slide {
+      width: 375px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 32px;
+      position: relative;
+    }
+
+    /* Slide 1: Welcome */
+    .logo-container {
+      position: relative;
+      margin-bottom: 48px;
+    }
+
+    .logo-icon {
+      font-size: 120px;
+      animation: fire-flicker 2s ease-in-out infinite;
+      position: relative;
+      z-index: 2;
+    }
+
+    .logo-halo {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(
+        circle,
+        rgba(168, 85, 247, 0.4) 0%,
+        rgba(251, 146, 60, 0.3) 50%,
+        transparent 70%
+      );
+      filter: blur(40px);
+      animation: pulse-glow 3s ease-in-out infinite;
+      z-index: 1;
+    }
+
+    .headline {
+      font-size: 48px;
+      font-weight: 900;
+      text-align: center;
+      margin-bottom: 16px;
+      line-height: 1.1;
+    }
+
+    .subheadline {
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.6);
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    /* Slide 2: Quiz */
+    .quiz-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      width: 100%;
+      margin-bottom: 48px;
+    }
+
+    .quiz-card {
+      aspect-ratio: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      cursor: pointer;
+      transform: scale(1);
+      transition: transform 0.3s ease;
+    }
+
+    .quiz-card:active {
+      transform: scale(0.95);
+    }
+
+    .quiz-card.selected {
+      background: linear-gradient(
+        135deg,
+        rgba(168, 85, 247, 0.15),
+        rgba(251, 146, 60, 0.1)
+      );
+      border-color: var(--neon-purple);
+      box-shadow: 0 0 40px rgba(168, 85, 247, 0.4);
+    }
+
+    .quiz-icon {
+      font-size: 48px;
+    }
+
+    .quiz-label {
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    /* Slide 3: Style Picker */
+    .style-picker {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      width: 100%;
+      margin-bottom: 48px;
+    }
+
+    .style-button {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 20px 24px;
+      cursor: pointer;
+      transform-style: preserve-3d;
+      transition: transform 0.3s ease;
+    }
+
+    .style-button:hover {
+      transform: rotateY(5deg) scale(1.02);
+    }
+
+    .style-button:active {
+      transform: rotateY(5deg) scale(0.98);
+    }
+
+    .style-icon-box {
+      width: 60px;
+      height: 60px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      background: linear-gradient(135deg, var(--neon-purple), var(--neon-orange));
+      box-shadow: 0 8px 24px rgba(168, 85, 247, 0.4);
+    }
+
+    .style-info {
+      flex: 1;
+    }
+
+    .style-name {
+      font-weight: 700;
+      font-size: 20px;
+      margin-bottom: 4px;
+    }
+
+    .style-desc {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    /* Navigation Dots */
+    .dots-container {
+      position: absolute;
+      bottom: 120px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .dot.active {
+      width: 24px;
+      border-radius: 4px;
+      background: linear-gradient(135deg, var(--neon-purple), var(--neon-orange));
+      box-shadow: 0 0 20px rgba(168, 85, 247, 0.6);
+    }
+
+    /* Next Button */
+    .next-button {
+      position: absolute;
+      bottom: 40px;
+      left: 32px;
+      right: 32px;
+    }
+
+    /* Particles Background */
+    .particles-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .bg-particle {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: rgba(168, 85, 247, 0.4);
+      border-radius: 50%;
+      animation: float-particle 20s linear infinite;
+    }
+
+    @keyframes float-particle {
+      0% {
+        transform: translateY(100vh) translateX(0);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100px) translateX(50px);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="onboarding-container">
+    <!-- Particles Background -->
+    <div class="particles-bg" id="particles"></div>
+
+    <!-- Carousel -->
+    <div class="carousel" id="carousel">
+      <!-- Slide 1: Welcome -->
+      <div class="slide">
+        <div class="logo-container">
+          <div class="logo-halo"></div>
+          <div class="logo-icon">🔥</div>
+        </div>
+        <h1 class="headline kinetic-text" data-text="RoastArena">RoastArena</h1>
+        <p class="subheadline">Hejtuj jako v MMA!</p>
+        <p class="subheadline">AI-powered trash talk battles</p>
+      </div>
+
+      <!-- Slide 2: Quiz -->
+      <div class="slide">
+        <h2 class="headline" style="font-size: 32px; margin-bottom: 24px;">Co miluješ?</h2>
+        <p class="subheadline" style="margin-bottom: 32px;">Vyber si své vibe</p>
+
+        <div class="quiz-grid">
+          <div class="glass-card quiz-card ripple-effect" onclick="selectQuiz(this)">
+            <div class="quiz-icon">☕</div>
+            <div class="quiz-label">Káva</div>
+          </div>
+
+          <div class="glass-card quiz-card ripple-effect" onclick="selectQuiz(this)">
+            <div class="quiz-icon">💪</div>
+            <div class="quiz-label">Fitko</div>
+          </div>
+
+          <div class="glass-card quiz-card ripple-effect" onclick="selectQuiz(this)">
+            <div class="quiz-icon">🐕</div>
+            <div class="quiz-label">Psi</div>
+          </div>
+
+          <div class="glass-card quiz-card ripple-effect" onclick="selectQuiz(this)">
+            <div class="quiz-icon">🍕</div>
+            <div class="quiz-label">Pizza</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3: Style Picker -->
+      <div class="slide">
+        <h2 class="headline" style="font-size: 32px; margin-bottom: 24px;">Tvůj styl</h2>
+        <p class="subheadline" style="margin-bottom: 32px;">Jak chceš roastovat?</p>
+
+        <div class="style-picker">
+          <div class="glass-card-neon style-button glass-card-tilt" onclick="selectStyle(this)">
+            <div class="style-icon-box">🥊</div>
+            <div class="style-info">
+              <div class="style-name">MMA Fighter</div>
+              <div class="style-desc">Tvrdý jako Vémola</div>
+            </div>
+          </div>
+
+          <div class="glass-card-neon style-button glass-card-tilt" onclick="selectStyle(this)">
+            <div class="style-icon-box">💥</div>
+            <div class="style-info">
+              <div class="style-name">WWE Savage</div>
+              <div class="style-desc">Show off the top rope</div>
+            </div>
+          </div>
+
+          <div class="glass-card-neon style-button glass-card-tilt" onclick="selectStyle(this)">
+            <div class="style-icon-box">⚡</div>
+            <div class="style-info">
+              <div class="style-name">AEW Chaos</div>
+              <div class="style-desc">Brutální kreativita</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation Dots -->
+    <div class="dots-container">
+      <div class="dot active"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+
+    <!-- Next Button -->
+    <button class="halo-button next-button ripple-effect" onclick="nextSlide()">
+      Další →
+    </button>
+  </div>
+
+  <script>
+    let currentSlide = 0;
+    const totalSlides = 3;
+    const carousel = document.getElementById('carousel');
+    const dots = document.querySelectorAll('.dot');
+
+    function nextSlide() {
+      if (currentSlide < totalSlides - 1) {
+        currentSlide++;
+        updateCarousel();
+        createConfetti();
+      } else {
+        window.location.href = '02-login.html';
+      }
+    }
+
+    function updateCarousel() {
+      carousel.style.transform = `translateX(-${currentSlide * 375}px)`;
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentSlide);
+      });
+    }
+
+    function selectQuiz(card) {
+      document.querySelectorAll('.quiz-card').forEach(c => c.classList.remove('selected'));
+      card.classList.add('selected');
+      setTimeout(nextSlide, 300);
+    }
+
+    function selectStyle(button) {
+      createConfetti();
+      setTimeout(() => {
+        window.location.href = '02-login.html';
+      }, 1000);
+    }
+
+    // Confetti effect
+    function createConfetti() {
+      for (let i = 0; i < 30; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.left = Math.random() * 100 + '%';
+        confetti.style.animationDelay = Math.random() * 0.5 + 's';
+        confetti.style.animationDuration = Math.random() * 2 + 2 + 's';
+        document.body.appendChild(confetti);
+
+        setTimeout(() => confetti.remove(), 5000);
+      }
+    }
+
+    // Create particles
+    const particlesContainer = document.getElementById('particles');
+    for (let i = 0; i < 20; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'bg-particle';
+      particle.style.left = Math.random() * 100 + '%';
+      particle.style.animationDelay = Math.random() * 20 + 's';
+      particle.style.animationDuration = Math.random() * 10 + 20 + 's';
+      particlesContainer.appendChild(particle);
+    }
+
+    // Haptic feedback simulation
+    if ('vibrate' in navigator) {
+      document.querySelectorAll('.ripple-effect').forEach(el => {
+        el.addEventListener('click', () => navigator.vibrate(10));
+      });
+    }
+  </script>
+</body>
+</html>

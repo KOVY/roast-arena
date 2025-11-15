@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RoastArena Design Kit - Index</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/glassmorphism-2025.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-primary);
+      background: var(--bg-black);
+      color: white;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .logo {
+      font-size: 80px;
+      margin-bottom: 20px;
+      animation: fire-flicker 2s ease-in-out infinite;
+    }
+
+    .title {
+      font-size: 48px;
+      font-weight: 900;
+      margin-bottom: 16px;
+    }
+
+    .subtitle {
+      font-size: 20px;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-bottom: 60px;
+    }
+
+    .card {
+      padding: 32px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card-title {
+      font-size: 24px;
+      font-weight: 900;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .card-desc {
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .card-link {
+      color: var(--neon-purple);
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .card-link:hover {
+      text-decoration: underline;
+    }
+
+    .features {
+      margin-bottom: 60px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    .feature {
+      padding: 20px;
+      text-align: center;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .feature-icon {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+
+    .feature-text {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .footer {
+      text-align: center;
+      padding: 40px 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <div class="logo">🔥</div>
+      <h1 class="title kinetic-text" data-text="RoastArena Design Kit">
+        RoastArena Design Kit
+      </h1>
+      <p class="subtitle">Ultra-Premium Glassmorphism 2025 - Mobile-First UI</p>
+    </div>
+
+    <!-- Screens Grid -->
+    <div class="grid">
+      <div class="glass-card-neon card lighting-depth" onclick="window.location.href='screens/01-onboarding.html'">
+        <div class="card-title">
+          <span>🎬</span> Onboarding
+        </div>
+        <div class="card-desc">
+          3-slide carousel s quiz a style picker. Animace, confetti, 3D tilt effects.
+        </div>
+        <a href="screens/01-onboarding.html" class="card-link">Otevřít →</a>
+      </div>
+
+      <div class="glass-card-neon card lighting-depth" onclick="window.location.href='screens/02-login.html'">
+        <div class="card-title">
+          <span>🔑</span> Login/Register
+        </div>
+        <div class="card-desc">
+          Minimální formulář s Google/Apple login. Kinetic text, floating particles.
+        </div>
+        <a href="screens/02-login.html" class="card-link">Otevřít →</a>
+      </div>
+
+      <div class="glass-card-neon card lighting-depth" onclick="window.location.href='screens/03-home-feed.html'">
+        <div class="card-title">
+          <span>🏠</span> Home Feed
+        </div>
+        <div class="card-desc">
+          TikTok-style bento grid s roast cards. Daily challenge, bottom nav, "TY VOLE!" overlays.
+        </div>
+        <a href="screens/03-home-feed.html" class="card-link">Otevřít →</a>
+      </div>
+
+      <div class="glass-card-neon card lighting-depth" onclick="window.location.href='screens/04-roast-creator.html'">
+        <div class="card-title">
+          <span>✨</span> Roast Creator
+        </div>
+        <div class="card-desc">
+          Full-screen AI editor s AR camera, style picker, explosion effects.
+        </div>
+        <a href="screens/04-roast-creator.html" class="card-link">Otevřít →</a>
+      </div>
+
+      <div class="glass-card card" style="opacity: 0.5;">
+        <div class="card-title">
+          <span>💬</span> Echo Chain
+        </div>
+        <div class="card-desc">
+          Vertical bubble timeline. (Coming soon)
+        </div>
+      </div>
+
+      <div class="glass-card card" style="opacity: 0.5;">
+        <div class="card-title">
+          <span>🏆</span> Challenges Hub
+        </div>
+        <div class="card-desc">
+          Tabbed view s daily streaks. (Coming soon)
+        </div>
+      </div>
+
+      <div class="glass-card card" style="opacity: 0.5;">
+        <div class="card-title">
+          <span>👤</span> Profile
+        </div>
+        <div class="card-desc">
+          3D avatar, stats, leaderboards. (Coming soon)
+        </div>
+      </div>
+
+      <div class="glass-card card" style="opacity: 0.5;">
+        <div class="card-title">
+          <span>🍕</span> Pizzeria
+        </div>
+        <div class="card-desc">
+          Map view, QR scanner. (Coming soon)
+        </div>
+      </div>
+    </div>
+
+    <!-- Features -->
+    <div class="features">
+      <h2 class="title" style="font-size: 32px; margin-bottom: 24px; text-align: center;">
+        🎨 Klíčové Features
+      </h2>
+      <div class="features-grid">
+        <div class="feature">
+          <div class="feature-icon">💎</div>
+          <div class="feature-text">Glassmorphism 2025</div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🎆</div>
+          <div class="feature-text">Micro-Interactions</div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">📱</div>
+          <div class="feature-text">Mobile-First</div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🌍</div>
+          <div class="feature-text">Multi-Language</div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">⚡</div>
+          <div class="feature-text">60fps Animations</div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🎁</div>
+          <div class="feature-text">Confetti Effects</div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🔥</div>
+          <div class="feature-text">Fire Animations</div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">📤</div>
+          <div class="feature-text">Export Ready</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Documentation -->
+    <div class="grid">
+      <div class="glass-card card">
+        <div class="card-title">
+          <span>📚</span> README
+        </div>
+        <div class="card-desc">
+          Kompletní design system dokumentace
+        </div>
+        <a href="README.md" class="card-link">Číst →</a>
+      </div>
+
+      <div class="glass-card card">
+        <div class="card-title">
+          <span>🚀</span> Quick Start
+        </div>
+        <div class="card-desc">
+          Jak rychle začít s design kitem
+        </div>
+        <a href="QUICK_START.md" class="card-link">Číst →</a>
+      </div>
+
+      <div class="glass-card card">
+        <div class="card-title">
+          <span>📦</span> Export Guide
+        </div>
+        <div class="card-desc">
+          Jak exportovat PNG, HTML, komponenty
+        </div>
+        <a href="EXPORT_GUIDE.md" class="card-link">Číst →</a>
+      </div>
+
+      <div class="glass-card card">
+        <div class="card-title">
+          <span>📊</span> Design Summary
+        </div>
+        <div class="card-desc">
+          Kompletní přehled design kitu
+        </div>
+        <a href="DESIGN_SUMMARY.md" class="card-link">Číst →</a>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div style="text-align: center; margin: 60px 0;">
+      <button class="halo-button" onclick="window.location.href='screens/01-onboarding.html'" style="font-size: 24px; padding: 20px 40px;">
+        🔥 Start Tour →
+      </button>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p style="color: rgba(255, 255, 255, 0.6); margin-bottom: 8px;">
+        RoastArena Design Kit v2025.1.0
+      </p>
+      <p style="color: rgba(255, 255, 255, 0.4); font-size: 14px;">
+        Made with 🔥 and glassmorphism magic
+      </p>
+    </div>
+  </div>
+</body>
+</html>
