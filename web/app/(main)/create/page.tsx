@@ -1,7 +1,11 @@
-﻿import React, { useState } from 'react';
-import generateRoast from '../../lib/ai';
-import { supabaseClient } from '../../lib/supabase';
-import HaloButton from '../../components/ui/HaloButton';
+﻿'use client';
+
+export const dynamic = 'force-dynamic'
+
+import React, { useState } from 'react';
+import generateRoast from '@/lib/ai';
+import { supabaseClient } from '@/lib/supabase';
+import HaloButton from '@/components/ui/HaloButton';
 
 export default function CreatePage() {
   const [prompt, setPrompt] = useState('');

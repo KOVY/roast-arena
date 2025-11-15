@@ -1,5 +1,7 @@
 'use client'
 
+export const dynamic = 'force-dynamic'
+
 import { useEffect, useState } from 'react'
 import { supabaseClient } from '@/lib/supabase'
 import { Challenge } from '@/shared/types/pizzeria'

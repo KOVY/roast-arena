@@ -1,5 +1,7 @@
 'use client'
 
+export const dynamic = 'force-dynamic'
+
 import { useEffect, useState } from 'react'
 import { supabaseClient } from '@/lib/supabase'
 import { UserProfile } from '@/shared/types/user'
@@ -37,6 +39,7 @@ export default function ProfilePage() {
         .from('roasts')
         .select(`
           id,
+          author_id,
           text,
           created_at,
           likes,
@@ -60,7 +63,7 @@ export default function ProfilePage() {
         total_echoes: 0, // TODO: Calculate from parent_roast_id
       } as UserProfile)
 
-      setRoasts(roastsData as Roast[])
+      setRoasts((roastsData || []) as unknown as Roast[])
     } catch (error) {
       console.error('Failed to load profile:', error)
     } finally {

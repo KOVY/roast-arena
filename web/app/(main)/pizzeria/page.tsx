@@ -1,5 +1,9 @@
-﻿import React from 'react';
-import HaloButton from '../../components/ui/HaloButton';
+﻿'use client';
+
+export const dynamic = 'force-dynamic'
+
+import React from 'react';
+import HaloButton from '@/components/ui/HaloButton';
 
 const samplePizzerias = [
   { id: 'pz1', name: 'Pizza Top', challenge: 'Top Roaster this week: free pizza' },

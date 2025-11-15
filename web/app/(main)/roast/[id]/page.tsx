@@ -8,6 +8,7 @@ import { Roast, User } from '@/shared/types/roast'
 
 interface EchoData {
   id: string
+  author_id: string | null
   text: string
   author: User | null
   created_at: string
@@ -36,6 +37,7 @@ export default function RoastDetailPage() {
         .from('roasts')
         .select(`
           id,
+          author_id,
           text,
           created_at,
           likes,
@@ -50,7 +52,7 @@ export default function RoastDetailPage() {
 
       if (roastError) throw roastError
 
-      setRoast(roastData as EchoData)
+      setRoast(roastData as unknown as EchoData)
 
       // Load echos (responses to this roast)
       // In a full implementation, you'd have a parent_roast_id column
@@ -59,6 +61,7 @@ export default function RoastDetailPage() {
         .from('roasts')
         .select(`
           id,
+          author_id,
           text,
           created_at,
           likes,
@@ -74,7 +77,7 @@ export default function RoastDetailPage() {
 
       if (echosError) throw echosError
 
-      setEchos(echosData as EchoData[])
+      setEchos((echosData || []) as unknown as EchoData[])
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to load roast')
     } finally {
