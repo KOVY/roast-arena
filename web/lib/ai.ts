@@ -1,28 +1,21 @@
 /**
- * Grok API wrapper (minimal). Uses GROK_API_KEY env var.
- * Note: endpoint and request shape are illustrative; adapt to the real Grok API.
+ * Client-side wrapper for the generate-roast API.
+ * Calls the server-side API route to keep API keys secure.
  */
-type GrokResponse = { text?: string; result?: string } | any;
-
 export async function generateRoast(prompt: string, style = 'playful'): Promise<string> {
-  const key = process.env.NEXT_PUBLIC_GROK_API_KEY ?? process.env.GROK_API_KEY;
-  if (!key) throw new Error('GROK_API_KEY is not set');
-
-  const body = {
-    prompt: `Write a ${style} roast about: ${prompt}`,
-    max_tokens: 256,
-    temperature: 0.9,
-  };
-
-  const res = await fetch('https://api.grok.ai/v1/generate', {
+  const res = await fetch('/api/generate-roast', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${key}` },
-    body: JSON.stringify(body),
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ prompt, style }),
   });
 
-  const data: GrokResponse = await res.json();
-  // adapt depending on the actual response shape
-  return (data.text as string) ?? (data.result as string) ?? JSON.stringify(data);
+  if (!res.ok) {
+    const error = await res.json().catch(() => ({ error: 'Failed to generate roast' }));
+    throw new Error(error.error || 'Failed to generate roast');
+  }
+
+  const data = await res.json();
+  return data.text;
 }
 
 export default generateRoast;
