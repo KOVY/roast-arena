@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export default function HomePage() {
   return (
     <div className="min-h-screen flex items-center justify-center p-8">
@@ -13,21 +15,21 @@ export default function HomePage() {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
-          <a
+          <Link
             href="/login"
-            className="p-6 bg-gradient-to-r from-purple-500 to-orange-500 rounded-2xl hover:scale-105 transition-transform"
+            className="p-6 bg-gradient-to-r from-purple-500 to-orange-500 rounded-2xl hover:scale-105 transition-transform block"
           >
             <div className="text-4xl mb-2">🔑</div>
             <div className="font-bold text-xl">Get Started</div>
-          </a>
+          </Link>
 
-          <a
+          <Link
             href="/feed"
-            className="p-6 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 transition-colors"
+            className="p-6 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 transition-colors block"
           >
             <div className="text-4xl mb-2">🏠</div>
             <div className="font-bold text-xl">Browse Feed</div>
-          </a>
+          </Link>
         </div>
 
         <div className="mt-16 text-sm text-gray-600">
