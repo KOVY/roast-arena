@@ -1,0 +1,77 @@
+{
+  "locales": {
+    "cs-CZ": {
+      "language": "Čeština",
+      "currency": "CZK",
+      "symbol": "Kč",
+      "format": "{amount} {symbol}",
+      "decimalSeparator": ",",
+      "thousandsSeparator": " ",
+      "aiPromptPrefix": "Napiš roast v českém slangu, použij slova jako 'ty vole', 'kokot', ale vtipně a kreativně",
+      "roastStyle": "czech-slang"
+    },
+    "en-US": {
+      "language": "English",
+      "currency": "USD",
+      "symbol": "$",
+      "format": "{symbol}{amount}",
+      "decimalSeparator": ".",
+      "thousandsSeparator": ",",
+      "aiPromptPrefix": "Write a roast in American style, be savage but funny",
+      "roastStyle": "american-savage"
+    },
+    "de-DE": {
+      "language": "Deutsch",
+      "currency": "EUR",
+      "symbol": "€",
+      "format": "{amount} {symbol}",
+      "decimalSeparator": ",",
+      "thousandsSeparator": ".",
+      "aiPromptPrefix": "Schreibe einen Roast im deutschen Stil, sei direkt aber witzig",
+      "roastStyle": "german-direct"
+    },
+    "fr-FR": {
+      "language": "Français",
+      "currency": "EUR",
+      "symbol": "€",
+      "format": "{amount} {symbol}",
+      "decimalSeparator": ",",
+      "thousandsSeparator": " ",
+      "aiPromptPrefix": "Écris un roast à la française, sois sarcastique mais drôle",
+      "roastStyle": "french-sarcastic"
+    },
+    "es-ES": {
+      "language": "Español",
+      "currency": "EUR",
+      "symbol": "€",
+      "format": "{amount} {symbol}",
+      "decimalSeparator": ",",
+      "thousandsSeparator": ".",
+      "aiPromptPrefix": "Escribe un roast en estilo español, sé picante pero gracioso",
+      "roastStyle": "spanish-spicy"
+    },
+    "ru-RU": {
+      "language": "Русский",
+      "currency": "RUB",
+      "symbol": "₽",
+      "format": "{amount} {symbol}",
+      "decimalSeparator": ",",
+      "thousandsSeparator": " ",
+      "aiPromptPrefix": "Напиши roast в русском стиле как MJF, используй 'дурак', 'братан', но с юмором",
+      "roastStyle": "russian-bro"
+    },
+    "en-GB": {
+      "language": "English (UK)",
+      "currency": "GBP",
+      "symbol": "£",
+      "format": "{symbol}{amount}",
+      "decimalSeparator": ".",
+      "thousandsSeparator": ",",
+      "aiPromptPrefix": "Write a roast in British style, be cheeky but witty",
+      "roastStyle": "british-cheeky"
+    }
+  },
+  "defaultLocale": "cs-CZ",
+  "autoDetect": true,
+  "fallbackLocale": "en-US"
+}

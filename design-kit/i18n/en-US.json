@@ -1,0 +1,152 @@
+{
+  "common": {
+    "appName": "RoastArena",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "share": "Share",
+    "close": "Close"
+  },
+  "navigation": {
+    "feed": "Feed",
+    "echoChain": "Echo Chain",
+    "challenges": "Challenges",
+    "pizzeria": "Pizzeria",
+    "profile": "Profile"
+  },
+  "onboarding": {
+    "welcome": "Welcome to RoastArena!",
+    "subtitle": "AI-powered roasts with style 🔥",
+    "getStarted": "Get Started",
+    "quizTitle": "What will you roast?",
+    "styleTitle": "Choose your style",
+    "styleSubtitle": "What type of roast do you want?"
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Sign Up",
+    "logout": "Logout",
+    "continueWithGoogle": "Continue with Google",
+    "continueWithApple": "Continue with Apple",
+    "emailPlaceholder": "your@email.com",
+    "passwordPlaceholder": "Your password"
+  },
+  "feed": {
+    "dailyChallenge": "Daily Challenge",
+    "roastYourCoffee": "Roast your morning coffee!",
+    "pullToRefresh": "Pull to refresh",
+    "noMoreRoasts": "No more roasts"
+  },
+  "roastCreator": {
+    "title": "Create Roast",
+    "promptPlaceholder": "E.g: My morning coffee is so weak...",
+    "selectStyle": "Select style",
+    "generateButton": "ROAST! 🔥",
+    "regenerate": "Try again",
+    "saveRoast": "Save roast",
+    "arFilter": "AR Filter",
+    "cameraHint": "Turn on camera for roast filter"
+  },
+  "echoChain": {
+    "title": "Echo Chain",
+    "addEcho": "Add echo",
+    "noEchoes": "No echo responses yet",
+    "reactions": {
+      "fire": "Fire",
+      "crying": "Crying",
+      "skull": "Dead"
+    }
+  },
+  "challenges": {
+    "title": "Challenges",
+    "streak": "day streak!",
+    "tabs": {
+      "daily": "Daily",
+      "weekly": "Weekly",
+      "leaderboard": "Top 10"
+    },
+    "progress": "Progress",
+    "reward": "credits",
+    "timeRemaining": "Remaining"
+  },
+  "profile": {
+    "title": "Profile",
+    "stats": {
+      "roasts": "Roasts",
+      "echoes": "Echoes",
+      "gifts": "Gifts"
+    },
+    "credits": "Your credits",
+    "earnings": "Your gift earnings",
+    "withdraw": "Withdraw to account",
+    "warehouse": "Your gift warehouse",
+    "settings": "Settings",
+    "language": "Language & Currency",
+    "theme": "Theme",
+    "notifications": "Notifications"
+  },
+  "pizzeria": {
+    "title": "Pizzeria",
+    "nearby": "Nearby pizzerias",
+    "checkIn": "Check-in",
+    "navigate": "Navigate",
+    "scanQR": "Scan QR code at pizzeria",
+    "verified": "Verified",
+    "rewardsForCheckIn": "credits for check-in"
+  },
+  "gifts": {
+    "send": "Send gift",
+    "warehouse": "Warehouse",
+    "rarity": {
+      "common": "COMMON",
+      "rare": "RARE",
+      "epic": "EPIC",
+      "legendary": "LEGENDARY"
+    },
+    "items": {
+      "fireCrown": "Fire Crown",
+      "roastTrophy": "Roast Trophy",
+      "savageBadge": "Savage Badge",
+      "fireBlast": "Fire Blast",
+      "rocket": "Rocket",
+      "roastBomb": "Roast Bomb",
+      "heart": "Heart",
+      "star": "Star",
+      "rose": "Rose"
+    }
+  },
+  "monetization": {
+    "buyCredits": "Buy credits",
+    "creditBundles": {
+      "small": {
+        "amount": 100,
+        "bonus": 0,
+        "label": "Basic Bundle"
+      },
+      "medium": {
+        "amount": 500,
+        "bonus": 50,
+        "label": "Value Bundle"
+      },
+      "large": {
+        "amount": 1000,
+        "bonus": 200,
+        "label": "Mega Bundle"
+      }
+    },
+    "ourShare": "Our share",
+    "yourProfit": "Your profit",
+    "withdrawNote": "Money arrives in 3-5 business days"
+  },
+  "errors": {
+    "generic": "Something went wrong",
+    "network": "Network error",
+    "authentication": "Authentication error",
+    "notFound": "Not found"
+  }
+}

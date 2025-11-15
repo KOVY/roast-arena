@@ -1,0 +1,157 @@
+{
+  "common": {
+    "appName": "RoastArena",
+    "loading": "Načítání...",
+    "error": "Chyba",
+    "success": "Úspěch",
+    "cancel": "Zrušit",
+    "confirm": "Potvrdit",
+    "save": "Uložit",
+    "delete": "Smazat",
+    "edit": "Upravit",
+    "share": "Sdílet",
+    "close": "Zavřít"
+  },
+  "navigation": {
+    "feed": "Feed",
+    "echoChain": "Echo Chain",
+    "challenges": "Výzvy",
+    "pizzeria": "Pizzerie",
+    "profile": "Profil"
+  },
+  "onboarding": {
+    "welcome": "Vítej v RoastArena!",
+    "subtitle": "Tady se roastuje s AI a stylem 🔥",
+    "getStarted": "Začít roastovat",
+    "quizTitle": "Co budeš roastovat?",
+    "styleTitle": "Vyber svůj styl",
+    "styleSubtitle": "Jaký typ roastu chceš?"
+  },
+  "auth": {
+    "login": "Přihlásit se",
+    "register": "Registrovat",
+    "logout": "Odhlásit",
+    "continueWithGoogle": "Pokračovat s Google",
+    "continueWithApple": "Pokračovat s Apple",
+    "emailPlaceholder": "tvuj@email.cz",
+    "passwordPlaceholder": "Tvoje heslo"
+  },
+  "feed": {
+    "dailyChallenge": "Denní výzva",
+    "roastYourCoffee": "Roast svoji ranní kávu!",
+    "pullToRefresh": "Potáhni pro obnovení",
+    "noMoreRoasts": "Žádné další roasty"
+  },
+  "roastCreator": {
+    "title": "Vytvoř roast",
+    "promptPlaceholder": "Např: Moje ranní káva je tak slabá...",
+    "selectStyle": "Vyber styl",
+    "generateButton": "ROAST! 🔥",
+    "regenerate": "Zkus znovu",
+    "saveRoast": "Uložit roast",
+    "arFilter": "AR Filter",
+    "cameraHint": "Zapni kameru pro roast filter"
+  },
+  "echoChain": {
+    "title": "Echo Chain",
+    "addEcho": "Přidat echo",
+    "noEchoes": "Zatím žádné echo odpovědi",
+    "reactions": {
+      "fire": "Fire",
+      "crying": "Brečím",
+      "skull": "Mrtvola"
+    }
+  },
+  "challenges": {
+    "title": "Výzvy",
+    "streak": "denní série!",
+    "tabs": {
+      "daily": "Denní",
+      "weekly": "Týdenní",
+      "leaderboard": "Top 10"
+    },
+    "progress": "Postup",
+    "reward": "kreditů",
+    "timeRemaining": "Zbývá"
+  },
+  "profile": {
+    "title": "Profil",
+    "stats": {
+      "roasts": "Roasty",
+      "echoes": "Echo",
+      "gifts": "Dárky"
+    },
+    "credits": "Tvé kredity",
+    "earnings": "Tvé zisky z dárků",
+    "withdraw": "Vybrat peníze na účet",
+    "warehouse": "Tvůj sklad dárků",
+    "settings": "Nastavení",
+    "language": "Jazyk & Měna",
+    "theme": "Téma",
+    "notifications": "Notifikace"
+  },
+  "pizzeria": {
+    "title": "Pizzerie",
+    "nearby": "Pizzerie v okolí",
+    "checkIn": "Check-in",
+    "navigate": "Navigovat",
+    "scanQR": "Naskenuj QR kód v pizzerii",
+    "verified": "Ověřeno",
+    "rewardsForCheckIn": "kreditů za check-in"
+  },
+  "gifts": {
+    "send": "Poslat dárek",
+    "warehouse": "Sklad",
+    "rarity": {
+      "common": "COMMON",
+      "rare": "RARE",
+      "epic": "EPIC",
+      "legendary": "LEGENDARY"
+    },
+    "items": {
+      "fireCrown": "Fire Crown",
+      "roastTrophy": "Roast Trophy",
+      "savageBadge": "Savage Badge",
+      "fireBlast": "Fire Blast",
+      "rocket": "Rocket",
+      "roastBomb": "Roast Bomb",
+      "heart": "Srdce",
+      "star": "Hvězda",
+      "rose": "Růže"
+    }
+  },
+  "monetization": {
+    "buyCredits": "Koupit kredity",
+    "creditBundles": {
+      "small": {
+        "amount": 100,
+        "bonus": 0,
+        "label": "Základní balíček"
+      },
+      "medium": {
+        "amount": 500,
+        "bonus": 50,
+        "label": "Výhodný balíček"
+      },
+      "large": {
+        "amount": 1000,
+        "bonus": 200,
+        "label": "Mega balíček"
+      }
+    },
+    "ourShare": "Náš podíl",
+    "yourProfit": "Tvůj zisk",
+    "withdrawNote": "Peníze dorazí do 3-5 pracovních dnů"
+  },
+  "errors": {
+    "generic": "Něco se pokazilo",
+    "network": "Chyba sítě",
+    "authentication": "Chyba přihlášení",
+    "notFound": "Nenalezeno"
+  },
+  "czechOverlay": {
+    "tyVole": "TY VOLE!",
+    "brutal": "BRUTAL!",
+    "fire": "TO JE FIRE!"
+  }
+}

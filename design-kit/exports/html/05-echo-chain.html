@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Echo Chain - RoastArena Design Kit 2025</title>
+  <link rel="stylesheet" href="../styles/glassmorphism-2025.css">
+  <style>
+    body {
+      background: var(--bg-black);
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Mobile-first layout */
+    .echo-container {
+      max-width: 375px;
+      margin: 0 auto;
+      padding: 60px 0 90px;
+      min-height: 100vh;
+    }
+
+    /* Top Navigation with Hamburger */
+    .top-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: linear-gradient(135deg, rgba(15, 15, 15, 0.95), rgba(20, 20, 20, 0.9));
+      backdrop-filter: blur(25px) saturate(180%);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .hamburger-menu {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .hamburger-menu:active {
+      transform: scale(0.9);
+    }
+
+    .hamburger-line {
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--neon-purple), var(--neon-orange));
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .top-nav-title {
+      font-size: 18px;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--neon-purple), var(--neon-orange));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .top-nav-actions {
+      display: flex;
+      gap: 12px;
+    }
+
+    .icon-button {
+      width: 32px;
+      height: 32px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 16px;
+    }
+
+    .icon-button:active {
+      transform: scale(0.9);
+      background: rgba(168, 85, 247, 0.2);
+    }
+
+    /* Original Roast Card */
+    .original-roast {
+      margin: 16px;
+      position: relative;
+      animation: slideUp 0.5s ease;
+    }
+
+    .roast-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .avatar-ring {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--neon-purple), var(--neon-orange));
+      padding: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: pulse-glow 2s infinite;
+    }
+
+    .avatar {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.3), rgba(251, 146, 60, 0.3));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+
+    .user-info {
+      flex: 1;
+    }
+
+    .username {
+      font-weight: 700;
+      font-size: 16px;
+      color: #fff;
+      margin-bottom: 2px;
+    }
+
+    .timestamp {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .roast-content {
+      font-size: 18px;
+      line-height: 1.5;
+      color: #fff;
+      margin-bottom: 16px;
+      font-weight: 500;
+    }
+
+    /* Echo Timeline */
+    .echo-timeline {
+      position: relative;
+      margin: 24px 16px;
+    }
+
+    .timeline-line {
+      position: absolute;
+      left: 24px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg,
+        var(--neon-purple) 0%,
+        var(--neon-orange) 50%,
+        var(--neon-pink) 100%);
+      opacity: 0.3;
+      border-radius: 2px;
+    }
+
+    .echo-item {
+      position: relative;
+      margin-bottom: 24px;
+      padding-left: 56px;
+      animation: slideUp 0.5s ease backwards;
+    }
+
+    .echo-item:nth-child(1) { animation-delay: 0.1s; }
+    .echo-item:nth-child(2) { animation-delay: 0.2s; }
+    .echo-item:nth-child(3) { animation-delay: 0.3s; }
+    .echo-item:nth-child(4) { animation-delay: 0.4s; }
+
+    .echo-avatar-ring {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.5), rgba(251, 146, 60, 0.5));
+      padding: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+    }
+
+    .echo-avatar {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: var(--bg-black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+
+    .echo-bubble {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
+      backdrop-filter: blur(25px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 16px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    .echo-bubble:active {
+      transform: scale(0.98);
+    }
+
+    .echo-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .echo-username {
+      font-weight: 600;
+      font-size: 14px;
+      color: #fff;
+    }
+
+    .echo-time {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .echo-text {
+      font-size: 15px;
+      line-height: 1.4;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 12px;
+    }
+
+    .echo-actions {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .echo-action-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.6);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .echo-action-btn:active {
+      transform: scale(0.95);
+    }
+
+    .echo-action-btn.active {
+      color: var(--neon-orange);
+    }
+
+    /* Gift Button - Special */
+    .gift-button {
+      margin-left: auto;
+      background: linear-gradient(135deg, var(--neon-purple), var(--neon-orange));
+      border: none;
+      border-radius: 12px;
+      padding: 8px 16px;
+      color: #fff;
+      font-weight: 700;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      box-shadow: 0 0 30px rgba(168, 85, 247, 0.5);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .gift-button::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+
+    .gift-button:active::before {
+      width: 300px;
+      height: 300px;
+    }
+
+    .gift-button:active {
+      transform: scale(0.95);
+    }
+
+    /* Apple-style Bottom Navigation */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 80px;
+      background: linear-gradient(180deg, rgba(15, 15, 15, 0.85), rgba(10, 10, 10, 0.95));
+      backdrop-filter: blur(40px) saturate(200%);
+      -webkit-backdrop-filter: blur(40px) saturate(200%);
+      border-top: 0.5px solid rgba(255, 255, 255, 0.15);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 8px 0 20px;
+      z-index: 1000;
+      box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      padding: 8px 12px;
+      border-radius: 12px;
+      min-width: 60px;
+    }
+
+    .nav-item:active {
+      transform: scale(0.9);
+    }
+
+    .nav-item.active {
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.15), rgba(251, 146, 60, 0.1));
+    }
+
+    .nav-icon {
+      font-size: 24px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-item.active .nav-icon {
+      filter: drop-shadow(0 0 8px var(--neon-purple));
+    }
+
+    .nav-label {
+      font-size: 10px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.6);
+      transition: all 0.3s ease;
+    }
+
+    .nav-item.active .nav-label {
+      color: #fff;
+      background: linear-gradient(135deg, var(--neon-purple), var(--neon-orange));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Desktop Responsive (1024px+) */
+    @media (min-width: 1024px) {
+      .echo-container {
+        max-width: 800px;
+        padding: 80px 40px 40px;
+      }
+
+      .top-nav {
+        max-width: 1200px;
+        margin: 0 auto;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 0 0 20px 20px;
+      }
+
+      .hamburger-menu {
+        display: none;
+      }
+
+      .desktop-nav {
+        display: flex;
+        gap: 24px;
+      }
+
+      .desktop-nav-item {
+        font-size: 14px;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.7);
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .desktop-nav-item:hover {
+        color: #fff;
+      }
+
+      .bottom-nav {
+        display: none;
+      }
+
+      .echo-bubble:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 40px rgba(168, 85, 247, 0.3);
+      }
+
+      .gift-button:hover {
+        box-shadow: 0 0 50px rgba(168, 85, 247, 0.7);
+        transform: scale(1.05);
+      }
+    }
+
+    /* Floating Add Echo Button */
+    .floating-add {
+      position: fixed;
+      bottom: 100px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--neon-purple), var(--neon-orange));
+      box-shadow: 0 0 40px rgba(168, 85, 247, 0.6), 0 8px 20px rgba(0, 0, 0, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      color: #fff;
+      cursor: pointer;
+      animation: pulse-glow 2s infinite;
+      z-index: 999;
+      transition: all 0.3s ease;
+    }
+
+    .floating-add:active {
+      transform: scale(0.9);
+    }
+
+    @media (min-width: 1024px) {
+      .floating-add {
+        bottom: 40px;
+        right: 40px;
+        width: 70px;
+        height: 70px;
+        font-size: 32px;
+      }
+
+      .floating-add:hover {
+        transform: scale(1.1) rotate(90deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Floating Particles Background -->
+  <div class="floating-particles"></div>
+
+  <!-- Top Navigation -->
+  <div class="top-nav">
+    <div class="hamburger-menu" onclick="toggleMenu()">
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+      <div class="hamburger-line"></div>
+    </div>
+
+    <div class="desktop-nav" style="display: none;">
+      <div class="desktop-nav-item">🏠 Feed</div>
+      <div class="desktop-nav-item">🏆 Výzvy</div>
+      <div class="desktop-nav-item">🗺️ Pizzerie</div>
+      <div class="desktop-nav-item">👤 Profil</div>
+    </div>
+
+    <div class="top-nav-title">Echo Chain</div>
+
+    <div class="top-nav-actions">
+      <div class="icon-button" onclick="shareChain()">📤</div>
+      <div class="icon-button" onclick="toggleBookmark()">🔖</div>
+    </div>
+  </div>
+
+  <!-- Main Container -->
+  <div class="echo-container">
+    <!-- Original Roast -->
+    <div class="original-roast glass-card-neon">
+      <div class="roast-header">
+        <div class="avatar-ring">
+          <div class="avatar">🔥</div>
+        </div>
+        <div class="user-info">
+          <div class="username">@MikeTheTyson</div>
+          <div class="timestamp">Dnes v 14:20</div>
+        </div>
+      </div>
+
+      <div class="roast-content">
+        "Tvoje káva vypadá, jako by se snažila utopit, ale ani to jí nejde pořádně. Slabší než tvoje výmluvy na pondělí ráno."
+      </div>
+
+      <div class="echo-actions">
+        <div class="echo-action-btn active" onclick="toggleReaction(this)">
+          🔥 <span>234</span>
+        </div>
+        <div class="echo-action-btn" onclick="toggleReaction(this)">
+          😭 <span>89</span>
+        </div>
+        <div class="echo-action-btn" onclick="toggleReaction(this)">
+          💀 <span>156</span>
+        </div>
+        <button class="gift-button" onclick="openGiftModal()">
+          🎁 Poslat dárek
+        </button>
+      </div>
+    </div>
+
+    <!-- Echo Timeline -->
+    <div class="echo-timeline">
+      <div class="timeline-line"></div>
+
+      <!-- Echo 1 -->
+      <div class="echo-item">
+        <div class="echo-avatar-ring">
+          <div class="echo-avatar">😂</div>
+        </div>
+        <div class="echo-bubble">
+          <div class="echo-header">
+            <div class="echo-username">@PepaZDepa</div>
+            <div class="echo-time">14:25</div>
+          </div>
+          <div class="echo-text">
+            Káva jak můj život - bez chuti a bez energie 💀
+          </div>
+          <div class="echo-actions">
+            <div class="echo-action-btn active">🔥 42</div>
+            <div class="echo-action-btn">😭 12</div>
+            <button class="gift-button" onclick="openGiftModal()">🎁</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Echo 2 -->
+      <div class="echo-item">
+        <div class="echo-avatar-ring">
+          <div class="echo-avatar">🤣</div>
+        </div>
+        <div class="echo-bubble">
+          <div class="echo-header">
+            <div class="echo-username">@KarelCoffeeKing</div>
+            <div class="echo-time">14:27</div>
+          </div>
+          <div class="echo-text">
+            Ta káva má víc vody než Olympic Pool. Plavou v ní ryby?
+          </div>
+          <div class="echo-actions">
+            <div class="echo-action-btn active">🔥 67</div>
+            <div class="echo-action-btn">💀 23</div>
+            <button class="gift-button" onclick="openGiftModal()">🎁</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Echo 3 -->
+      <div class="echo-item">
+        <div class="echo-avatar-ring">
+          <div class="echo-avatar">💪</div>
+        </div>
+        <div class="echo-bubble">
+          <div class="echo-header">
+            <div class="echo-username">@GymBroJakub</div>
+            <div class="echo-time">14:30</div>
+          </div>
+          <div class="echo-text">
+            Brácho, ta káva má míň kofeinu než moje babička po šestý espresso. Shame! 🏋️
+          </div>
+          <div class="echo-actions">
+            <div class="echo-action-btn active">🔥 89</div>
+            <div class="echo-action-btn">😭 34</div>
+            <button class="gift-button" onclick="openGiftModal()">🎁</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Echo 4 -->
+      <div class="echo-item">
+        <div class="echo-avatar-ring">
+          <div class="echo-avatar">🎯</div>
+        </div>
+        <div class="echo-bubble">
+          <div class="echo-header">
+            <div class="echo-username">@RoastMaster3000</div>
+            <div class="echo-time">14:35</div>
+          </div>
+          <div class="echo-text">
+            Tenhle roast je slabší než WiFi v metru. Zkus víc, ty vole! 🔥
+          </div>
+          <div class="echo-actions">
+            <div class="echo-action-btn">🔥 12</div>
+            <div class="echo-action-btn active">💀 45</div>
+            <button class="gift-button" onclick="openGiftModal()">🎁</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Add Echo Button -->
+  <div class="floating-add" onclick="addEcho()">
+    ✍️
+  </div>
+
+  <!-- Apple-style Bottom Navigation -->
+  <div class="bottom-nav">
+    <div class="nav-item">
+      <div class="nav-icon">🏠</div>
+      <div class="nav-label">Feed</div>
+    </div>
+    <div class="nav-item active">
+      <div class="nav-icon">💬</div>
+      <div class="nav-label">Echo Chain</div>
+    </div>
+    <div class="nav-item">
+      <div class="nav-icon">🏆</div>
+      <div class="nav-label">Výzvy</div>
+    </div>
+    <div class="nav-item">
+      <div class="nav-icon">🗺️</div>
+      <div class="nav-label">Pizzerie</div>
+    </div>
+    <div class="nav-item">
+      <div class="nav-icon">👤</div>
+      <div class="nav-label">Profil</div>
+    </div>
+  </div>
+
+  <script>
+    // Initialize floating particles
+    document.addEventListener('DOMContentLoaded', () => {
+      const particlesContainer = document.querySelector('.floating-particles');
+      for (let i = 0; i < 20; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 5 + 's';
+        particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+        particlesContainer.appendChild(particle);
+      }
+
+      // Desktop nav visibility
+      if (window.innerWidth >= 1024) {
+        document.querySelector('.desktop-nav').style.display = 'flex';
+      }
+    });
+
+    function toggleMenu() {
+      alert('Menu otevřeno (implementace v React)');
+    }
+
+    function shareChain() {
+      if (navigator.share) {
+        navigator.share({
+          title: 'Echo Chain - RoastArena',
+          text: 'Podívej na tento epic roast!',
+          url: window.location.href
+        });
+      } else {
+        alert('Link zkopírován do schránky!');
+      }
+    }
+
+    function toggleBookmark() {
+      alert('Záložka přidána! ⭐');
+    }
+
+    function toggleReaction(btn) {
+      btn.classList.toggle('active');
+      const count = btn.querySelector('span');
+      if (count) {
+        const currentCount = parseInt(count.textContent);
+        count.textContent = btn.classList.contains('active') ? currentCount + 1 : currentCount - 1;
+      }
+
+      // Haptic feedback
+      if ('vibrate' in navigator) {
+        navigator.vibrate(10);
+      }
+    }
+
+    function openGiftModal() {
+      alert('🎁 Gift Modal (implementace v React)\n\n💎 Rare Gifts:\n- Fire Crown (50 Kč)\n- Roast Trophy (99 Kč)\n- Savage Badge (199 Kč)');
+
+      // Haptic feedback
+      if ('vibrate' in navigator) {
+        navigator.vibrate([50, 30, 50]);
+      }
+    }
+
+    function addEcho() {
+      alert('✍️ Echo Editor (implementace v React)');
+    }
+
+    // Navigation
+    document.querySelectorAll('.nav-item').forEach(item => {
+      item.addEventListener('click', function() {
+        document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
