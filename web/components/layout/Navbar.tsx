@@ -5,9 +5,11 @@ import { usePathname } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import { supabaseClient } from '@/lib/supabase'
 import HaloButton from '@/components/ui/HaloButton'
+import { useLocale } from '@/components/providers/LocaleProvider'
 
 export default function Navbar() {
   const pathname = usePathname()
+  const { locale } = useLocale()
   const [user, setUser] = useState<any>(null)
 
   useEffect(() => {
@@ -32,14 +34,17 @@ export default function Navbar() {
     await supabaseClient.auth.signOut()
   }
 
-  const isActive = (path: string) => pathname === path
+  const isActive = (path: string) => pathname.includes(path)
+
+  // Helper to create locale-aware links
+  const link = (path: string) => `/${locale}${path}`
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
+          <Link href={link('/')} className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-pink-500 flex items-center justify-center">
               <span className="text-xl font-bold">🔥</span>
             </div>
@@ -51,7 +56,7 @@ export default function Navbar() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-6">
             <Link
-              href="/feed"
+              href={link('/feed')}
               className={`transition ${
                 isActive('/feed') ? 'text-orange-500' : 'text-gray-300 hover:text-white'
               }`}
@@ -59,7 +64,7 @@ export default function Navbar() {
               Feed
             </Link>
             <Link
-              href="/create"
+              href={link('/create')}
               className={`transition ${
                 isActive('/create') ? 'text-orange-500' : 'text-gray-300 hover:text-white'
               }`}
@@ -67,7 +72,7 @@ export default function Navbar() {
               Create
             </Link>
             <Link
-              href="/challenges"
+              href={link('/challenges')}
               className={`transition ${
                 isActive('/challenges') ? 'text-orange-500' : 'text-gray-300 hover:text-white'
               }`}
@@ -75,7 +80,7 @@ export default function Navbar() {
               Challenges
             </Link>
             <Link
-              href="/pizzeria"
+              href={link('/pizzeria')}
               className={`transition ${
                 isActive('/pizzeria') ? 'text-orange-500' : 'text-gray-300 hover:text-white'
               }`}
@@ -83,7 +88,7 @@ export default function Navbar() {
               Pizzeria
             </Link>
             <Link
-              href="/profile"
+              href={link('/profile')}
               className={`transition ${
                 isActive('/profile') ? 'text-orange-500' : 'text-gray-300 hover:text-white'
               }`}
@@ -102,7 +107,7 @@ export default function Navbar() {
                 Sign Out
               </button>
             ) : (
-              <Link href="/login">
+              <Link href={link('/login')}>
                 <HaloButton>Sign In</HaloButton>
               </Link>
             )}
