@@ -89,11 +89,28 @@
   },
   "profile": {
     "title": "Profil",
+    "loading": "Načítava sa profil...",
+    "editProfile": "Upraviť profil",
+    "share": "Zdieľať",
+    "nextLevel": "Ďalší level",
     "stats": {
       "roasts": "Roasty",
+      "roastsWon": "Vyhrané roasty",
+      "followers": "Sledujúci",
+      "ranking": "Poradie",
       "echoes": "Echo",
       "gifts": "Darčeky"
     },
+    "recentActivity": "Posledná aktivita",
+    "latestRoasts": "Najnovšie roasty",
+    "community": "Komunita",
+    "leaderboards": "Rebríčky",
+    "globalLeaderboard": "Globálny",
+    "localLeaderboard": "Lokálny",
+    "myWallet": "Moja peňaženka",
+    "balance": "Zostatok",
+    "coins": "Mince",
+    "claimRewards": "Vyzdvihnúť odmeny",
     "credits": "Tvoje kredity",
     "earnings": "Tvoje zisky z darčekov",
     "withdraw": "Vybrať peniaze na účet",
@@ -101,7 +118,17 @@
     "settings": "Nastavenia",
     "language": "Jazyk a Mena",
     "theme": "Téma",
-    "notifications": "Notifikácie"
+    "notifications": "Notifikácie",
+    "activities": {
+      "roastBattle": "Epický roast battle proti",
+      "wonRoast": "Vyhral roast proti",
+      "commented": "Komentoval"
+    },
+    "timeAgo": {
+      "hour": "pred 1 hod.",
+      "hours": "pred {hours} hod.",
+      "minute": "pred 1 min."
+    }
   },
   "pizzeria": {
     "title": "Pizzeria",
