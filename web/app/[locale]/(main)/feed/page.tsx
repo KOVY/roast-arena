@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { useLocale } from '@/components/providers/LocaleProvider'
 import { supabaseClient } from '@/lib/supabase'
+import BottomNav from '@/components/layout/BottomNav'
 
 interface RoastPost {
   id: string
@@ -128,8 +129,36 @@ export default function FeedPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-background-dark flex items-center justify-center pb-24">
-        <div className="animate-pulse text-gray-400">Loading feed...</div>
+      <div className="min-h-screen bg-background-dark text-white pb-24">
+        <div className="sticky top-0 z-40 backdrop-blur-xl bg-background-dark/80 border-b border-white/10">
+          <div className="flex items-center justify-between p-4">
+            <h1 className="text-2xl font-bold bg-gradient-to-r from-primary to-vibrant-blue bg-clip-text text-transparent">
+              RoastArena
+            </h1>
+            <button className="p-2 hover:bg-white/5 rounded-lg transition-colors">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div className="max-w-2xl mx-auto p-4">
+          {Array.from({ length: 3 }).map((_, i) => (
+            <div key={i} className="glassmorphic rounded-xl p-4 mb-4 overflow-hidden">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 rounded-full bg-white/10 animate-pulse" />
+                <div className="flex-1 space-y-2">
+                  <div className="h-4 w-24 bg-white/10 rounded animate-pulse" />
+                  <div className="h-3 w-16 bg-white/10 rounded animate-pulse" />
+                </div>
+              </div>
+              <div className="space-y-2">
+                <div className="h-4 w-full bg-white/10 rounded animate-pulse" />
+                <div className="h-4 w-3/4 bg-white/10 rounded animate-pulse" />
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     )
   }
@@ -228,6 +257,9 @@ export default function FeedPage() {
           </svg>
         </motion.button>
       </Link>
+
+      {/* Bottom Navigation */}
+      <BottomNav />
     </div>
   )
 }

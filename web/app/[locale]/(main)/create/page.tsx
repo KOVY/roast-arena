@@ -8,6 +8,7 @@ import { useRouter } from 'next/navigation'
 import { useLocale } from '@/components/providers/LocaleProvider'
 import { supabaseClient } from '@/lib/supabase'
 import generateRoast from '@/lib/ai'
+import BottomNav from '@/components/layout/BottomNav'
 
 const MAX_CHARS = 500
 
@@ -243,6 +244,9 @@ export default function CreatePage() {
           </p>
         </div>
       </div>
+
+      {/* Bottom Navigation */}
+      <BottomNav />
     </div>
   )
 }
