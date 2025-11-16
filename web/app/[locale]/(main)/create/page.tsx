@@ -6,6 +6,7 @@ import { useState, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { useRouter } from 'next/navigation'
 import { useLocale } from '@/components/providers/LocaleProvider'
+import { useTranslation } from '@/lib/i18n'
 import { supabaseClient } from '@/lib/supabase'
 import generateRoast from '@/lib/ai'
 import BottomNav from '@/components/layout/BottomNav'
@@ -15,6 +16,7 @@ const MAX_CHARS = 500
 export default function CreatePage() {
   const router = useRouter()
   const { locale } = useLocale()
+  const { t } = useTranslation()
   const [content, setContent] = useState('')
   const [isFocused, setIsFocused] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -97,7 +99,7 @@ export default function CreatePage() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
-          <h1 className="text-lg font-bold">Create Roast</h1>
+          <h1 className="text-lg font-bold">{t('roastCreator.pageTitle')}</h1>
           <div className="w-10" /> {/* Spacer */}
         </div>
       </div>
@@ -107,11 +109,11 @@ export default function CreatePage() {
         {/* Profile */}
         <div className="flex items-center gap-3 mb-6">
           <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-vibrant-blue flex items-center justify-center font-bold text-lg">
-            R
+            {t('roastCreator.userName')[0]}
           </div>
           <div>
-            <p className="font-bold">RoastMaster</p>
-            <p className="text-sm text-gray-400">Share your thoughts...</p>
+            <p className="font-bold">{t('roastCreator.userName')}</p>
+            <p className="text-sm text-gray-400">{t('roastCreator.userSubtitle')}</p>
           </div>
         </div>
 
@@ -130,7 +132,7 @@ export default function CreatePage() {
             onChange={(e) => setContent(e.target.value)}
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
-            placeholder="What's on your mind? Drop a roast! 🔥"
+            placeholder={t('roastCreator.placeholder')}
             className="w-full min-h-[200px] p-4 bg-transparent text-white placeholder-gray-500 resize-none focus:outline-none"
             maxLength={MAX_CHARS + 50} // Allow typing a bit over to show error
           />
@@ -171,12 +173,12 @@ export default function CreatePage() {
 
         {/* Style Selector */}
         <div className="glassmorphic rounded-xl p-4 mb-4">
-          <p className="text-sm font-medium mb-3 text-gray-300">Roast Style</p>
+          <p className="text-sm font-medium mb-3 text-gray-300">{t('roastCreator.styleLabel')}</p>
           <div className="flex gap-2">
             {[
-              { value: 'playful', label: '😄 Playful', color: 'from-green-500 to-emerald-500' },
-              { value: 'roast', label: '🔥 Hard Roast', color: 'from-primary to-pink-500' },
-              { value: 'sarcastic', label: '😏 Sarcastic', color: 'from-vibrant-blue to-purple-500' }
+              { value: 'playful', labelKey: 'roastCreator.styles.playful', color: 'from-green-500 to-emerald-500' },
+              { value: 'roast', labelKey: 'roastCreator.styles.roast', color: 'from-primary to-pink-500' },
+              { value: 'sarcastic', labelKey: 'roastCreator.styles.sarcastic', color: 'from-vibrant-blue to-purple-500' }
             ].map((s) => (
               <button
                 key={s.value}
@@ -187,7 +189,7 @@ export default function CreatePage() {
                     : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white'
                 }`}
               >
-                {s.label}
+                {t(s.labelKey)}
               </button>
             ))}
           </div>
@@ -207,11 +209,11 @@ export default function CreatePage() {
                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
               </svg>
-              Generating with AI...
+              {t('roastCreator.generatingAI')}
             </span>
           ) : (
             <span className="flex items-center justify-center gap-2">
-              ✨ Enhance with AI
+              {t('roastCreator.enhanceWithAI')}
             </span>
           )}
         </motion.button>
@@ -230,17 +232,17 @@ export default function CreatePage() {
                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
               </svg>
-              Posting...
+              {t('roastCreator.posting')}
             </span>
           ) : (
-            'Post Roast 🔥'
+            t('roastCreator.postButton')
           )}
         </motion.button>
 
         {/* Tips */}
         <div className="mt-6 p-4 rounded-xl bg-white/5 border border-white/10">
           <p className="text-sm text-gray-400">
-            <span className="font-bold text-white">💡 Pro Tip:</span> The best roasts are clever, not cruel. Keep it fun and creative!
+            <span className="font-bold text-white">{t('roastCreator.proTip')}</span> {t('roastCreator.proTipText')}
           </p>
         </div>
       </div>

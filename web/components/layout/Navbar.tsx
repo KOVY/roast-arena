@@ -51,7 +51,7 @@ export default function Navbar() {
               <span className="text-xl font-bold">🔥</span>
             </div>
             <span className="text-xl font-bold gradient-text">
-              RoastArena
+              {t('common.appName')}
             </span>
           </Link>
 

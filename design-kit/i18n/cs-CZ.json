@@ -1,6 +1,6 @@
 {
   "common": {
-    "appName": "RoastArena",
+    "appName": "HejtArena",
     "loading": "Načítání...",
     "error": "Chyba",
     "success": "Úspěch",
@@ -13,19 +13,19 @@
     "close": "Zavřít"
   },
   "navigation": {
-    "feed": "Feed",
+    "feed": "Příspěvky",
     "echoChain": "Echo Chain",
     "challenges": "Výzvy",
     "pizzeria": "Pizzerie",
     "profile": "Profil"
   },
   "onboarding": {
-    "welcome": "Vítej v RoastArena!",
-    "subtitle": "Tady se roastuje s AI a stylem 🔥",
-    "getStarted": "Začít roastovat",
-    "quizTitle": "Co budeš roastovat?",
+    "welcome": "Vítej v HejtArena!",
+    "subtitle": "Tady se hejtuje s AI a stylem 🔥",
+    "getStarted": "Začít hejtovat",
+    "quizTitle": "Co budeš hejtovat?",
     "styleTitle": "Vyber svůj styl",
-    "styleSubtitle": "Jaký typ roastu chceš?"
+    "styleSubtitle": "Jaký typ hejtu chceš?"
   },
   "auth": {
     "login": "Přihlásit se",
@@ -38,19 +38,40 @@
   },
   "feed": {
     "dailyChallenge": "Denní výzva",
-    "roastYourCoffee": "Roast svoji ranní kávu!",
+    "roastYourCoffee": "Vytvoř hejt na svoji ranní kávu!",
     "pullToRefresh": "Potáhni pro obnovení",
-    "noMoreRoasts": "Žádné další roasty"
+    "noMoreRoasts": "Žádné další hejty",
+    "samplePosts": {
+      "post1": "Tvůj kód je tak nepřehledný, že i tvoje merge konflikty mají merge konflikty! 🔥",
+      "post2": "Tomu říkáš UI? Já viděl hezčí design v MS Paint! 💀",
+      "post3": "Tvoje API dokumentace je jako tvůj sociální život - neexistující! 😂"
+    }
   },
   "roastCreator": {
-    "title": "Vytvoř roast",
+    "title": "Vytvoř hejt",
+    "pageTitle": "Vytvoř hejt",
+    "userName": "HejtMaster",
+    "userSubtitle": "Sdílej své myšlenky...",
+    "placeholder": "Co máš na mysli? Vytvoř hejt! 🔥",
     "promptPlaceholder": "Např: Moje ranní káva je tak slabá...",
     "selectStyle": "Vyber styl",
+    "styleLabel": "Styl hejtu",
+    "styles": {
+      "playful": "😄 Hravý",
+      "roast": "🔥 Tvrdý hejt",
+      "sarcastic": "😏 Sarkastický"
+    },
+    "enhanceWithAI": "✨ Vylepšit pomocí AI",
+    "generatingAI": "Generuji pomocí AI...",
+    "postButton": "Zveřejnit hejt 🔥",
+    "posting": "Zveřejňuji...",
+    "proTip": "💡 Pro Tip:",
+    "proTipText": "Nejlepší hejty jsou chytré, ne kruté. Buď zábavný a kreativní!",
     "generateButton": "ROAST! 🔥",
     "regenerate": "Zkus znovu",
-    "saveRoast": "Uložit roast",
+    "saveRoast": "Uložit hejt",
     "arFilter": "AR Filter",
-    "cameraHint": "Zapni kameru pro roast filter"
+    "cameraHint": "Zapni kameru pro hejt filter"
   },
   "echoChain": {
     "title": "Echo Chain",
@@ -94,15 +115,15 @@
     "share": "Sdílet",
     "nextLevel": "Další úroveň",
     "stats": {
-      "roasts": "Roasty",
-      "roastsWon": "Vyhraných roastů",
+      "roasts": "Hejty",
+      "roastsWon": "Vyhraných hejtů",
       "followers": "Sledujících",
       "ranking": "Umístění",
       "echoes": "Echo",
       "gifts": "Dárky"
     },
     "recentActivity": "Nedávná aktivita",
-    "latestRoasts": "Nejnovější roasty",
+    "latestRoasts": "Nejnovější hejty",
     "community": "Komunita",
     "leaderboards": "Žebříčky",
     "globalLeaderboard": "Globální",
@@ -120,7 +141,7 @@
     "theme": "Téma",
     "notifications": "Notifikace",
     "activities": {
-      "roastBattle": "Epická roast bitva proti",
+      "roastBattle": "Epická hejt bitva proti",
       "wonRoast": "Vyhráno proti",
       "commented": "Okomentováno u"
     },
@@ -150,11 +171,11 @@
     },
     "items": {
       "fireCrown": "Fire Crown",
-      "roastTrophy": "Roast Trophy",
-      "savageBadge": "Savage Badge",
+      "roastTrophy": "Hejt Trofej",
+      "savageBadge": "Savage Odznak",
       "fireBlast": "Fire Blast",
-      "rocket": "Rocket",
-      "roastBomb": "Roast Bomb",
+      "rocket": "Raketa",
+      "roastBomb": "Hejt Bomba",
       "heart": "Srdce",
       "star": "Hvězda",
       "rose": "Růže"
