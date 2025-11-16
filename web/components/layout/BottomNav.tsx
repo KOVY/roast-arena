@@ -2,11 +2,16 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useLocale } from '@/components/providers/LocaleProvider'
 
 export default function BottomNav() {
   const pathname = usePathname()
+  const { locale } = useLocale()
 
-  const isActive = (path: string) => pathname === path
+  const isActive = (path: string) => pathname.includes(path)
+
+  // Helper to create locale-aware links
+  const link = (path: string) => `/${locale}${path}`
 
   const navItems = [
     { path: '/feed', icon: '🏠', label: 'Feed' },
@@ -21,7 +26,7 @@ export default function BottomNav() {
         {navItems.map((item) => (
           <Link
             key={item.path}
-            href={item.path}
+            href={link(item.path)}
             className={`flex flex-col items-center justify-center flex-1 h-full transition ${
               isActive(item.path)
                 ? 'text-orange-500'
