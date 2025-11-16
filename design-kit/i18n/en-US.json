@@ -10,7 +10,10 @@
     "delete": "Delete",
     "edit": "Edit",
     "share": "Share",
-    "close": "Close"
+    "close": "Close",
+    "more": "more",
+    "received": "Received",
+    "comingSoon": "Coming soon..."
   },
   "navigation": {
     "feed": "Feed",
@@ -141,7 +144,31 @@
   },
   "gifts": {
     "send": "Send gift",
+    "sendGift": "Send micro-gift",
     "warehouse": "Warehouse",
+    "selectGift": "Select a micro-gift",
+    "giftSent": "Gift sent!",
+    "giftReceived": "You received a gift!",
+    "notEnoughCredits": "Not enough credits",
+    "boxerky": "Boxers",
+    "ponozky": "Socks",
+    "pivo": "Beer",
+    "trofej": "Trophy",
+    "koruna": "Crown",
+    "diamant": "Diamond",
+    "revenueShare": {
+      "author": "Author receives",
+      "platform": "Platform",
+      "split": "60/40 split"
+    },
+    "payout": {
+      "eligible": "You can withdraw money!",
+      "notEligible": "Send at least 3 gifts to other users to enable payout",
+      "sentCount": "Gifts sent",
+      "requiredCount": "Required minimum",
+      "requestPayout": "Request payout",
+      "processing": "Processing payout..."
+    },
     "rarity": {
       "common": "COMMON",
       "rare": "RARE",
