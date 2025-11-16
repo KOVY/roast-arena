@@ -8,6 +8,8 @@ import { useTranslation } from '@/lib/i18n'
 import { supabaseClient } from '@/lib/supabase'
 import BottomNav from '@/components/layout/BottomNav'
 import GiftModal from '@/components/gifts/GiftModal'
+import ShareModal from '@/components/sharing/ShareModal'
+import PostMenu from '@/components/feed/PostMenu'
 
 interface RoastPost {
   id: string
@@ -34,6 +36,7 @@ export default function FeedPage() {
   const [hasMore, setHasMore] = useState(true)
   const [page, setPage] = useState(0)
   const [giftModalOpen, setGiftModalOpen] = useState(false)
+  const [shareModalOpen, setShareModalOpen] = useState(false)
   const [selectedPost, setSelectedPost] = useState<RoastPost | null>(null)
 
   useEffect(() => {
@@ -160,6 +163,33 @@ export default function FeedPage() {
   const handleCloseGiftModal = () => {
     setGiftModalOpen(false)
     setSelectedPost(null)
+  }
+
+  const handleOpenShareModal = (post: RoastPost) => {
+    setSelectedPost(post)
+    setShareModalOpen(true)
+  }
+
+  const handleCloseShareModal = () => {
+    setShareModalOpen(false)
+    setSelectedPost(null)
+  }
+
+  const handleRepost = async () => {
+    if (!selectedPost) return
+    // TODO: Implement repost functionality with Supabase
+    console.log('Reposting:', selectedPost.id)
+    // You would insert into reposts table here
+  }
+
+  const handleFollow = () => {
+    // TODO: Implement follow functionality
+    console.log('Following user')
+  }
+
+  const handleReport = () => {
+    // TODO: Implement report functionality
+    console.log('Reporting post')
   }
 
   const loadMorePosts = async () => {
@@ -296,11 +326,11 @@ export default function FeedPage() {
                 <p className="font-bold text-sm">{post.author.username}</p>
                 <p className="text-xs text-gray-400">{formatTimeAgo(post.created_at)}</p>
               </div>
-              <button className="p-1 hover:bg-white/5 rounded-lg transition-colors">
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
-                </svg>
-              </button>
+              <PostMenu
+                post={post}
+                onFollow={handleFollow}
+                onReport={handleReport}
+              />
             </div>
 
             {/* Post Content */}
@@ -332,7 +362,10 @@ export default function FeedPage() {
                 <span className="text-sm font-medium group-hover:text-vibrant-blue">{post.comments}</span>
               </button>
 
-              <button className="flex items-center gap-2 text-gray-400 hover:text-green-400 transition-colors group">
+              <button
+                onClick={() => handleOpenShareModal(post)}
+                className="flex items-center gap-2 text-gray-400 hover:text-green-400 transition-colors group"
+              >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
                 </svg>
@@ -391,6 +424,16 @@ export default function FeedPage() {
           roastId={selectedPost.id}
           roastAuthorId={selectedPost.author.id || ''}
           roastAuthorName={selectedPost.author.username}
+        />
+      )}
+
+      {/* Share Modal */}
+      {selectedPost && (
+        <ShareModal
+          isOpen={shareModalOpen}
+          onClose={handleCloseShareModal}
+          post={selectedPost}
+          onRepost={handleRepost}
         />
       )}
     </div>

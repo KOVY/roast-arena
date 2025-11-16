@@ -4,32 +4,7 @@ import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useRouter } from 'next/navigation'
 import { useLocale } from '@/components/providers/LocaleProvider'
-
-const slides = [
-  {
-    id: 1,
-    icon: 'local_fire_department',
-    title: 'Hejtuj jako v MMA!',
-    subtitle: 'AI-powered roast battles',
-    type: 'welcome',
-  },
-  {
-    id: 2,
-    title: 'Tell us your vibe.',
-    type: 'quiz',
-    questions: [
-      { icon: 'coffee', text: 'Morning Person / Night Owl?' },
-      { icon: 'fitness_center', text: 'Workout Warrior / Couch Potato?' },
-      { icon: 'pets', text: 'Dog Person / Cat Person?' },
-    ],
-  },
-  {
-    id: 3,
-    title: 'Choose your fighting style.',
-    type: 'style',
-    styles: ['MMA', 'WWE'],
-  },
-]
+import { useTranslation } from '@/lib/i18n'
 
 export default function OnboardingCarousel() {
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -37,6 +12,33 @@ export default function OnboardingCarousel() {
   const [touchEnd, setTouchEnd] = useState(0)
   const router = useRouter()
   const { locale } = useLocale()
+  const { t } = useTranslation()
+
+  const slides = [
+    {
+      id: 1,
+      icon: 'local_fire_department',
+      title: t('onboarding.welcome'),
+      subtitle: t('onboarding.subtitle'),
+      type: 'welcome',
+    },
+    {
+      id: 2,
+      title: t('onboarding.tellUsYourVibe'),
+      type: 'quiz',
+      questions: [
+        { icon: 'coffee', text: t('onboarding.quiz.morningPerson') },
+        { icon: 'fitness_center', text: t('onboarding.quiz.workoutWarrior') },
+        { icon: 'pets', text: t('onboarding.quiz.dogPerson') },
+      ],
+    },
+    {
+      id: 3,
+      title: t('onboarding.chooseYourStyle'),
+      type: 'style',
+      styles: [t('onboarding.styles.mma'), t('onboarding.styles.wwe')],
+    },
+  ]
 
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStart(e.targetTouches[0].clientX)
@@ -187,7 +189,7 @@ export default function OnboardingCarousel() {
                     onClick={handleComplete}
                     className="w-full h-14 px-5 bg-primary text-background-dark text-lg font-bold rounded-xl hover:bg-primary/90 transition-colors shadow-primary-glow"
                   >
-                    Let's Roast!
+                    {t('onboarding.getStarted')}
                   </button>
                 </div>
               </div>

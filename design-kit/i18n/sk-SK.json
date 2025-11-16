@@ -26,6 +26,17 @@
     "welcome": "Vitaj v RoastArena!",
     "subtitle": "Roastuj s AI a štýlom 🔥",
     "getStarted": "Začať roastovať",
+    "tellUsYourVibe": "Povedz nám o sebe.",
+    "chooseYourStyle": "Vyber si svoj bojový štýl.",
+    "quiz": {
+      "morningPerson": "Ranné vtáča / Nočná sova?",
+      "workoutWarrior": "Fitness bojovník / Gauč expert?",
+      "dogPerson": "Psí milovník / Mačací fanúšik?"
+    },
+    "styles": {
+      "mma": "MMA",
+      "wwe": "WWE"
+    },
     "quizTitle": "Čo budeš roastovať?",
     "styleTitle": "Vyber si svoj štýl",
     "styleSubtitle": "Aký typ roastu chceš?"
@@ -209,6 +220,25 @@
     "ourShare": "Náš podiel",
     "yourProfit": "Tvoj zisk",
     "withdrawNote": "Peniaze dorazia do 3-5 pracovných dní"
+  },
+  "sharing": {
+    "title": "Zdieľať tento roast",
+    "subtitle": "Rozšír ten fire! 🔥",
+    "repostDescription": "Zdieľať na svoj feed",
+    "moreOptions": "Ďalšie možnosti zdieľania"
+  },
+  "postMenu": {
+    "edit": "Upraviť",
+    "delete": "Odstrániť",
+    "follow": "Sledovať @{username}",
+    "unfollow": "Prestať sledovať @{username}",
+    "addToList": "Pridať do zoznamu",
+    "bookmark": "Uložiť",
+    "removeBookmark": "Odobrať záložku",
+    "copyLink": "Kopírovať odkaz",
+    "report": "Nahlásiť",
+    "followUser": "Sledovať používateľa",
+    "unfollowUser": "Prestať sledovať"
   },
   "errors": {
     "generic": "Niečo sa pokazilo",
