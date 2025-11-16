@@ -10,7 +10,10 @@
     "delete": "Odstrániť",
     "edit": "Upraviť",
     "share": "Zdieľať",
-    "close": "Zavrieť"
+    "close": "Zavrieť",
+    "more": "viac",
+    "received": "Prijaté",
+    "comingSoon": "Už čoskoro..."
   },
   "navigation": {
     "feed": "Feed",
@@ -141,7 +144,31 @@
   },
   "gifts": {
     "send": "Poslať darček",
+    "sendGift": "Poslať mikro-darček",
     "warehouse": "Sklad",
+    "selectGift": "Vyber mikro-darček",
+    "giftSent": "Darček odoslaný!",
+    "giftReceived": "Dostal si darček!",
+    "notEnoughCredits": "Nemáš dosť kreditov",
+    "boxerky": "Boxerky",
+    "ponozky": "Ponožky",
+    "pivo": "Pivo",
+    "trofej": "Trofej",
+    "koruna": "Koruna",
+    "diamant": "Diamant",
+    "revenueShare": {
+      "author": "Autor dostane",
+      "platform": "Platforma",
+      "split": "Rozdelenie 60/40"
+    },
+    "payout": {
+      "eligible": "Môžeš vybrať peniaze!",
+      "notEligible": "Pre výplatu pošli aspoň 3 darčeky iným používateľom",
+      "sentCount": "Odoslané darčeky",
+      "requiredCount": "Potrebné minimum",
+      "requestPayout": "Požiadať o výplatu",
+      "processing": "Spracovávame výplatu..."
+    },
     "rarity": {
       "common": "BEŽNÉ",
       "rare": "VZÁCNE",
