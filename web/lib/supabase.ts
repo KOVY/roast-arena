@@ -1,19 +1,12 @@
 ﻿import { createClient } from '@supabase/supabase-js';
 
-// Use placeholders during build time only to prevent build failures
-// At runtime, the app will use proper env vars set in Vercel
-const isBuildTime = typeof window === 'undefined' && !process.env.NEXT_PUBLIC_SUPABASE_URL;
+// Graceful fallback: allow app to work with or without Supabase
+const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://placeholder.supabase.co';
+const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'placeholder-anon-key-that-will-fail-gracefully';
 
-const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || (isBuildTime ? 'https://placeholder.supabase.co' : '');
-const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || (isBuildTime ? 'placeholder-anon-key' : '');
-
-if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
-  if (process.env.NODE_ENV === 'development') {
-    console.warn('⚠️ Supabase env vars are not set: NEXT_PUBLIC_SUPABASE_URL / NEXT_PUBLIC_SUPABASE_ANON_KEY');
-  }
-  if (!isBuildTime) {
-    throw new Error('Missing required Supabase environment variables. Please set NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY.');
-  }
+// Only warn in development, never throw errors
+if (typeof window !== 'undefined' && (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY)) {
+  console.warn('⚠️ Supabase not configured. Using sample data fallbacks. Set NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY to enable database features.');
 }
 
 export const supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
