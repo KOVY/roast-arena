@@ -39,10 +39,8 @@ alter table users add column if not exists gifts_sent_count int default 0;
 alter table users add column if not exists gifts_received_count int default 0;
 alter table users add column if not exists payout_eligible boolean default false;
 
--- Add roast content field if missing
+-- Add roast content field if missing (will be used instead of 'text')
 alter table roasts add column if not exists content text;
--- Migrate existing 'text' to 'content' for consistency (use quoted identifier)
-update roasts set content = roasts."text" where content is null;
 
 -- Function to check payout eligibility (must send 3+ gifts)
 create or replace function check_payout_eligibility(user_uuid uuid)
