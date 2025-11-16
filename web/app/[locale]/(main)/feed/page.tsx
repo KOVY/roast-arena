@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { useLocale } from '@/components/providers/LocaleProvider'
+import { useTranslation } from '@/lib/i18n'
 import { supabaseClient } from '@/lib/supabase'
 import BottomNav from '@/components/layout/BottomNav'
 
@@ -23,6 +24,7 @@ interface RoastPost {
 
 export default function FeedPage() {
   const { locale } = useLocale()
+  const { t } = useTranslation()
   const [posts, setPosts] = useState<RoastPost[]>([])
   const [loading, setLoading] = useState(true)
 
@@ -69,7 +71,7 @@ export default function FeedPage() {
       setPosts([
         {
           id: '1',
-          content: 'Your code is so messy, even your merge conflicts have merge conflicts! 🔥',
+          content: t('feed.samplePosts.post1'),
           author: { username: 'CodeRoaster' },
           likes: 423,
           comments: 89,
@@ -79,7 +81,7 @@ export default function FeedPage() {
         },
         {
           id: '2',
-          content: 'You call that a UI? I\'ve seen better designs in MS Paint! 💀',
+          content: t('feed.samplePosts.post2'),
           author: { username: 'DesignSavage' },
           likes: 567,
           comments: 123,
@@ -89,7 +91,7 @@ export default function FeedPage() {
         },
         {
           id: '3',
-          content: 'Your API documentation is like your social life - non-existent! 😂',
+          content: t('feed.samplePosts.post3'),
           author: { username: 'BackendBeast' },
           likes: 789,
           comments: 156,
@@ -133,7 +135,7 @@ export default function FeedPage() {
         <div className="sticky top-0 z-40 backdrop-blur-xl bg-background-dark/80 border-b border-white/10">
           <div className="flex items-center justify-between p-4">
             <h1 className="text-2xl font-bold bg-gradient-to-r from-primary to-vibrant-blue bg-clip-text text-transparent">
-              RoastArena
+              {t('common.appName')}
             </h1>
             <button className="p-2 hover:bg-white/5 rounded-lg transition-colors">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -169,7 +171,7 @@ export default function FeedPage() {
       <div className="sticky top-0 z-40 backdrop-blur-xl bg-background-dark/80 border-b border-white/10">
         <div className="flex items-center justify-between p-4">
           <h1 className="text-2xl font-bold bg-gradient-to-r from-primary to-vibrant-blue bg-clip-text text-transparent">
-            RoastArena
+            {t('common.appName')}
           </h1>
           <button className="p-2 hover:bg-white/5 rounded-lg transition-colors">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
