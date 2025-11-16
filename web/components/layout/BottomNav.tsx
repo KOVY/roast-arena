@@ -9,7 +9,7 @@ export default function BottomNav() {
   const isActive = (path: string) => pathname === path
 
   const navItems = [
-    { path: '/', icon: '🏠', label: 'Feed' },
+    { path: '/feed', icon: '🏠', label: 'Feed' },
     { path: '/create', icon: '✨', label: 'Create' },
     { path: '/challenges', icon: '🏆', label: 'Challenges' },
     { path: '/profile', icon: '👤', label: 'Profile' },
