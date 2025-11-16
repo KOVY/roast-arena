@@ -26,6 +26,17 @@
     "welcome": "Vítej v HejtArena!",
     "subtitle": "Tady se hejtuje s AI a stylem 🔥",
     "getStarted": "Začít hejtovat",
+    "tellUsYourVibe": "Řekni nám o sobě.",
+    "chooseYourStyle": "Vyber svůj bojový styl.",
+    "quiz": {
+      "morningPerson": "Ranní ptáče / Noční sova?",
+      "workoutWarrior": "Fitness bojovník / Gauč expert?",
+      "dogPerson": "Psí milovník / Kočičí fanda?"
+    },
+    "styles": {
+      "mma": "MMA",
+      "wwe": "WWE"
+    },
     "quizTitle": "Co budeš hejtovat?",
     "styleTitle": "Vyber svůj styl",
     "styleSubtitle": "Jaký typ hejtu chceš?"
@@ -236,6 +247,25 @@
     "network": "Chyba sítě",
     "authentication": "Chyba přihlášení",
     "notFound": "Nenalezeno"
+  },
+  "sharing": {
+    "title": "Sdílet tento hejt",
+    "subtitle": "Rozšiř ten fire! 🔥",
+    "repostDescription": "Sdílet na svůj feed",
+    "moreOptions": "Další možnosti sdílení"
+  },
+  "postMenu": {
+    "edit": "Upravit",
+    "delete": "Smazat",
+    "follow": "Sledovat @{username}",
+    "unfollow": "Přestat sledovat @{username}",
+    "addToList": "Přidat do seznamu",
+    "bookmark": "Uložit",
+    "removeBookmark": "Odebrat záložku",
+    "copyLink": "Kopírovat odkaz",
+    "report": "Nahlásit",
+    "followUser": "Sledovat uživatele",
+    "unfollowUser": "Přestat sledovat"
   },
   "czechOverlay": {
     "tyVole": "TY VOLE!",

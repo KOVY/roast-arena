@@ -26,6 +26,17 @@
     "welcome": "Welcome to RoastArena!",
     "subtitle": "AI-powered roasts with style 🔥",
     "getStarted": "Get Started",
+    "tellUsYourVibe": "Tell us your vibe.",
+    "chooseYourStyle": "Choose your fighting style.",
+    "quiz": {
+      "morningPerson": "Morning Person / Night Owl?",
+      "workoutWarrior": "Workout Warrior / Couch Potato?",
+      "dogPerson": "Dog Person / Cat Person?"
+    },
+    "styles": {
+      "mma": "MMA",
+      "wwe": "WWE"
+    },
     "quizTitle": "What will you roast?",
     "styleTitle": "Choose your style",
     "styleSubtitle": "What type of roast do you want?"
@@ -209,6 +220,25 @@
     "ourShare": "Our share",
     "yourProfit": "Your profit",
     "withdrawNote": "Money arrives in 3-5 business days"
+  },
+  "sharing": {
+    "title": "Share this roast",
+    "subtitle": "Spread the fire! 🔥",
+    "repostDescription": "Share to your feed",
+    "moreOptions": "More sharing options"
+  },
+  "postMenu": {
+    "edit": "Edit",
+    "delete": "Delete",
+    "follow": "Follow @{username}",
+    "unfollow": "Unfollow @{username}",
+    "addToList": "Add to list",
+    "bookmark": "Bookmark",
+    "removeBookmark": "Remove bookmark",
+    "copyLink": "Copy link",
+    "report": "Report",
+    "followUser": "Follow user",
+    "unfollowUser": "Unfollow user"
   },
   "errors": {
     "generic": "Something went wrong",

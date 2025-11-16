@@ -26,6 +26,17 @@
     "welcome": "Witaj w RoastArena!",
     "subtitle": "Roasty z AI i stylem 🔥",
     "getStarted": "Rozpocznij roastowanie",
+    "tellUsYourVibe": "Opowiedz nam o sobie.",
+    "chooseYourStyle": "Wybierz swój styl walki.",
+    "quiz": {
+      "morningPerson": "Ranny ptaszek / Nocna sowa?",
+      "workoutWarrior": "Wojownik fitnessu / Mistrz kanapy?",
+      "dogPerson": "Miłośnik psów / Fan kotów?"
+    },
+    "styles": {
+      "mma": "MMA",
+      "wwe": "WWE"
+    },
     "quizTitle": "Co będziesz roastować?",
     "styleTitle": "Wybierz swój styl",
     "styleSubtitle": "Jaki typ roastu chcesz?"
@@ -209,6 +220,25 @@
     "ourShare": "Nasz udział",
     "yourProfit": "Twój zysk",
     "withdrawNote": "Pieniądze dotrą w ciągu 3-5 dni roboczych"
+  },
+  "sharing": {
+    "title": "Udostępnij ten roast",
+    "subtitle": "Roznieś ogień! 🔥",
+    "repostDescription": "Udostępnij na swoim feedzie",
+    "moreOptions": "Więcej opcji udostępniania"
+  },
+  "postMenu": {
+    "edit": "Edytuj",
+    "delete": "Usuń",
+    "follow": "Obserwuj @{username}",
+    "unfollow": "Przestań obserwować @{username}",
+    "addToList": "Dodaj do listy",
+    "bookmark": "Dodaj do zakładek",
+    "removeBookmark": "Usuń zakładkę",
+    "copyLink": "Kopiuj link",
+    "report": "Zgłoś",
+    "followUser": "Obserwuj użytkownika",
+    "unfollowUser": "Przestań obserwować"
   },
   "errors": {
     "generic": "Coś poszło nie tak",

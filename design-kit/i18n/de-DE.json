@@ -26,6 +26,17 @@
     "welcome": "Willkommen bei RoastArena!",
     "subtitle": "KI-gestützte Roasts mit Stil 🔥",
     "getStarted": "Loslegen",
+    "tellUsYourVibe": "Erzähl uns von dir.",
+    "chooseYourStyle": "Wähle deinen Kampfstil.",
+    "quiz": {
+      "morningPerson": "Frühaufsteher / Nachteule?",
+      "workoutWarrior": "Fitness-Krieger / Couch-Potato?",
+      "dogPerson": "Hundeliebhaber / Katzenfreund?"
+    },
+    "styles": {
+      "mma": "MMA",
+      "wwe": "WWE"
+    },
     "quizTitle": "Was wirst du roasten?",
     "styleTitle": "Wähle deinen Stil",
     "styleSubtitle": "Welche Art von Roast möchtest du?"
@@ -209,6 +220,25 @@
     "ourShare": "Unser Anteil",
     "yourProfit": "Dein Gewinn",
     "withdrawNote": "Geld kommt in 3-5 Werktagen an"
+  },
+  "sharing": {
+    "title": "Diesen Roast teilen",
+    "subtitle": "Verbreite das Feuer! 🔥",
+    "repostDescription": "In deinem Feed teilen",
+    "moreOptions": "Weitere Optionen"
+  },
+  "postMenu": {
+    "edit": "Bearbeiten",
+    "delete": "Löschen",
+    "follow": "Folge @{username}",
+    "unfollow": "Nicht mehr folgen @{username}",
+    "addToList": "Zur Liste hinzufügen",
+    "bookmark": "Lesezeichen",
+    "removeBookmark": "Lesezeichen entfernen",
+    "copyLink": "Link kopieren",
+    "report": "Melden",
+    "followUser": "Benutzer folgen",
+    "unfollowUser": "Nicht mehr folgen"
   },
   "errors": {
     "generic": "Etwas ist schiefgelaufen",
