@@ -10,7 +10,10 @@
     "delete": "Usuń",
     "edit": "Edytuj",
     "share": "Udostępnij",
-    "close": "Zamknij"
+    "close": "Zamknij",
+    "more": "więcej",
+    "received": "Otrzymane",
+    "comingSoon": "Wkrótce..."
   },
   "navigation": {
     "feed": "Feed",
@@ -141,7 +144,31 @@
   },
   "gifts": {
     "send": "Wyślij prezent",
+    "sendGift": "Wyślij mikro-prezent",
     "warehouse": "Magazyn",
+    "selectGift": "Wybierz mikro-prezent",
+    "giftSent": "Prezent wysłany!",
+    "giftReceived": "Otrzymałeś prezent!",
+    "notEnoughCredits": "Niewystarczająca ilość kredytów",
+    "boxerky": "Bokserki",
+    "ponozky": "Skarpetki",
+    "pivo": "Piwo",
+    "trofej": "Trofeum",
+    "koruna": "Korona",
+    "diamant": "Diament",
+    "revenueShare": {
+      "author": "Autor otrzymuje",
+      "platform": "Platforma",
+      "split": "Podział 60/40"
+    },
+    "payout": {
+      "eligible": "Możesz wypłacić pieniądze!",
+      "notEligible": "Wyślij co najmniej 3 prezenty innym użytkownikom, aby aktywować wypłatę",
+      "sentCount": "Wysłane prezenty",
+      "requiredCount": "Wymagane minimum",
+      "requestPayout": "Poproś o wypłatę",
+      "processing": "Przetwarzanie wypłaty..."
+    },
     "rarity": {
       "common": "POWSZECHNE",
       "rare": "RZADKIE",
