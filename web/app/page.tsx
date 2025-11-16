@@ -16,10 +16,10 @@ export default function HomePage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
           <Link
-            href="/login"
+            href="/feed"
             className="p-6 bg-gradient-to-r from-purple-500 to-orange-500 rounded-2xl hover:scale-105 transition-transform block"
           >
-            <div className="text-4xl mb-2">🔑</div>
+            <div className="text-4xl mb-2">🚀</div>
             <div className="font-bold text-xl">Get Started</div>
           </Link>
 

@@ -11,10 +11,15 @@ export default function Navbar() {
   const [user, setUser] = useState<any>(null)
 
   useEffect(() => {
-    // Check for user session
-    supabaseClient.auth.getSession().then(({ data: { session } }) => {
-      setUser(session?.user ?? null)
-    })
+    // Check for user session - gracefully handle errors
+    supabaseClient.auth.getSession()
+      .then(({ data: { session } }) => {
+        setUser(session?.user ?? null)
+      })
+      .catch((error) => {
+        console.warn('Auth check failed (Supabase may not be configured):', error.message)
+        setUser(null)
+      })
 
     const { data: { subscription } } = supabaseClient.auth.onAuthStateChange((_event, session) => {
       setUser(session?.user ?? null)
@@ -46,9 +51,9 @@ export default function Navbar() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-6">
             <Link
-              href="/"
+              href="/feed"
               className={`transition ${
-                isActive('/') ? 'text-orange-500' : 'text-gray-300 hover:text-white'
+                isActive('/feed') ? 'text-orange-500' : 'text-gray-300 hover:text-white'
               }`}
             >
               Feed
