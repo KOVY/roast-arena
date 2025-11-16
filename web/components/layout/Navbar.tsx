@@ -6,10 +6,12 @@ import { useState, useEffect } from 'react'
 import { supabaseClient } from '@/lib/supabase'
 import HaloButton from '@/components/ui/HaloButton'
 import { useLocale } from '@/components/providers/LocaleProvider'
+import { useTranslation } from '@/lib/i18n'
 
 export default function Navbar() {
   const pathname = usePathname()
   const { locale } = useLocale()
+  const { t } = useTranslation()
   const [user, setUser] = useState<any>(null)
 
   useEffect(() => {
@@ -61,7 +63,7 @@ export default function Navbar() {
                 isActive('/feed') ? 'text-orange-500' : 'text-gray-300 hover:text-white'
               }`}
             >
-              Feed
+              {t('navigation.feed')}
             </Link>
             <Link
               href={link('/create')}
@@ -69,7 +71,7 @@ export default function Navbar() {
                 isActive('/create') ? 'text-orange-500' : 'text-gray-300 hover:text-white'
               }`}
             >
-              Create
+              {t('roastCreator.title')}
             </Link>
             <Link
               href={link('/challenges')}
@@ -77,7 +79,7 @@ export default function Navbar() {
                 isActive('/challenges') ? 'text-orange-500' : 'text-gray-300 hover:text-white'
               }`}
             >
-              Challenges
+              {t('navigation.challenges')}
             </Link>
             <Link
               href={link('/pizzeria')}
@@ -85,7 +87,7 @@ export default function Navbar() {
                 isActive('/pizzeria') ? 'text-orange-500' : 'text-gray-300 hover:text-white'
               }`}
             >
-              Pizzeria
+              {t('navigation.pizzeria')}
             </Link>
             <Link
               href={link('/profile')}
@@ -93,7 +95,7 @@ export default function Navbar() {
                 isActive('/profile') ? 'text-orange-500' : 'text-gray-300 hover:text-white'
               }`}
             >
-              Profile
+              {t('navigation.profile')}
             </Link>
           </div>
 
@@ -104,11 +106,11 @@ export default function Navbar() {
                 onClick={handleSignOut}
                 className="text-gray-300 hover:text-white transition"
               >
-                Sign Out
+                {t('auth.logout')}
               </button>
             ) : (
               <Link href={link('/login')}>
-                <HaloButton>Sign In</HaloButton>
+                <HaloButton>{t('auth.login')}</HaloButton>
               </Link>
             )}
           </div>

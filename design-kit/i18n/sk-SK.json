@@ -1,0 +1,165 @@
+{
+  "common": {
+    "appName": "RoastArena",
+    "loading": "Načítava sa...",
+    "error": "Chyba",
+    "success": "Úspech",
+    "cancel": "Zrušiť",
+    "confirm": "Potvrdiť",
+    "save": "Uložiť",
+    "delete": "Odstrániť",
+    "edit": "Upraviť",
+    "share": "Zdieľať",
+    "close": "Zavrieť"
+  },
+  "navigation": {
+    "feed": "Feed",
+    "echoChain": "Echo Chain",
+    "challenges": "Výzvy",
+    "pizzeria": "Pizzeria",
+    "profile": "Profil"
+  },
+  "onboarding": {
+    "welcome": "Vitaj v RoastArena!",
+    "subtitle": "Roastuj s AI a štýlom 🔥",
+    "getStarted": "Začať roastovať",
+    "quizTitle": "Čo budeš roastovať?",
+    "styleTitle": "Vyber si svoj štýl",
+    "styleSubtitle": "Aký typ roastu chceš?"
+  },
+  "auth": {
+    "login": "Prihlásiť sa",
+    "register": "Registrovať",
+    "logout": "Odhlásiť",
+    "continueWithGoogle": "Pokračovať s Google",
+    "continueWithApple": "Pokračovať s Apple",
+    "emailPlaceholder": "tvoj@email.sk",
+    "passwordPlaceholder": "Tvoje heslo"
+  },
+  "feed": {
+    "dailyChallenge": "Denná výzva",
+    "roastYourCoffee": "Roastni svoju rannú kávu!",
+    "pullToRefresh": "Potiahni pre obnovenie",
+    "noMoreRoasts": "Žiadne ďalšie roasty"
+  },
+  "roastCreator": {
+    "title": "Vytvor roast",
+    "promptPlaceholder": "Napr.: Moja ranná káva je taká slabá...",
+    "selectStyle": "Vyber štýl",
+    "generateButton": "ROAST! 🔥",
+    "regenerate": "Skús znova",
+    "saveRoast": "Uložiť roast",
+    "arFilter": "AR Filter",
+    "cameraHint": "Zapni kameru pre roast filter"
+  },
+  "echoChain": {
+    "title": "Echo Chain",
+    "addEcho": "Pridať echo",
+    "noEchoes": "Zatiaľ žiadne echo odpovede",
+    "reactions": {
+      "fire": "Fire",
+      "crying": "Plačem",
+      "skull": "Mŕtvola"
+    }
+  },
+  "challenges": {
+    "title": "Výzvy",
+    "hubTitle": "Centrum výziev",
+    "streak": "dňová séria!",
+    "streakLabel": "Séria",
+    "dayStreak": "dní v rade",
+    "tabs": {
+      "active": "Aktívne",
+      "new": "Nové",
+      "completed": "Dokončené",
+      "daily": "Denné",
+      "weekly": "Týždenné",
+      "leaderboard": "Top 10"
+    },
+    "progress": "Postup",
+    "completed": "Dokončené",
+    "completedStatus": "dokončené",
+    "reward": "Odmena",
+    "rewardPoints": "kreditov",
+    "timeRemaining": "Zostáva",
+    "noChallenges": "Žiadne {filter} výzvy",
+    "claimed": "Získané",
+    "view": "Zobraziť",
+    "loading": "Načítavanie výziev..."
+  },
+  "profile": {
+    "title": "Profil",
+    "stats": {
+      "roasts": "Roasty",
+      "echoes": "Echo",
+      "gifts": "Darčeky"
+    },
+    "credits": "Tvoje kredity",
+    "earnings": "Tvoje zisky z darčekov",
+    "withdraw": "Vybrať peniaze na účet",
+    "warehouse": "Tvoj sklad darčekov",
+    "settings": "Nastavenia",
+    "language": "Jazyk a Mena",
+    "theme": "Téma",
+    "notifications": "Notifikácie"
+  },
+  "pizzeria": {
+    "title": "Pizzeria",
+    "nearby": "Pizzerie v okolí",
+    "checkIn": "Check-in",
+    "navigate": "Navigovať",
+    "scanQR": "Naskenuj QR kód v pizzerii",
+    "verified": "Overené",
+    "rewardsForCheckIn": "kreditov za check-in"
+  },
+  "gifts": {
+    "send": "Poslať darček",
+    "warehouse": "Sklad",
+    "rarity": {
+      "common": "BEŽNÉ",
+      "rare": "VZÁCNE",
+      "epic": "EPICKÉ",
+      "legendary": "LEGENDÁRNE"
+    },
+    "items": {
+      "fireCrown": "Fire Crown",
+      "roastTrophy": "Roast Trophy",
+      "savageBadge": "Savage Badge",
+      "fireBlast": "Fire Blast",
+      "rocket": "Raketa",
+      "roastBomb": "Roast Bomb",
+      "heart": "Srdce",
+      "star": "Hviezda",
+      "rose": "Ruža"
+    }
+  },
+  "monetization": {
+    "buyCredits": "Kúpiť kredity",
+    "creditBundles": {
+      "small": {
+        "amount": 100,
+        "bonus": 0,
+        "label": "Základný balíček"
+      },
+      "medium": {
+        "amount": 500,
+        "bonus": 50,
+        "label": "Výhodný balíček"
+      },
+      "large": {
+        "amount": 1000,
+        "bonus": 200,
+        "label": "Mega balíček"
+      }
+    },
+    "ourShare": "Náš podiel",
+    "yourProfit": "Tvoj zisk",
+    "withdrawNote": "Peniaze dorazia do 3-5 pracovných dní"
+  },
+  "errors": {
+    "generic": "Niečo sa pokazilo",
+    "network": "Chyba siete",
+    "authentication": "Chyba prihlásenia",
+    "notFound": "Nenájdené"
+  }
+}

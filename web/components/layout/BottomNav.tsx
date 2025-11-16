@@ -3,10 +3,11 @@
 import { usePathname, useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
 import { useLocale } from '@/components/providers/LocaleProvider'
+import { useTranslation } from '@/lib/i18n'
 
 interface NavItem {
   icon: string
-  label: string
+  labelKey: string
   href: string
   activePattern: RegExp
 }
@@ -14,25 +15,25 @@ interface NavItem {
 const navItems: NavItem[] = [
   {
     icon: '🔥',
-    label: 'Feed',
+    labelKey: 'navigation.feed',
     href: '/feed',
     activePattern: /\/feed/,
   },
   {
     icon: '🏆',
-    label: 'Challenges',
+    labelKey: 'navigation.challenges',
     href: '/challenges',
     activePattern: /\/challenges/,
   },
   {
     icon: '✨',
-    label: 'Create',
+    labelKey: 'roastCreator.title',
     href: '/create',
     activePattern: /\/create/,
   },
   {
     icon: '👤',
-    label: 'Profile',
+    labelKey: 'navigation.profile',
     href: '/profile',
     activePattern: /\/profile/,
   },
@@ -42,6 +43,7 @@ export default function BottomNav() {
   const pathname = usePathname()
   const router = useRouter()
   const { locale } = useLocale()
+  const { t } = useTranslation()
 
   const handleNavigation = (href: string) => {
     router.push(`/${locale}${href}`)
@@ -101,7 +103,7 @@ export default function BottomNav() {
                   }}
                   transition={{ duration: 0.2 }}
                 >
-                  {item.label}
+                  {t(item.labelKey)}
                 </motion.span>
 
                 {/* Active Dot Indicator */}

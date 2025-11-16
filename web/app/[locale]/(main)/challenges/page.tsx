@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useRouter } from 'next/navigation'
 import { useLocale } from '@/components/providers/LocaleProvider'
+import { useTranslation } from '@/lib/i18n'
 import { supabaseClient } from '@/lib/supabase'
 import BottomNav from '@/components/layout/BottomNav'
 
@@ -26,6 +27,7 @@ interface Challenge {
 export default function ChallengesPage() {
   const router = useRouter()
   const { locale } = useLocale()
+  const { t } = useTranslation()
   const [filter, setFilter] = useState<ChallengeFilter>('Active')
   const [streak, setStreak] = useState(7)
   const [challenges, setChallenges] = useState<Challenge[]>([])
@@ -132,7 +134,7 @@ export default function ChallengesPage() {
   if (loading) {
     return (
       <div className="min-h-screen bg-background-dark flex items-center justify-center pb-24">
-        <div className="animate-pulse text-gray-400">Loading challenges...</div>
+        <div className="animate-pulse text-gray-400">{t('challenges.loading')}</div>
       </div>
     )
   }
@@ -154,7 +156,7 @@ export default function ChallengesPage() {
             animate={{ opacity: 1, y: 0 }}
             className="text-xl font-bold text-white"
           >
-            Challenges Hub
+            {t('challenges.hubTitle')}
           </motion.h1>
           <button
             onClick={() => router.push(`/${locale}/profile`)}
@@ -167,9 +169,9 @@ export default function ChallengesPage() {
         {/* Streak Progress */}
         <div className="flex flex-col gap-2 p-4">
           <div className="flex justify-between items-center px-2">
-            <p className="text-white text-base font-medium">Streak</p>
+            <p className="text-white text-base font-medium">{t('challenges.streakLabel')}</p>
             <p className="text-white/80 text-sm flex items-center gap-1">
-              {streak} Day Streak 🔥
+              {streak} {t('challenges.dayStreak')} 🔥
             </p>
           </div>
           <div className="h-4 rounded-full bg-white/10 p-0.5 shadow-inner backdrop-blur-sm border border-white/10 overflow-hidden">
@@ -196,7 +198,7 @@ export default function ChallengesPage() {
                     : 'text-white/70 hover:text-white'
                 }`}
               >
-                {tab}
+                {t(`challenges.tabs.${tab.toLowerCase()}`)}
               </button>
             ))}
           </div>
@@ -214,7 +216,7 @@ export default function ChallengesPage() {
                 className="text-center py-12"
               >
                 <p className="text-2xl mb-2">🏆</p>
-                <p className="text-gray-400">No {filter.toLowerCase()} challenges</p>
+                <p className="text-gray-400">{t('challenges.noChallenges').replace('{filter}', t(`challenges.tabs.${filter.toLowerCase()}`).toLowerCase())}</p>
               </motion.div>
             ) : (
               filteredChallenges.map((challenge, index) => (
@@ -245,15 +247,15 @@ export default function ChallengesPage() {
                           : 'text-white/60'
                       }`}>
                         {challenge.status === 'completed'
-                          ? 'Completed'
-                          : `${challenge.progress}/${challenge.total} Completed`}
+                          ? t('challenges.completed')
+                          : `${challenge.progress}/${challenge.total} ${t('challenges.completedStatus')}`}
                       </p>
                       <p className="text-white text-lg font-bold">{challenge.title}</p>
 
                       {/* Progress and Action */}
                       <div className="flex items-end gap-3 justify-between mt-2">
                         <div className="flex flex-col gap-1">
-                          <p className="text-white/80 text-sm">Reward: {challenge.reward}</p>
+                          <p className="text-white/80 text-sm">{t('challenges.reward')}: {challenge.reward}</p>
                         </div>
                         <motion.button
                           whileHover={{ scale: challenge.status !== 'completed' ? 1.05 : 1 }}
@@ -265,7 +267,7 @@ export default function ChallengesPage() {
                               : 'bg-primary/80 border border-white/10 text-white hover:bg-primary shadow-md'
                           }`}
                         >
-                          {challenge.status === 'completed' ? 'Claimed' : 'View'}
+                          {challenge.status === 'completed' ? t('challenges.claimed') : t('challenges.view')}
                         </motion.button>
                       </div>
                     </div>
