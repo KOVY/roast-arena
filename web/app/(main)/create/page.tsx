@@ -27,9 +27,15 @@ export default function CreatePage() {
 
   async function onSave() {
     if (!generated) return;
-    await supabaseClient.from('roasts').insert([{ text: generated, author_id: null }]);
-    setGenerated(null);
-    setPrompt('');
+    try {
+      await supabaseClient.from('roasts').insert([{ text: generated, author_id: null }]);
+      alert('Roast saved successfully!');
+      setGenerated(null);
+      setPrompt('');
+    } catch (error) {
+      console.warn('Failed to save roast (Supabase may not be configured):', error);
+      alert('Please sign in to save your roast');
+    }
   }
 
   return (

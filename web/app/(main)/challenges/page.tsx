@@ -36,7 +36,28 @@ export default function ChallengesPage() {
       if (error) throw error
       setChallenges(data as any[])
     } catch (error) {
-      console.error('Failed to load challenges:', error)
+      console.warn('Failed to load challenges (using sample data):', error)
+      // Use sample data if Supabase is not available
+      setChallenges([
+        {
+          id: '1',
+          title: 'Best Roast of the Week',
+          reward: '🍕 Free Pizza',
+          pizzeria: { name: 'Pizza Top', location: 'Prague' }
+        },
+        {
+          id: '2',
+          title: 'Spicy Roast Challenge',
+          reward: '🔥 50 Credits',
+          pizzeria: { name: 'Napoli House', location: 'Brno' }
+        },
+        {
+          id: '3',
+          title: 'Funny Roast Master',
+          reward: '🎁 Special Gift',
+          pizzeria: { name: 'Pizza Arena', location: 'Ostrava' }
+        }
+      ] as any[])
     } finally {
       setLoading(false)
     }
