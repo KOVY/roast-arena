@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 import { supabaseClient } from '@/lib/supabase'
 import { useLocale } from '@/components/providers/LocaleProvider'
 import { motion } from 'framer-motion'
+import BottomNav from '@/components/layout/BottomNav'
 
 interface ProfileData {
   username: string
@@ -363,6 +364,9 @@ export default function ProfilePage() {
         </motion.div>
       </div>
       </div>
+
+      {/* Bottom Navigation */}
+      <BottomNav />
     </div>
   )
 }

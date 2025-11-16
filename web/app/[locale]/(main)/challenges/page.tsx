@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useRouter } from 'next/navigation'
 import { useLocale } from '@/components/providers/LocaleProvider'
 import { supabaseClient } from '@/lib/supabase'
+import BottomNav from '@/components/layout/BottomNav'
 
 type ChallengeStatus = 'active' | 'new' | 'completed'
 type ChallengeFilter = 'Active' | 'New' | 'Completed'
@@ -275,6 +276,9 @@ export default function ChallengesPage() {
           </AnimatePresence>
         </main>
       </div>
+
+      {/* Bottom Navigation */}
+      <BottomNav />
     </div>
   )
 }
