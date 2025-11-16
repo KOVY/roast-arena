@@ -10,7 +10,10 @@
     "delete": "Smazat",
     "edit": "Upravit",
     "share": "Sdílet",
-    "close": "Zavřít"
+    "close": "Zavřít",
+    "more": "více",
+    "received": "Přijaté",
+    "comingSoon": "Už brzy..."
   },
   "navigation": {
     "feed": "Příspěvky",
@@ -162,7 +165,31 @@
   },
   "gifts": {
     "send": "Poslat dárek",
+    "sendGift": "Poslat mikrodárek",
     "warehouse": "Sklad",
+    "selectGift": "Vyber mikrodárek",
+    "giftSent": "Dárek odeslán!",
+    "giftReceived": "Dostal jsi dárek!",
+    "notEnoughCredits": "Nemáš dost kreditů",
+    "boxerky": "Boxerky",
+    "ponozky": "Ponožky",
+    "pivo": "Pivo",
+    "trofej": "Trofej",
+    "koruna": "Koruna",
+    "diamant": "Diamant",
+    "revenueShare": {
+      "author": "Autor dostane",
+      "platform": "Platforma",
+      "split": "Rozdělení 60/40"
+    },
+    "payout": {
+      "eligible": "Můžeš vybrat peníze!",
+      "notEligible": "Pro výplatu pošli alespoň 3 dárky jiným uživatelům",
+      "sentCount": "Odesláno dárků",
+      "requiredCount": "Potřebné minimum",
+      "requestPayout": "Požádat o výplatu",
+      "processing": "Zpracováváme výplatu..."
+    },
     "rarity": {
       "common": "COMMON",
       "rare": "RARE",

@@ -7,17 +7,20 @@ import { useLocale } from '@/components/providers/LocaleProvider'
 import { useTranslation } from '@/lib/i18n'
 import { supabaseClient } from '@/lib/supabase'
 import BottomNav from '@/components/layout/BottomNav'
+import GiftModal from '@/components/gifts/GiftModal'
 
 interface RoastPost {
   id: string
   content: string
   author: {
+    id?: string
     username: string
     avatar_url?: string
   }
   likes: number
   comments: number
   shares: number
+  gifts?: number
   created_at: string
   isLiked?: boolean
 }
@@ -27,10 +30,32 @@ export default function FeedPage() {
   const { t } = useTranslation()
   const [posts, setPosts] = useState<RoastPost[]>([])
   const [loading, setLoading] = useState(true)
+  const [loadingMore, setLoadingMore] = useState(false)
+  const [hasMore, setHasMore] = useState(true)
+  const [page, setPage] = useState(0)
+  const [giftModalOpen, setGiftModalOpen] = useState(false)
+  const [selectedPost, setSelectedPost] = useState<RoastPost | null>(null)
 
   useEffect(() => {
     loadFeed()
   }, [])
+
+  useEffect(() => {
+    // Infinite scroll observer
+    const handleScroll = () => {
+      if (
+        window.innerHeight + document.documentElement.scrollTop
+        >= document.documentElement.offsetHeight - 500
+      ) {
+        if (!loadingMore && hasMore) {
+          loadMorePosts()
+        }
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [loadingMore, hasMore, page])
 
   const loadFeed = async () => {
     try {
@@ -40,6 +65,7 @@ export default function FeedPage() {
         .select(`
           id,
           content,
+          author_id,
           created_at,
           users!roasts_author_id_fkey (
             username,
@@ -47,6 +73,7 @@ export default function FeedPage() {
           )
         `)
         .order('created_at', { ascending: false })
+        .range(0, 19)
         .limit(20)
 
       if (data && data.length > 0) {
@@ -54,15 +81,19 @@ export default function FeedPage() {
           id: roast.id,
           content: roast.content,
           author: {
+            id: roast.author_id,
             username: roast.users?.username || 'Anonymous',
             avatar_url: roast.users?.avatar_url
           },
           likes: Math.floor(Math.random() * 500),
           comments: Math.floor(Math.random() * 100),
           shares: Math.floor(Math.random() * 50),
+          gifts: Math.floor(Math.random() * 20),
           created_at: roast.created_at,
           isLiked: false
         })))
+        setPage(1)
+        setHasMore(data.length === 20)
       } else {
         throw new Error('No data')
       }
@@ -72,30 +103,33 @@ export default function FeedPage() {
         {
           id: '1',
           content: t('feed.samplePosts.post1'),
-          author: { username: 'CodeRoaster' },
+          author: { id: 'sample-1', username: 'CodeRoaster' },
           likes: 423,
           comments: 89,
           shares: 34,
+          gifts: 12,
           created_at: new Date().toISOString(),
           isLiked: false
         },
         {
           id: '2',
           content: t('feed.samplePosts.post2'),
-          author: { username: 'DesignSavage' },
+          author: { id: 'sample-2', username: 'DesignSavage' },
           likes: 567,
           comments: 123,
           shares: 45,
+          gifts: 23,
           created_at: new Date(Date.now() - 3600000).toISOString(),
           isLiked: true
         },
         {
           id: '3',
           content: t('feed.samplePosts.post3'),
-          author: { username: 'BackendBeast' },
+          author: { id: 'sample-3', username: 'BackendBeast' },
           likes: 789,
           comments: 156,
           shares: 67,
+          gifts: 8,
           created_at: new Date(Date.now() - 7200000).toISOString(),
           isLiked: false
         }
@@ -116,6 +150,68 @@ export default function FeedPage() {
       }
       return post
     }))
+  }
+
+  const handleOpenGiftModal = (post: RoastPost) => {
+    setSelectedPost(post)
+    setGiftModalOpen(true)
+  }
+
+  const handleCloseGiftModal = () => {
+    setGiftModalOpen(false)
+    setSelectedPost(null)
+  }
+
+  const loadMorePosts = async () => {
+    if (loadingMore || !hasMore) return
+    setLoadingMore(true)
+
+    try {
+      const start = page * 20
+      const end = start + 19
+
+      const { data } = await supabaseClient
+        .from('roasts')
+        .select(`
+          id,
+          content,
+          author_id,
+          created_at,
+          users!roasts_author_id_fkey (
+            username,
+            avatar_url
+          )
+        `)
+        .order('created_at', { ascending: false })
+        .range(start, end)
+
+      if (data && data.length > 0) {
+        const newPosts = data.map((roast: any) => ({
+          id: roast.id,
+          content: roast.content,
+          author: {
+            id: roast.author_id,
+            username: roast.users?.username || 'Anonymous',
+            avatar_url: roast.users?.avatar_url
+          },
+          likes: Math.floor(Math.random() * 500),
+          comments: Math.floor(Math.random() * 100),
+          shares: Math.floor(Math.random() * 50),
+          gifts: Math.floor(Math.random() * 20),
+          created_at: roast.created_at,
+          isLiked: false
+        }))
+        setPosts(prev => [...prev, ...newPosts])
+        setPage(prev => prev + 1)
+        setHasMore(data.length === 20)
+      } else {
+        setHasMore(false)
+      }
+    } catch (error) {
+      console.error('Failed to load more posts:', error)
+    } finally {
+      setLoadingMore(false)
+    }
   }
 
   const formatTimeAgo = (dateString: string) => {
@@ -242,9 +338,33 @@ export default function FeedPage() {
                 </svg>
                 <span className="text-sm font-medium group-hover:text-green-400">{post.shares}</span>
               </button>
+
+              <button
+                onClick={() => handleOpenGiftModal(post)}
+                className="flex items-center gap-2 text-gray-400 hover:text-yellow-400 transition-colors group"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
+                </svg>
+                <span className="text-sm font-medium group-hover:text-yellow-400">{post.gifts || 0}</span>
+              </button>
             </div>
           </motion.div>
         ))}
+
+        {/* Loading More Indicator */}
+        {loadingMore && (
+          <div className="flex justify-center py-8">
+            <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-primary"></div>
+          </div>
+        )}
+
+        {/* End of Feed */}
+        {!hasMore && posts.length > 0 && (
+          <div className="text-center py-8 text-gray-400">
+            <p>{t('feed.noMoreRoasts')}</p>
+          </div>
+        )}
       </div>
 
       {/* Floating Action Button */}
@@ -262,6 +382,17 @@ export default function FeedPage() {
 
       {/* Bottom Navigation */}
       <BottomNav />
+
+      {/* Gift Modal */}
+      {selectedPost && (
+        <GiftModal
+          isOpen={giftModalOpen}
+          onClose={handleCloseGiftModal}
+          roastId={selectedPost.id}
+          roastAuthorId={selectedPost.author.id || ''}
+          roastAuthorName={selectedPost.author.username}
+        />
+      )}
     </div>
   )
 }
