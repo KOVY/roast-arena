@@ -64,23 +64,53 @@
   },
   "challenges": {
     "title": "Výzvy",
+    "hubTitle": "Centrum výzev",
     "streak": "denní série!",
+    "streakLabel": "Série",
+    "dayStreak": "dní v řadě",
     "tabs": {
+      "active": "Aktivní",
+      "new": "Nové",
+      "completed": "Dokončené",
       "daily": "Denní",
       "weekly": "Týdenní",
       "leaderboard": "Top 10"
     },
     "progress": "Postup",
-    "reward": "kreditů",
-    "timeRemaining": "Zbývá"
+    "completed": "Dokončeno",
+    "completedStatus": "dokončeno",
+    "reward": "Odměna",
+    "rewardPoints": "kreditů",
+    "timeRemaining": "Zbývá",
+    "noChallenges": "Žádné {filter} výzvy",
+    "claimed": "Získáno",
+    "view": "Zobrazit",
+    "loading": "Načítání výzev..."
   },
   "profile": {
     "title": "Profil",
+    "loading": "Načítání profilu...",
+    "editProfile": "Upravit profil",
+    "share": "Sdílet",
+    "nextLevel": "Další úroveň",
     "stats": {
       "roasts": "Roasty",
+      "roastsWon": "Vyhraných roastů",
+      "followers": "Sledujících",
+      "ranking": "Umístění",
       "echoes": "Echo",
       "gifts": "Dárky"
     },
+    "recentActivity": "Nedávná aktivita",
+    "latestRoasts": "Nejnovější roasty",
+    "community": "Komunita",
+    "leaderboards": "Žebříčky",
+    "globalLeaderboard": "Globální",
+    "localLeaderboard": "Česko",
+    "myWallet": "Moje peněženka",
+    "balance": "Zůstatek",
+    "coins": "Mincí",
+    "claimRewards": "Získat odměny",
     "credits": "Tvé kredity",
     "earnings": "Tvé zisky z dárků",
     "withdraw": "Vybrat peníze na účet",
@@ -88,7 +118,17 @@
     "settings": "Nastavení",
     "language": "Jazyk & Měna",
     "theme": "Téma",
-    "notifications": "Notifikace"
+    "notifications": "Notifikace",
+    "activities": {
+      "roastBattle": "Epická roast bitva proti",
+      "wonRoast": "Vyhráno proti",
+      "commented": "Okomentováno u"
+    },
+    "timeAgo": {
+      "hour": "před 1h",
+      "hours": "před {hours}h",
+      "minute": "před 1m"
+    }
   },
   "pizzeria": {
     "title": "Pizzerie",

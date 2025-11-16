@@ -1,0 +1,165 @@
+{
+  "common": {
+    "appName": "RoastArena",
+    "loading": "Ładowanie...",
+    "error": "Błąd",
+    "success": "Sukces",
+    "cancel": "Anuluj",
+    "confirm": "Potwierdź",
+    "save": "Zapisz",
+    "delete": "Usuń",
+    "edit": "Edytuj",
+    "share": "Udostępnij",
+    "close": "Zamknij"
+  },
+  "navigation": {
+    "feed": "Feed",
+    "echoChain": "Echo Chain",
+    "challenges": "Wyzwania",
+    "pizzeria": "Pizzeria",
+    "profile": "Profil"
+  },
+  "onboarding": {
+    "welcome": "Witaj w RoastArena!",
+    "subtitle": "Roasty z AI i stylem 🔥",
+    "getStarted": "Rozpocznij roastowanie",
+    "quizTitle": "Co będziesz roastować?",
+    "styleTitle": "Wybierz swój styl",
+    "styleSubtitle": "Jaki typ roastu chcesz?"
+  },
+  "auth": {
+    "login": "Zaloguj się",
+    "register": "Zarejestruj się",
+    "logout": "Wyloguj",
+    "continueWithGoogle": "Kontynuuj z Google",
+    "continueWithApple": "Kontynuuj z Apple",
+    "emailPlaceholder": "twoj@email.pl",
+    "passwordPlaceholder": "Twoje hasło"
+  },
+  "feed": {
+    "dailyChallenge": "Dzienne wyzwanie",
+    "roastYourCoffee": "Zroastuj swoją poranną kawę!",
+    "pullToRefresh": "Pociągnij aby odświeżyć",
+    "noMoreRoasts": "Brak więcej roastów"
+  },
+  "roastCreator": {
+    "title": "Stwórz roast",
+    "promptPlaceholder": "Np.: Moja poranna kawa jest taka słaba...",
+    "selectStyle": "Wybierz styl",
+    "generateButton": "ROAST! 🔥",
+    "regenerate": "Spróbuj ponownie",
+    "saveRoast": "Zapisz roast",
+    "arFilter": "Filtr AR",
+    "cameraHint": "Włącz kamerę dla filtru roast"
+  },
+  "echoChain": {
+    "title": "Echo Chain",
+    "addEcho": "Dodaj echo",
+    "noEchoes": "Brak odpowiedzi echo",
+    "reactions": {
+      "fire": "Ogień",
+      "crying": "Płaczę",
+      "skull": "Trup"
+    }
+  },
+  "challenges": {
+    "title": "Wyzwania",
+    "hubTitle": "Centrum Wyzwań",
+    "streak": "dni z rzędu!",
+    "streakLabel": "Seria",
+    "dayStreak": "Dni z rzędu",
+    "tabs": {
+      "active": "Aktywne",
+      "new": "Nowe",
+      "completed": "Ukończone",
+      "daily": "Dzienne",
+      "weekly": "Tygodniowe",
+      "leaderboard": "Top 10"
+    },
+    "progress": "Postęp",
+    "completed": "Ukończono",
+    "completedStatus": "ukończono",
+    "reward": "Nagroda",
+    "rewardPoints": "kredytów",
+    "timeRemaining": "Pozostało",
+    "noChallenges": "Brak {filter} wyzwań",
+    "claimed": "Odebrano",
+    "view": "Zobacz",
+    "loading": "Ładowanie wyzwań..."
+  },
+  "profile": {
+    "title": "Profil",
+    "stats": {
+      "roasts": "Roasty",
+      "echoes": "Echo",
+      "gifts": "Prezenty"
+    },
+    "credits": "Twoje kredyty",
+    "earnings": "Twoje zarobki z prezentów",
+    "withdraw": "Wypłać na konto",
+    "warehouse": "Twój magazyn prezentów",
+    "settings": "Ustawienia",
+    "language": "Język i Waluta",
+    "theme": "Motyw",
+    "notifications": "Powiadomienia"
+  },
+  "pizzeria": {
+    "title": "Pizzeria",
+    "nearby": "Pizzerie w pobliżu",
+    "checkIn": "Zamelduj się",
+    "navigate": "Nawiguj",
+    "scanQR": "Zeskanuj kod QR w pizzerii",
+    "verified": "Zweryfikowano",
+    "rewardsForCheckIn": "kredytów za zameldowanie"
+  },
+  "gifts": {
+    "send": "Wyślij prezent",
+    "warehouse": "Magazyn",
+    "rarity": {
+      "common": "POWSZECHNE",
+      "rare": "RZADKIE",
+      "epic": "EPICKIE",
+      "legendary": "LEGENDARNE"
+    },
+    "items": {
+      "fireCrown": "Fire Crown",
+      "roastTrophy": "Roast Trophy",
+      "savageBadge": "Savage Badge",
+      "fireBlast": "Fire Blast",
+      "rocket": "Rakieta",
+      "roastBomb": "Roast Bomb",
+      "heart": "Serce",
+      "star": "Gwiazda",
+      "rose": "Róża"
+    }
+  },
+  "monetization": {
+    "buyCredits": "Kup kredyty",
+    "creditBundles": {
+      "small": {
+        "amount": 100,
+        "bonus": 0,
+        "label": "Podstawowy pakiet"
+      },
+      "medium": {
+        "amount": 500,
+        "bonus": 50,
+        "label": "Pakiet wartościowy"
+      },
+      "large": {
+        "amount": 1000,
+        "bonus": 200,
+        "label": "Mega pakiet"
+      }
+    },
+    "ourShare": "Nasz udział",
+    "yourProfit": "Twój zysk",
+    "withdrawNote": "Pieniądze dotrą w ciągu 3-5 dni roboczych"
+  },
+  "errors": {
+    "generic": "Coś poszło nie tak",
+    "network": "Błąd sieci",
+    "authentication": "Błąd uwierzytelniania",
+    "notFound": "Nie znaleziono"
+  }
+}

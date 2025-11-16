@@ -64,23 +64,53 @@
   },
   "challenges": {
     "title": "Challenges",
+    "hubTitle": "Challenges Hub",
     "streak": "day streak!",
+    "streakLabel": "Streak",
+    "dayStreak": "Day Streak",
     "tabs": {
+      "active": "Active",
+      "new": "New",
+      "completed": "Completed",
       "daily": "Daily",
       "weekly": "Weekly",
       "leaderboard": "Top 10"
     },
     "progress": "Progress",
-    "reward": "credits",
-    "timeRemaining": "Remaining"
+    "completed": "Completed",
+    "completedStatus": "completed",
+    "reward": "Reward",
+    "rewardPoints": "credits",
+    "timeRemaining": "Remaining",
+    "noChallenges": "No {filter} challenges",
+    "claimed": "Claimed",
+    "view": "View",
+    "loading": "Loading challenges..."
   },
   "profile": {
     "title": "Profile",
+    "loading": "Loading profile...",
+    "editProfile": "Edit Profile",
+    "share": "Share",
+    "nextLevel": "Next Level",
     "stats": {
       "roasts": "Roasts",
+      "roastsWon": "Roasts Won",
+      "followers": "Followers",
+      "ranking": "Ranking",
       "echoes": "Echoes",
       "gifts": "Gifts"
     },
+    "recentActivity": "Recent Activity",
+    "latestRoasts": "Latest Roasts",
+    "community": "Community",
+    "leaderboards": "Leaderboards",
+    "globalLeaderboard": "Global",
+    "localLeaderboard": "Local",
+    "myWallet": "My Wallet",
+    "balance": "Balance",
+    "coins": "Coins",
+    "claimRewards": "Claim Rewards",
     "credits": "Your credits",
     "earnings": "Your gift earnings",
     "withdraw": "Withdraw to account",
@@ -88,7 +118,17 @@
     "settings": "Settings",
     "language": "Language & Currency",
     "theme": "Theme",
-    "notifications": "Notifications"
+    "notifications": "Notifications",
+    "activities": {
+      "roastBattle": "Epic roast battle vs",
+      "wonRoast": "Won a roast against",
+      "commented": "Commented on"
+    },
+    "timeAgo": {
+      "hour": "1h ago",
+      "hours": "{hours}h ago",
+      "minute": "1m ago"
+    }
   },
   "pizzeria": {
     "title": "Pizzeria",

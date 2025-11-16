@@ -1,118 +1,74 @@
-import { SUPPORTED_LANGUAGES, LanguageCode, DEFAULT_LANGUAGE } from '@/shared/constants/languages'
-import { getCurrencyFromLocale, detectUserLocale } from '@/shared/utils/locale'
+'use client'
 
-// Translation dictionary
-const translations: Record<LanguageCode, Record<string, string>> = {
-  en: {
-    'nav.feed': 'Feed',
-    'nav.create': 'Create',
-    'nav.challenges': 'Challenges',
-    'nav.pizzeria': 'Pizzeria',
-    'nav.profile': 'Profile',
-    'auth.login': 'Log In',
-    'auth.signup': 'Sign Up',
-    'auth.signout': 'Sign Out',
-    'roast.create': 'Create Roast',
-    'roast.likes': 'Likes',
-    'roast.echoes': 'Echoes',
-    'challenge.accept': 'Accept Challenge',
-    'challenge.reward': 'Reward',
-    'profile.roasts': 'Roasts',
-    'profile.likes': 'Likes',
-    'profile.echoes': 'Echoes',
-  },
-  cs: {
-    'nav.feed': 'Feed',
-    'nav.create': 'Vytvořit',
-    'nav.challenges': 'Výzvy',
-    'nav.pizzeria': 'Pizzerie',
-    'nav.profile': 'Profil',
-    'auth.login': 'Přihlásit se',
-    'auth.signup': 'Registrovat',
-    'auth.signout': 'Odhlásit se',
-    'roast.create': 'Vytvořit Roast',
-    'roast.likes': 'Lajky',
-    'roast.echoes': 'Ozvěny',
-    'challenge.accept': 'Přijmout Výzvu',
-    'challenge.reward': 'Odměna',
-    'profile.roasts': 'Roasty',
-    'profile.likes': 'Lajky',
-    'profile.echoes': 'Ozvěny',
-  },
-  de: {
-    'nav.feed': 'Feed',
-    'nav.create': 'Erstellen',
-    'nav.challenges': 'Herausforderungen',
-    'nav.pizzeria': 'Pizzeria',
-    'nav.profile': 'Profil',
-    'auth.login': 'Anmelden',
-    'auth.signup': 'Registrieren',
-    'auth.signout': 'Abmelden',
-    'roast.create': 'Roast Erstellen',
-    'roast.likes': 'Likes',
-    'roast.echoes': 'Echos',
-    'challenge.accept': 'Herausforderung Annehmen',
-    'challenge.reward': 'Belohnung',
-    'profile.roasts': 'Roasts',
-    'profile.likes': 'Likes',
-    'profile.echoes': 'Echos',
-  },
-  ru: {
-    'nav.feed': 'Лента',
-    'nav.create': 'Создать',
-    'nav.challenges': 'Вызовы',
-    'nav.pizzeria': 'Пиццерия',
-    'nav.profile': 'Профиль',
-    'auth.login': 'Войти',
-    'auth.signup': 'Регистрация',
-    'auth.signout': 'Выйти',
-    'roast.create': 'Создать Roast',
-    'roast.likes': 'Лайки',
-    'roast.echoes': 'Эхо',
-    'challenge.accept': 'Принять Вызов',
-    'challenge.reward': 'Награда',
-    'profile.roasts': 'Roasts',
-    'profile.likes': 'Лайки',
-    'profile.echoes': 'Эхо',
-  },
+import { useLocale } from '@/components/providers/LocaleProvider'
+import enUS from '@/design-kit/i18n/en-US.json'
+import csCZ from '@/design-kit/i18n/cs-CZ.json'
+import deDE from '@/design-kit/i18n/de-DE.json'
+import skSK from '@/design-kit/i18n/sk-SK.json'
+import plPL from '@/design-kit/i18n/pl-PL.json'
+
+// Type for translation keys (supports nested keys like "navigation.feed")
+type TranslationKeys = typeof enUS
+type NestedKeyOf<T> = T extends object
+  ? {
+      [K in keyof T & string]: T[K] extends object
+        ? `${K}.${NestedKeyOf<T[K]>}`
+        : K
+    }[keyof T & string]
+  : never
+type TranslationKey = NestedKeyOf<TranslationKeys>
+
+// Map locale codes to translation files
+const translations: Record<string, typeof enUS> = {
+  'en-US': enUS,
+  'cs-CZ': csCZ,
+  'de-DE': deDE,
+  'sk-SK': skSK,
+  'pl-PL': plPL,
 }
 
-class I18n {
-  private locale: LanguageCode = DEFAULT_LANGUAGE
+// Map route locale (cs-czk) to translation locale (cs-CZ)
+function mapLocaleToTranslation(locale: string): string {
+  const localeMap: Record<string, string> = {
+    'cs-czk': 'cs-CZ',
+    'en-usd': 'en-US',
+    'de-eur': 'de-DE',
+    'sk-eur': 'sk-SK',
+    'pl-pln': 'pl-PL',
+  }
+  return localeMap[locale] || 'en-US'
+}
 
-  constructor() {
-    if (typeof window !== 'undefined') {
-      const userLocale = detectUserLocale()
-      const lang = userLocale.split('-')[0] as LanguageCode
-      this.locale = SUPPORTED_LANGUAGES[lang] ? lang : DEFAULT_LANGUAGE
+// Get nested value from object using dot notation (e.g., "navigation.feed")
+function getNestedValue(obj: any, path: string): string {
+  const keys = path.split('.')
+  let current = obj
+
+  for (const key of keys) {
+    if (current && typeof current === 'object' && key in current) {
+      current = current[key]
+    } else {
+      return path // Return key if not found
     }
   }
 
-  setLocale(locale: LanguageCode) {
-    this.locale = locale
-  }
-
-  getLocale(): LanguageCode {
-    return this.locale
-  }
-
-  t(key: string): string {
-    return translations[this.locale]?.[key] || translations[DEFAULT_LANGUAGE]?.[key] || key
-  }
-
-  getCurrency() {
-    const localeCode = SUPPORTED_LANGUAGES[this.locale].code
-    return getCurrencyFromLocale(localeCode)
-  }
+  return typeof current === 'string' ? current : path
 }
 
-export const i18n = new I18n()
-
-// React hook for using i18n in components
+// React hook for translations
 export function useTranslation() {
-  return {
-    t: (key: string) => i18n.t(key),
-    locale: i18n.getLocale(),
-    setLocale: (locale: LanguageCode) => i18n.setLocale(locale),
+  const { locale } = useLocale()
+  const translationLocale = mapLocaleToTranslation(locale)
+  const translationData = translations[translationLocale] || translations['en-US']
+
+  const t = (key: TranslationKey | string): string => {
+    return getNestedValue(translationData, key)
   }
+
+  return { t, locale }
+}
+
+// Legacy export for backward compatibility
+export const i18n = {
+  t: (key: string) => getNestedValue(enUS, key),
 }

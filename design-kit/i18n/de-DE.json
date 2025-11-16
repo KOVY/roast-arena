@@ -1,0 +1,165 @@
+{
+  "common": {
+    "appName": "RoastArena",
+    "loading": "Laden...",
+    "error": "Fehler",
+    "success": "Erfolg",
+    "cancel": "Abbrechen",
+    "confirm": "Bestätigen",
+    "save": "Speichern",
+    "delete": "Löschen",
+    "edit": "Bearbeiten",
+    "share": "Teilen",
+    "close": "Schließen"
+  },
+  "navigation": {
+    "feed": "Feed",
+    "echoChain": "Echo Chain",
+    "challenges": "Herausforderungen",
+    "pizzeria": "Pizzeria",
+    "profile": "Profil"
+  },
+  "onboarding": {
+    "welcome": "Willkommen bei RoastArena!",
+    "subtitle": "KI-gestützte Roasts mit Stil 🔥",
+    "getStarted": "Loslegen",
+    "quizTitle": "Was wirst du roasten?",
+    "styleTitle": "Wähle deinen Stil",
+    "styleSubtitle": "Welche Art von Roast möchtest du?"
+  },
+  "auth": {
+    "login": "Anmelden",
+    "register": "Registrieren",
+    "logout": "Abmelden",
+    "continueWithGoogle": "Mit Google fortfahren",
+    "continueWithApple": "Mit Apple fortfahren",
+    "emailPlaceholder": "deine@email.de",
+    "passwordPlaceholder": "Dein Passwort"
+  },
+  "feed": {
+    "dailyChallenge": "Tägliche Herausforderung",
+    "roastYourCoffee": "Roaste deinen Morgenkaffee!",
+    "pullToRefresh": "Zum Aktualisieren ziehen",
+    "noMoreRoasts": "Keine weiteren Roasts"
+  },
+  "roastCreator": {
+    "title": "Roast erstellen",
+    "promptPlaceholder": "Z.B.: Mein Morgenkaffee ist so schwach...",
+    "selectStyle": "Stil wählen",
+    "generateButton": "ROAST! 🔥",
+    "regenerate": "Erneut versuchen",
+    "saveRoast": "Roast speichern",
+    "arFilter": "AR Filter",
+    "cameraHint": "Kamera für Roast-Filter aktivieren"
+  },
+  "echoChain": {
+    "title": "Echo Chain",
+    "addEcho": "Echo hinzufügen",
+    "noEchoes": "Noch keine Echo-Antworten",
+    "reactions": {
+      "fire": "Feuer",
+      "crying": "Weinen",
+      "skull": "Tot"
+    }
+  },
+  "challenges": {
+    "title": "Herausforderungen",
+    "hubTitle": "Herausforderungen-Zentrum",
+    "streak": "Tage-Serie!",
+    "streakLabel": "Serie",
+    "dayStreak": "Tage-Serie",
+    "tabs": {
+      "active": "Aktiv",
+      "new": "Neu",
+      "completed": "Abgeschlossen",
+      "daily": "Täglich",
+      "weekly": "Wöchentlich",
+      "leaderboard": "Top 10"
+    },
+    "progress": "Fortschritt",
+    "completed": "Abgeschlossen",
+    "completedStatus": "abgeschlossen",
+    "reward": "Belohnung",
+    "rewardPoints": "Credits",
+    "timeRemaining": "Verbleibend",
+    "noChallenges": "Keine {filter} Herausforderungen",
+    "claimed": "Eingelöst",
+    "view": "Ansehen",
+    "loading": "Lade Herausforderungen..."
+  },
+  "profile": {
+    "title": "Profil",
+    "stats": {
+      "roasts": "Roasts",
+      "echoes": "Echos",
+      "gifts": "Geschenke"
+    },
+    "credits": "Deine Credits",
+    "earnings": "Deine Geschenkeinnahmen",
+    "withdraw": "Auf Konto auszahlen",
+    "warehouse": "Dein Geschenklager",
+    "settings": "Einstellungen",
+    "language": "Sprache & Währung",
+    "theme": "Design",
+    "notifications": "Benachrichtigungen"
+  },
+  "pizzeria": {
+    "title": "Pizzeria",
+    "nearby": "Pizzerien in der Nähe",
+    "checkIn": "Einchecken",
+    "navigate": "Navigieren",
+    "scanQR": "QR-Code in der Pizzeria scannen",
+    "verified": "Verifiziert",
+    "rewardsForCheckIn": "Credits für Check-in"
+  },
+  "gifts": {
+    "send": "Geschenk senden",
+    "warehouse": "Lager",
+    "rarity": {
+      "common": "HÄUFIG",
+      "rare": "SELTEN",
+      "epic": "EPISCH",
+      "legendary": "LEGENDÄR"
+    },
+    "items": {
+      "fireCrown": "Feuerkrone",
+      "roastTrophy": "Roast-Trophäe",
+      "savageBadge": "Savage-Abzeichen",
+      "fireBlast": "Feuerexplosion",
+      "rocket": "Rakete",
+      "roastBomb": "Roast-Bombe",
+      "heart": "Herz",
+      "star": "Stern",
+      "rose": "Rose"
+    }
+  },
+  "monetization": {
+    "buyCredits": "Credits kaufen",
+    "creditBundles": {
+      "small": {
+        "amount": 100,
+        "bonus": 0,
+        "label": "Basis-Paket"
+      },
+      "medium": {
+        "amount": 500,
+        "bonus": 50,
+        "label": "Wert-Paket"
+      },
+      "large": {
+        "amount": 1000,
+        "bonus": 200,
+        "label": "Mega-Paket"
+      }
+    },
+    "ourShare": "Unser Anteil",
+    "yourProfit": "Dein Gewinn",
+    "withdrawNote": "Geld kommt in 3-5 Werktagen an"
+  },
+  "errors": {
+    "generic": "Etwas ist schiefgelaufen",
+    "network": "Netzwerkfehler",
+    "authentication": "Authentifizierungsfehler",
+    "notFound": "Nicht gefunden"
+  }
+}
