@@ -89,11 +89,28 @@
   },
   "profile": {
     "title": "Profil",
+    "loading": "Profil wird geladen...",
+    "editProfile": "Profil bearbeiten",
+    "share": "Teilen",
+    "nextLevel": "Nächstes Level",
     "stats": {
       "roasts": "Roasts",
+      "roastsWon": "Gewonnene Roasts",
+      "followers": "Follower",
+      "ranking": "Rangfolge",
       "echoes": "Echos",
       "gifts": "Geschenke"
     },
+    "recentActivity": "Letzte Aktivität",
+    "latestRoasts": "Neueste Roasts",
+    "community": "Community",
+    "leaderboards": "Bestenlisten",
+    "globalLeaderboard": "Global",
+    "localLeaderboard": "Lokal",
+    "myWallet": "Mein Wallet",
+    "balance": "Guthaben",
+    "coins": "Münzen",
+    "claimRewards": "Belohnungen abholen",
     "credits": "Deine Credits",
     "earnings": "Deine Geschenkeinnahmen",
     "withdraw": "Auf Konto auszahlen",
@@ -101,7 +118,17 @@
     "settings": "Einstellungen",
     "language": "Sprache & Währung",
     "theme": "Design",
-    "notifications": "Benachrichtigungen"
+    "notifications": "Benachrichtigungen",
+    "activities": {
+      "roastBattle": "Epischer Roast-Kampf gegen",
+      "wonRoast": "Gewann einen Roast gegen",
+      "commented": "Kommentierte"
+    },
+    "timeAgo": {
+      "hour": "vor 1 Std.",
+      "hours": "vor {hours} Std.",
+      "minute": "vor 1 Min."
+    }
   },
   "pizzeria": {
     "title": "Pizzeria",
