@@ -97,7 +97,7 @@ export default function ProfilePage() {
     }
   }
 
-  const progressPercentage = (profile.experience / profile.next_level_xp) * 100
+  const progressPercentage = (profile.experience / profile.next_level_xp) * 100;
 
   if (loading) {
     return (
@@ -108,51 +108,69 @@ export default function ProfilePage() {
   }
 
   return (
-    <div className="min-h-screen bg-background-dark text-white pb-24">
-      {/* Header */}
-      <div className="flex items-center justify-between p-4">
-        <button className="p-2 hover:bg-white/5 rounded-lg transition-colors">
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-          </svg>
-        </button>
-        <h1 className="text-lg font-bold">Profile</h1>
-        <button className="p-2 hover:bg-white/5 rounded-lg transition-colors">
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-          </svg>
-        </button>
+    <div className="min-h-screen bg-background-dark text-white pb-24 relative overflow-hidden">
+      {/* Aurora Background */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-1/4 -left-1/4 h-1/2 w-1/2 rounded-full bg-blue-900/50 opacity-50 blur-3xl"></div>
+        <div className="absolute -bottom-1/4 -right-1/4 h-1/2 w-1/2 rounded-full bg-purple-900/50 opacity-50 blur-3xl"></div>
       </div>
 
-      <div className="p-4 flex flex-col gap-6">
-        {/* Profile Card */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="glassmorphic rounded-xl p-6 flex flex-col gap-4 items-center"
-        >
-          {/* Avatar */}
-          <div className="relative">
-            <div className="w-32 h-32 rounded-full bg-gradient-to-br from-primary to-vibrant-blue flex items-center justify-center text-5xl font-bold shadow-primary-glow">
-              {profile.username[0]}
-            </div>
-          </div>
+      <div className="relative z-10">
+        {/* Header */}
+        <div className="flex items-center justify-between p-4">
+          <button className="p-2 hover:bg-white/5 rounded-lg transition-opacity hover:opacity-80">
+            <svg className="w-6 h-6 drop-shadow-[0_0_8px_rgba(0,255,255,0.6)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+          </button>
+          <h1 className="text-lg font-bold">Profile</h1>
+          <button className="p-2 hover:bg-white/5 rounded-lg transition-opacity hover:opacity-80">
+            <svg className="w-6 h-6 drop-shadow-[0_0_8px_rgba(0,255,255,0.6)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </button>
+        </div>
 
-          {/* User Info */}
-          <div className="flex flex-col items-center">
-            <p className="text-2xl font-bold">{profile.username}</p>
-            <p className="text-purple-300">Level {profile.level}</p>
-          </div>
+        <div className="p-4 flex flex-col gap-6">
+          {/* Profile Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="glassmorphic rounded-xl p-6 flex flex-col gap-4 items-center"
+          >
+            {/* Avatar with Neon Halo */}
+            <div className="relative">
+              {/* Neon Halo Effects */}
+              <div className="absolute inset-0 rounded-full animate-pulse">
+                <div className="absolute -inset-[5px] rounded-full bg-primary/60 filter blur-xl"></div>
+                <div className="absolute -inset-[10px] rounded-full bg-vibrant-blue/40 filter blur-2xl"></div>
+              </div>
+              <div className="relative w-32 h-32 rounded-full bg-gradient-to-br from-primary to-vibrant-blue flex items-center justify-center text-5xl font-bold border-2 border-white/20 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]">
+                {profile.username[0]}
+              </div>
+            </div>
+
+            {/* User Info */}
+            <div className="flex flex-col items-center gap-2">
+              <p className="text-3xl font-black tracking-tighter drop-shadow-[0_0_10px_rgba(175,37,244,0.5)]">
+                {profile.username}
+              </p>
+              <p className="text-vibrant-blue text-base">@roaster</p>
+              <p className="text-white/70 text-sm text-center max-w-sm">
+                Champion of the digital arena. Here to serve up sizzling commentary and collect wins.
+              </p>
+            </div>
 
           {/* Action Buttons */}
-          <button className="w-full max-w-md py-2.5 rounded-full bg-vibrant-blue/20 text-white font-bold border border-vibrant-blue/50 animate-pulse-glow-blue hover:bg-vibrant-blue/30 transition-colors">
-            Customize Avatar
-          </button>
-
-          <button className="w-full max-w-md py-2.5 rounded-full bg-primary text-white font-bold shadow-primary-glow hover:bg-primary/90 transition-colors">
-            🔥 {profile.win_streak} Win Streak
-          </button>
+          <div className="w-full max-w-md flex gap-3">
+            <button className="flex-1 py-2.5 rounded-lg bg-white/10 text-white text-sm font-bold border border-white/15 hover:bg-white/20 transition-all">
+              Edit Profile
+            </button>
+            <button className="flex-1 py-2.5 rounded-lg bg-vibrant-blue text-background-dark text-sm font-bold shadow-[0_0_15px_rgba(0,162,255,0.6)] hover:shadow-[0_0_25px_rgba(0,162,255,0.8)] transition-all">
+              Share
+            </button>
+          </div>
         </motion.div>
 
         {/* Progress Bar */}
@@ -172,28 +190,97 @@ export default function ProfilePage() {
         </div>
 
         {/* Stats Cards */}
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-3 gap-3">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.1 }}
-            className="glassmorphic rounded-xl p-6 flex flex-col gap-2"
+            className="glassmorphic rounded-xl p-4 flex flex-col gap-2 items-center text-center"
           >
-            <p className="text-purple-300 text-sm">Total Echoes</p>
-            <p className="text-2xl font-bold">{profile.total_echoes.toLocaleString()}</p>
+            <p className="text-white text-2xl font-bold drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]">
+              {profile.total_roasts}
+            </p>
+            <p className="text-white/60 text-xs">Roasts Won</p>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2 }}
-            className="glassmorphic rounded-xl p-6 flex flex-col gap-2"
+            className="glassmorphic rounded-xl p-4 flex flex-col gap-2 items-center text-center"
           >
-            <p className="text-purple-300 text-sm">Earnings</p>
-            <p className="text-2xl font-bold">
-              {Math.round(profile.earnings)} {currencySymbol}
+            <p className="text-white text-2xl font-bold drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]">
+              {(profile.total_echoes / 1000).toFixed(1)}K
             </p>
+            <p className="text-white/60 text-xs">Followers</p>
           </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.3 }}
+            className="glassmorphic rounded-xl p-4 flex flex-col gap-2 items-center text-center"
+          >
+            <p className="text-white text-2xl font-bold drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]">
+              {profile.level}
+            </p>
+            <p className="text-white/60 text-xs">Ranking</p>
+          </motion.div>
+        </div>
+
+        {/* Activity Section */}
+        <div className="flex flex-col gap-4">
+          <h2 className="text-2xl font-bold">Recent Activity</h2>
+
+          <div className="flex flex-col gap-3">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              className="glassmorphic rounded-xl p-4 flex items-center gap-4 hover:scale-[1.02] transition-transform"
+            >
+              <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-black/30 text-vibrant-blue drop-shadow-[0_0_8px_rgba(0,162,255,0.6)]">
+                🔥
+              </div>
+              <div className="flex-1">
+                <p className="text-white text-base font-medium">Epic roast battle vs @CyberSlayer</p>
+                <p className="text-white/60 text-sm">Latest Roasts</p>
+              </div>
+              <p className="text-white/60 text-sm">1h ago</p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+              className="glassmorphic rounded-xl p-4 flex items-center gap-4 hover:scale-[1.02] transition-transform"
+            >
+              <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-black/30 text-vibrant-blue drop-shadow-[0_0_8px_rgba(0,162,255,0.6)]">
+                🏆
+              </div>
+              <div className="flex-1">
+                <p className="text-white text-base font-medium">Won a roast against @ComedyKing</p>
+                <p className="text-white/60 text-sm">Latest Roasts</p>
+              </div>
+              <p className="text-white/60 text-sm">2h ago</p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+              className="glassmorphic rounded-xl p-4 flex items-center gap-4 hover:scale-[1.02] transition-transform"
+            >
+              <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-black/30 text-vibrant-blue drop-shadow-[0_0_8px_rgba(0,162,255,0.6)]">
+                💬
+              </div>
+              <div className="flex-1">
+                <p className="text-white text-base font-medium">Commented on @PixelPunisher's roast</p>
+                <p className="text-white/60 text-sm">Community</p>
+              </div>
+              <p className="text-white/60 text-sm">5h ago</p>
+            </motion.div>
+          </div>
         </div>
 
         {/* Leaderboards */}
@@ -259,21 +346,22 @@ export default function ProfilePage() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
+          transition={{ delay: 0.7 }}
           className="glassmorphic rounded-xl p-6 flex flex-col gap-4"
         >
           <h2 className="text-2xl font-bold">My Wallet</h2>
           <div className="flex items-center justify-between">
-            <p className="text-purple-300">Balance</p>
-            <p className="text-2xl font-bold flex items-center gap-2">
+            <p className="text-white/60">Balance</p>
+            <p className="text-2xl font-bold flex items-center gap-2 drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]">
               <span className="text-yellow-400">💰</span>
               {profile.coins.toLocaleString()} Coins
             </p>
           </div>
-          <button className="w-full py-3 rounded-lg bg-primary text-white font-bold hover:bg-primary/90 transition-colors shadow-primary-glow">
+          <button className="w-full py-3 rounded-lg bg-gradient-to-r from-vibrant-blue to-primary text-white font-bold shadow-[0_0_15px_rgba(0,162,255,0.6)] hover:shadow-[0_0_25px_rgba(0,162,255,0.8)] transition-all">
             Claim Rewards
           </button>
         </motion.div>
+      </div>
       </div>
     </div>
   )
