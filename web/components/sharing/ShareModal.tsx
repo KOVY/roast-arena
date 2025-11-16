@@ -27,7 +27,7 @@ export default function ShareModal({ isOpen, onClose, post, onRepost }: ShareMod
   const shareText = `Check out this roast on RoastArena! 🔥\n\n"${post.content.substring(0, 100)}${post.content.length > 100 ? '...' : ''}"\n\nby @${post.author.username}`
 
   const handleNativeShare = async () => {
-    if (navigator.share) {
+    if ('share' in navigator) {
       try {
         await navigator.share({
           title: 'RoastArena - Check out this roast! 🔥',
@@ -223,7 +223,7 @@ export default function ShareModal({ isOpen, onClose, post, onRepost }: ShareMod
               </div>
 
               {/* Native Share Button (Mobile) */}
-              {typeof navigator !== 'undefined' && navigator.share && (
+              {typeof navigator !== 'undefined' && 'share' in navigator && (
                 <div className="px-6 pb-6">
                   <button
                     onClick={handleNativeShare}
