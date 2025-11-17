@@ -12,8 +12,23 @@
     "share": "Sdílet",
     "close": "Zavřít",
     "more": "více",
+    "next": "Další",
     "received": "Přijaté",
     "comingSoon": "Už brzy..."
+  },
+  "home": {
+    "subtitle": "Vytvářej, sdílej a soupeř v humorných AI generovaných hejtech",
+    "features": {
+      "ai": "AI-Powered Hejty",
+      "aiDesc": "Generuj epické hejty s AI v různých stylech",
+      "gifts": "Systém Dárků",
+      "giftsDesc": "Posílej virtuální dárky a sdílej příjmy s tvůrci",
+      "pizza": "Partnerské Pizzerie",
+      "pizzaDesc": "Check-in do partnerských pizzerií pro odměny"
+    },
+    "getStarted": "Začít",
+    "explore": "Prozkoumat Feed",
+    "socialProof": "🌍 Více jazyků • 💰 Více měn • 🎁 Systém dárků"
   },
   "navigation": {
     "feed": "Příspěvky",
@@ -25,15 +40,23 @@
   "onboarding": {
     "welcome": "Vítej v HejtArena!",
     "subtitle": "Tady se hejtuje s AI a stylem 🔥",
+    "welcomeDesc": "Ultimátní platforma pro epické hejt bitvy. Zabíjej šarmem, vtipem a humorem!",
     "getStarted": "Začít hejtovat",
+    "skip": "Přeskočit",
     "tellUsYourVibe": "Řekni nám o sobě.",
+    "tellUsYourVibeDesc": "Pomoz nám přizpůsobit tvé zkušenosti",
     "chooseYourStyle": "Vyber svůj bojový styl.",
+    "chooseYourStyleDesc": "Vyber si typ hejtů, které chceš dostávat",
     "quiz": {
       "morningPerson": "Ranní ptáče / Noční sova?",
       "workoutWarrior": "Fitness bojovník / Gauč expert?",
       "dogPerson": "Psí milovník / Kočičí fanda?"
     },
     "styles": {
+      "savage": "Drsný",
+      "savageDesc": "Tvrdá pravda, která zasáhne",
+      "playful": "Hravý",
+      "playfulDesc": "Lehce humoristické hejty",
       "mma": "MMA",
       "wwe": "WWE"
     },
@@ -128,6 +151,8 @@
     "editProfile": "Upravit profil",
     "share": "Sdílet",
     "nextLevel": "Další úroveň",
+    "level": "Úroveň",
+    "bio": "Šampión digitální arény. Tady, aby servíroval syčící komentáře a sbíral výhry.",
     "stats": {
       "roasts": "Hejty",
       "roastsWon": "Vyhraných hejtů",
@@ -163,6 +188,21 @@
       "hour": "před 1h",
       "hours": "před {hours}h",
       "minute": "před 1m"
+    },
+    "achievements": {
+      "title": "Úspěchy",
+      "firstRoast": "První hejt",
+      "firstRoastDesc": "Zveřejnil jsi svůj první hejt",
+      "hundredRoasts": "Sto hejtů",
+      "hundredRoastsDesc": "Zveřejnil jsi 100 hejtů",
+      "winningStreak": "Vítězná série",
+      "winningStreakDesc": "Udržel jsi 10denní sérii",
+      "echoChampion": "Šampión echa",
+      "echoChampionDesc": "Obdržel jsi 1000 echa",
+      "giftMaster": "Mistr dárků",
+      "giftMasterDesc": "Poslal jsi 50 dárků jiným uživatelům",
+      "levelMaster": "Mistr úrovní",
+      "levelMasterDesc": "Dosáhl jsi úrovně 50"
     }
   },
   "pizzeria": {

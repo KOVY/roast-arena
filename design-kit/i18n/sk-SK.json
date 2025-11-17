@@ -12,8 +12,23 @@
     "share": "Zdieľať",
     "close": "Zavrieť",
     "more": "viac",
+    "next": "Ďalej",
     "received": "Prijaté",
     "comingSoon": "Už čoskoro..."
+  },
+  "home": {
+    "subtitle": "Vytváraj, zdieľaj a súťaž v zábavných AI generovaných roast bitkách",
+    "features": {
+      "ai": "Roasty s pohonom AI",
+      "aiDesc": "Generuj epické roasty s AI v rôznych štýloch",
+      "gifts": "Systém darčekov",
+      "giftsDesc": "Pošli virtuálne darčeky a zdieľaj príjmy s tvorcami",
+      "pizza": "Partnerské pizzerie",
+      "pizzaDesc": "Check-in do partnerských pízzérií pre odmeny"
+    },
+    "getStarted": "Začať",
+    "explore": "Preskúmať feed",
+    "socialProof": "🌍 Viacjazyčnosť • 💰 Viacmenovosť • 🎁 Systém darčekov"
   },
   "navigation": {
     "feed": "Feed",
@@ -25,15 +40,23 @@
   "onboarding": {
     "welcome": "Vitaj v RoastArena!",
     "subtitle": "Roastuj s AI a štýlom 🔥",
+    "welcomeDesc": "Ultimátna platforma pre epické roast bitky. Zabíjaj šarmom, vtipom a humorom!",
     "getStarted": "Začať roastovať",
+    "skip": "Preskočiť",
     "tellUsYourVibe": "Povedz nám o sebe.",
+    "tellUsYourVibeDesc": "Pomôž nám prispôsobiť tvoje skúsenosti",
     "chooseYourStyle": "Vyber si svoj bojový štýl.",
+    "chooseYourStyleDesc": "Vyber typ roastov, ktoré chceš dostávať",
     "quiz": {
       "morningPerson": "Ranné vtáča / Nočná sova?",
       "workoutWarrior": "Fitness bojovník / Gauč expert?",
       "dogPerson": "Psí milovník / Mačací fanúšik?"
     },
     "styles": {
+      "savage": "Drzý",
+      "savageDesc": "Tvrdá pravda, ktorá zasiahne",
+      "playful": "Hravý",
+      "playfulDesc": "Ľahké a zábavné roasty",
       "mma": "MMA",
       "wwe": "WWE"
     },
@@ -107,6 +130,8 @@
     "editProfile": "Upraviť profil",
     "share": "Zdieľať",
     "nextLevel": "Ďalší level",
+    "level": "Level",
+    "bio": "Šampión digitálnej arény. Tu, aby servíroval syčiace komentáre a zbieral víťazstvá.",
     "stats": {
       "roasts": "Roasty",
       "roastsWon": "Vyhrané roasty",
@@ -142,6 +167,21 @@
       "hour": "pred 1 hod.",
       "hours": "pred {hours} hod.",
       "minute": "pred 1 min."
+    },
+    "achievements": {
+      "title": "Úspechy",
+      "firstRoast": "Prvý Roast",
+      "firstRoastDesc": "Zverejnil si svoj prvý roast",
+      "hundredRoasts": "Sto Roastov",
+      "hundredRoastsDesc": "Zverejnil si 100 roastov",
+      "winningStreak": "Víťazná Séria",
+      "winningStreakDesc": "Udržal si 10-dňovú sériu",
+      "echoChampion": "Šampión Echo",
+      "echoChampionDesc": "Dostal si 1000 echo",
+      "giftMaster": "Majster Darčekov",
+      "giftMasterDesc": "Poslal si 50 darčekov iným používateľom",
+      "levelMaster": "Majster Levelov",
+      "levelMasterDesc": "Dosiahol si level 50"
     }
   },
   "pizzeria": {

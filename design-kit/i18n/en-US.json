@@ -12,8 +12,23 @@
     "share": "Share",
     "close": "Close",
     "more": "more",
+    "next": "Next",
     "received": "Received",
     "comingSoon": "Coming soon..."
+  },
+  "home": {
+    "subtitle": "Create, share, and compete in hilarious AI-generated roast battles",
+    "features": {
+      "ai": "AI-Powered Roasts",
+      "aiDesc": "Generate epic roasts with AI in multiple styles",
+      "gifts": "Gift System",
+      "giftsDesc": "Send virtual gifts and share revenue with creators",
+      "pizza": "Pizzeria Partners",
+      "pizzaDesc": "Check-in to partner pizzerias for rewards"
+    },
+    "getStarted": "Get Started",
+    "explore": "Explore Feed",
+    "socialProof": "🌍 Multi-language • 💰 Multi-currency • 🎁 Gift system"
   },
   "navigation": {
     "feed": "Feed",
@@ -25,15 +40,23 @@
   "onboarding": {
     "welcome": "Welcome to RoastArena!",
     "subtitle": "AI-powered roasts with style 🔥",
+    "welcomeDesc": "The ultimate platform for epic roast battles. Slay with wit, charm, and humor!",
     "getStarted": "Get Started",
+    "skip": "Skip",
     "tellUsYourVibe": "Tell us your vibe.",
+    "tellUsYourVibeDesc": "Help us personalize your experience",
     "chooseYourStyle": "Choose your fighting style.",
+    "chooseYourStyleDesc": "Select the type of roasts you want to receive",
     "quiz": {
       "morningPerson": "Morning Person / Night Owl?",
       "workoutWarrior": "Workout Warrior / Couch Potato?",
       "dogPerson": "Dog Person / Cat Person?"
     },
     "styles": {
+      "savage": "Savage",
+      "savageDesc": "Brutal truth bombs that hit hard",
+      "playful": "Playful",
+      "playfulDesc": "Light-hearted and fun roasts",
       "mma": "MMA",
       "wwe": "WWE"
     },
@@ -107,6 +130,8 @@
     "editProfile": "Edit Profile",
     "share": "Share",
     "nextLevel": "Next Level",
+    "level": "Level",
+    "bio": "Champion of the digital arena. Here to serve up sizzling commentary and collect wins.",
     "stats": {
       "roasts": "Roasts",
       "roastsWon": "Roasts Won",
@@ -142,6 +167,21 @@
       "hour": "1h ago",
       "hours": "{hours}h ago",
       "minute": "1m ago"
+    },
+    "achievements": {
+      "title": "Achievements",
+      "firstRoast": "First Roast",
+      "firstRoastDesc": "Posted your first roast",
+      "hundredRoasts": "Hundred Roasts",
+      "hundredRoastsDesc": "Posted 100 roasts",
+      "winningStreak": "Winning Streak",
+      "winningStreakDesc": "Maintained a 10-day streak",
+      "echoChampion": "Echo Champion",
+      "echoChampionDesc": "Received 1000 echoes",
+      "giftMaster": "Gift Master",
+      "giftMasterDesc": "Sent 50 gifts to other users",
+      "levelMaster": "Level Master",
+      "levelMasterDesc": "Reached level 50"
     }
   },
   "pizzeria": {

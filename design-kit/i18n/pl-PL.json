@@ -12,8 +12,23 @@
     "share": "Udostępnij",
     "close": "Zamknij",
     "more": "więcej",
+    "next": "Dalej",
     "received": "Otrzymane",
     "comingSoon": "Wkrótce..."
+  },
+  "home": {
+    "subtitle": "Twórz, udostępniaj i rywalizuj w zabawnych, generowanych przez AI pojedynkach roastingu",
+    "features": {
+      "ai": "Roasty zasilane AI",
+      "aiDesc": "Generuj epickie roasty z AI w różnych stylach",
+      "gifts": "System prezentów",
+      "giftsDesc": "Wysyłaj wirtualne prezenty i dziel się przychodami z twórcami",
+      "pizza": "Partnerzy pizzerii",
+      "pizzaDesc": "Zamelduj się w partnerskich pizzeriach po nagrody"
+    },
+    "getStarted": "Rozpocznij",
+    "explore": "Przeglądaj feed",
+    "socialProof": "🌍 Wielojęzyczność • 💰 Wielowalutowość • 🎁 System prezentów"
   },
   "navigation": {
     "feed": "Feed",
@@ -25,15 +40,23 @@
   "onboarding": {
     "welcome": "Witaj w RoastArena!",
     "subtitle": "Roasty z AI i stylem 🔥",
+    "welcomeDesc": "Ultimatyczna platforma dla epickich pojedynków roastowania. Pokonuj z humorem i wdziękiem!",
     "getStarted": "Rozpocznij roastowanie",
+    "skip": "Pomiń",
     "tellUsYourVibe": "Opowiedz nam o sobie.",
+    "tellUsYourVibeDesc": "Pomóż nam spersonalizować Twoje wrażenia",
     "chooseYourStyle": "Wybierz swój styl walki.",
+    "chooseYourStyleDesc": "Wybierz typ roastów, które chcesz otrzymywać",
     "quiz": {
       "morningPerson": "Ranny ptaszek / Nocna sowa?",
       "workoutWarrior": "Wojownik fitnessu / Mistrz kanapy?",
       "dogPerson": "Miłośnik psów / Fan kotów?"
     },
     "styles": {
+      "savage": "Ostry",
+      "savageDesc": "Twarde prawdy, które ranią",
+      "playful": "Zabawny",
+      "playfulDesc": "Lekkie i zabawne roasty",
       "mma": "MMA",
       "wwe": "WWE"
     },
@@ -107,6 +130,8 @@
     "editProfile": "Edytuj profil",
     "share": "Udostępnij",
     "nextLevel": "Następny poziom",
+    "level": "Poziom",
+    "bio": "Czempion cyfrowej areny. Tu, by serwować żarliwe komentarze i zbierać zwycięstwa.",
     "stats": {
       "roasts": "Roasty",
       "roastsWon": "Wygrane roasty",
@@ -142,6 +167,21 @@
       "hour": "1 godz. temu",
       "hours": "{hours} godz. temu",
       "minute": "1 min. temu"
+    },
+    "achievements": {
+      "title": "Osiągnięcia",
+      "firstRoast": "Pierwszy Roast",
+      "firstRoastDesc": "Opublikowałeś swój pierwszy roast",
+      "hundredRoasts": "Sto Roastów",
+      "hundredRoastsDesc": "Opublikowałeś 100 roastów",
+      "winningStreak": "Seria Zwycięstw",
+      "winningStreakDesc": "Utrzymałeś 10-dniową serię",
+      "echoChampion": "Czempion Echo",
+      "echoChampionDesc": "Otrzymałeś 1000 echo",
+      "giftMaster": "Mistrz Prezentów",
+      "giftMasterDesc": "Wysłałeś 50 prezentów do innych użytkowników",
+      "levelMaster": "Mistrz Poziomów",
+      "levelMasterDesc": "Osiągnąłeś poziom 50"
     }
   },
   "pizzeria": {

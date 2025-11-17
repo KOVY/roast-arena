@@ -87,19 +87,34 @@ export default function CreatePage() {
   const canPost = content.trim().length > 0 && !isOverLimit && !loading
 
   return (
-    <div className="min-h-screen bg-background-dark text-white pb-24">
+    <div className="min-h-screen bg-gradient-to-b from-black via-gray-900 to-black text-white pb-24 relative overflow-hidden">
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-[#ff6b35]/5 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-[#f7931e]/5 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse"></div>
+        <div className="absolute top-1/3 left-1/4 w-60 h-60 bg-[#c73866]/5 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+      </div>
+
       {/* Header */}
-      <div className="sticky top-0 z-40 backdrop-blur-xl bg-background-dark/80 border-b border-white/10">
+      <div className="sticky top-0 z-40 backdrop-blur-xl bg-black/80 border-b border-[#ff6b35]/30 shadow-lg shadow-[#ff6b35]/10">
         <div className="flex items-center justify-between p-4">
-          <button
+          <motion.button
             onClick={() => router.back()}
-            className="p-2 hover:bg-white/5 rounded-lg transition-colors"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            className="p-2 hover:bg-white/10 rounded-xl transition-colors"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
-          </button>
-          <h1 className="text-lg font-bold">{t('roastCreator.pageTitle')}</h1>
+          </motion.button>
+          <motion.h1
+            className="text-lg font-bold bg-gradient-to-r from-[#ff6b35] to-[#f7931e] bg-clip-text text-transparent"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            {t('roastCreator.pageTitle')}
+          </motion.h1>
           <div className="w-10" /> {/* Spacer */}
         </div>
       </div>
@@ -107,25 +122,33 @@ export default function CreatePage() {
       {/* Main Content */}
       <div className="max-w-2xl mx-auto p-4">
         {/* Profile */}
-        <div className="flex items-center gap-3 mb-6">
-          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-vibrant-blue flex items-center justify-center font-bold text-lg">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="flex items-center gap-4 mb-6"
+        >
+          <motion.div
+            className="w-14 h-14 rounded-full bg-gradient-to-br from-[#ff6b35] to-[#f7931e] flex items-center justify-center font-bold text-xl"
+            whileHover={{ scale: 1.05 }}
+          >
             {t('roastCreator.userName')[0]}
-          </div>
+          </motion.div>
           <div>
-            <p className="font-bold">{t('roastCreator.userName')}</p>
+            <p className="font-bold text-white">{t('roastCreator.userName')}</p>
             <p className="text-sm text-gray-400">{t('roastCreator.userSubtitle')}</p>
           </div>
-        </div>
+        </motion.div>
 
         {/* Textarea */}
         <motion.div
           animate={{
             boxShadow: isFocused
-              ? '0 0 20px 8px rgba(0, 162, 255, 0.3)'
-              : '0 0 0 0 rgba(0, 162, 255, 0)'
+              ? '0 0 20px 8px rgba(255, 107, 53, 0.3)'
+              : '0 0 0 0 rgba(255, 107, 53, 0)'
           }}
           transition={{ duration: 0.3 }}
-          className="glassmorphic rounded-xl overflow-hidden mb-4"
+          className="glassmorphic rounded-2xl overflow-hidden mb-6 border border-white/10"
+          whileHover={{ y: -2 }}
         >
           <textarea
             value={content}
@@ -133,21 +156,23 @@ export default function CreatePage() {
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
             placeholder={t('roastCreator.placeholder')}
-            className="w-full min-h-[200px] p-4 bg-transparent text-white placeholder-gray-500 resize-none focus:outline-none"
+            className="w-full min-h-[200px] p-5 bg-transparent text-white placeholder-gray-500 resize-none focus:outline-none text-lg"
             maxLength={MAX_CHARS + 50} // Allow typing a bit over to show error
           />
 
           {/* Character Counter */}
-          <div className="px-4 pb-4 flex items-center justify-between border-t border-white/10 pt-3">
-            <div className="flex items-center gap-2">
-              <button
+          <div className="px-5 pb-5 flex items-center justify-between border-t border-white/10 pt-4">
+            <div className="flex items-center gap-3">
+              <motion.button
                 onClick={handleMediaClick}
-                className="p-2 hover:bg-white/5 rounded-lg transition-colors text-gray-400 hover:text-vibrant-blue"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="p-3 hover:bg-white/10 rounded-xl transition-colors text-gray-400 hover:text-[#f7931e]"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
-              </button>
+              </motion.button>
               <input
                 ref={fileInputRef}
                 type="file"
@@ -155,45 +180,65 @@ export default function CreatePage() {
                 className="hidden"
                 onChange={handleFileChange}
               />
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="p-3 hover:bg-white/10 rounded-xl transition-colors text-gray-400 hover:text-[#ff6b35]"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </motion.button>
             </div>
 
-            <span
-              className={`text-sm font-medium ${
+            <motion.span
+              className={`text-sm font-bold ${
                 isOverLimit
                   ? 'text-red-400'
                   : charsRemaining < 50
                   ? 'text-yellow-400'
                   : 'text-gray-400'
               }`}
+              animate={{ scale: isOverLimit ? 1.2 : 1 }}
+              transition={{ type: "spring", stiffness: 300, damping: 15 }}
             >
               {charsRemaining}
-            </span>
+            </motion.span>
           </div>
         </motion.div>
 
         {/* Style Selector */}
-        <div className="glassmorphic rounded-xl p-4 mb-4">
-          <p className="text-sm font-medium mb-3 text-gray-300">{t('roastCreator.styleLabel')}</p>
-          <div className="flex gap-2">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="glassmorphic rounded-2xl p-5 mb-6 border border-white/10"
+        >
+          <p className="text-sm font-bold mb-4 text-gray-300">{t('roastCreator.styleLabel')}</p>
+          <div className="grid grid-cols-3 gap-3">
             {[
               { value: 'playful', labelKey: 'roastCreator.styles.playful', color: 'from-green-500 to-emerald-500' },
-              { value: 'roast', labelKey: 'roastCreator.styles.roast', color: 'from-primary to-pink-500' },
-              { value: 'sarcastic', labelKey: 'roastCreator.styles.sarcastic', color: 'from-vibrant-blue to-purple-500' }
+              { value: 'roast', labelKey: 'roastCreator.styles.roast', color: 'from-[#ff6b35] to-[#c73866]' },
+              { value: 'sarcastic', labelKey: 'roastCreator.styles.sarcastic', color: 'from-[#c73866] to-[#4ecdc4]' }
             ].map((s) => (
-              <button
+              <motion.button
                 key={s.value}
                 onClick={() => setStyle(s.value as any)}
-                className={`flex-1 py-2 px-3 rounded-lg text-sm font-medium transition-all ${
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.98 }}
+                className={`py-3 px-2 rounded-xl text-sm font-bold transition-all ${
                   style === s.value
-                    ? `bg-gradient-to-r ${s.color} text-white shadow-lg`
+                    ? `bg-gradient-to-r ${s.color} text-white shadow-lg shadow-[#ff6b35]/30`
                     : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white'
                 }`}
+                animate={{
+                  boxShadow: style === s.value ? '0 0 15px rgba(255, 107, 53, 0.5)' : 'none'
+                }}
               >
                 {t(s.labelKey)}
-              </button>
+              </motion.button>
             ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* AI Generate Button */}
         <motion.button
@@ -201,7 +246,7 @@ export default function CreatePage() {
           whileTap={{ scale: 0.98 }}
           onClick={handleAIGenerate}
           disabled={!content.trim() || aiLoading}
-          className="w-full py-3 px-6 rounded-xl font-bold mb-4 glassmorphic border border-purple-500/50 hover:bg-purple-500/10 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full py-4 px-6 rounded-2xl font-bold mb-6 bg-gradient-to-r from-[#f7931e] to-[#c73866] text-white shadow-lg shadow-[#f7931e]/30 hover:shadow-[#f7931e]/50 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3"
         >
           {aiLoading ? (
             <span className="flex items-center justify-center gap-2">
@@ -213,6 +258,7 @@ export default function CreatePage() {
             </span>
           ) : (
             <span className="flex items-center justify-center gap-2">
+              <span>🤖</span>
               {t('roastCreator.enhanceWithAI')}
             </span>
           )}
@@ -220,11 +266,11 @@ export default function CreatePage() {
 
         {/* Post Button */}
         <motion.button
-          whileHover={{ scale: canPost ? 1.02 : 1 }}
+          whileHover={{ scale: canPost ? 1.03 : 1 }}
           whileTap={{ scale: canPost ? 0.98 : 1 }}
           onClick={handlePost}
           disabled={!canPost}
-          className="w-full py-4 px-6 rounded-xl bg-gradient-to-r from-primary to-vibrant-blue text-white font-bold text-lg shadow-primary-glow hover:shadow-blue-glow transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none"
+          className="w-full py-5 px-6 rounded-2xl bg-gradient-to-r from-[#ff6b35] to-[#f7931e] text-white font-bold text-lg shadow-xl shadow-[#ff6b35]/40 hover:shadow-[#ff6b35]/60 transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none flex items-center justify-center gap-2"
         >
           {loading ? (
             <span className="flex items-center justify-center gap-2">
@@ -235,16 +281,24 @@ export default function CreatePage() {
               {t('roastCreator.posting')}
             </span>
           ) : (
-            t('roastCreator.postButton')
+            <span className="flex items-center justify-center gap-2">
+              <span>🔥</span>
+              {t('roastCreator.postButton')}
+            </span>
           )}
         </motion.button>
 
         {/* Tips */}
-        <div className="mt-6 p-4 rounded-xl bg-white/5 border border-white/10">
-          <p className="text-sm text-gray-400">
-            <span className="font-bold text-white">{t('roastCreator.proTip')}</span> {t('roastCreator.proTipText')}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="mt-6 p-5 rounded-2xl bg-gradient-to-r from-[#c73866]/10 to-[#4ecdc4]/10 border border-[#c73866]/20"
+        >
+          <p className="text-sm text-gray-300">
+            <span className="font-bold text-[#f7931e]">{t('roastCreator.proTip')}</span> {t('roastCreator.proTipText')}
           </p>
-        </div>
+        </motion.div>
       </div>
 
       {/* Bottom Navigation */}

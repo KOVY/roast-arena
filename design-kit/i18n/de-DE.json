@@ -12,8 +12,23 @@
     "share": "Teilen",
     "close": "Schließen",
     "more": "mehr",
+    "next": "Weiter",
     "received": "Erhalten",
     "comingSoon": "Bald verfügbar..."
+  },
+  "home": {
+    "subtitle": "Erstelle, teile und kämpfe in lustigen KI-generierten Roast-Battles",
+    "features": {
+      "ai": "KI-gesteuerte Roasts",
+      "aiDesc": "Erzeuge epische Roasts mit KI in verschiedenen Stilen",
+      "gifts": "Geschenksystem",
+      "giftsDesc": "Sende virtuelle Geschenke und teile Einnahmen mit Erstellern",
+      "pizza": "Pizzeria-Partner",
+      "pizzaDesc": "Check-in bei Partner-Pizzerien für Belohnungen"
+    },
+    "getStarted": "Loslegen",
+    "explore": "Feed erkunden",
+    "socialProof": "🌍 Mehrsprachig • 💰 Multi-Währung • 🎁 Geschenksystem"
   },
   "navigation": {
     "feed": "Feed",
@@ -25,15 +40,23 @@
   "onboarding": {
     "welcome": "Willkommen bei RoastArena!",
     "subtitle": "KI-gestützte Roasts mit Stil 🔥",
+    "welcomeDesc": "Die ultimative Plattform für epische Roast-Battles. Besiege mit Witz, Charme und Humor!",
     "getStarted": "Loslegen",
+    "skip": "Überspringen",
     "tellUsYourVibe": "Erzähl uns von dir.",
+    "tellUsYourVibeDesc": "Hilf uns, dein Erlebnis zu personalisieren",
     "chooseYourStyle": "Wähle deinen Kampfstil.",
+    "chooseYourStyleDesc": "Wähle den Typ der Roasts, den du erhalten möchtest",
     "quiz": {
       "morningPerson": "Frühaufsteher / Nachteule?",
       "workoutWarrior": "Fitness-Krieger / Couch-Potato?",
       "dogPerson": "Hundeliebhaber / Katzenfreund?"
     },
     "styles": {
+      "savage": "Scharf",
+      "savageDesc": "Harte Wahrheiten, die wehtun",
+      "playful": "Spielend",
+      "playfulDesc": "Leichtgewichtige und lustige Roasts",
       "mma": "MMA",
       "wwe": "WWE"
     },
@@ -107,6 +130,8 @@
     "editProfile": "Profil bearbeiten",
     "share": "Teilen",
     "nextLevel": "Nächstes Level",
+    "level": "Level",
+    "bio": "Champion der digitalen Arena. Hier, um scharfe Kommentare abzuliefern und Siege einzufahren.",
     "stats": {
       "roasts": "Roasts",
       "roastsWon": "Gewonnene Roasts",
@@ -142,6 +167,21 @@
       "hour": "vor 1 Std.",
       "hours": "vor {hours} Std.",
       "minute": "vor 1 Min."
+    },
+    "achievements": {
+      "title": "Erfolge",
+      "firstRoast": "Erster Roast",
+      "firstRoastDesc": "Hast deinen ersten Roast veröffentlicht",
+      "hundredRoasts": "Hundert Roasts",
+      "hundredRoastsDesc": "Hast 100 Roasts veröffentlicht",
+      "winningStreak": "Gewinn-Serie",
+      "winningStreakDesc": "Hast eine 10-tägige Serie aufrechterhalten",
+      "echoChampion": "Echo-Champion",
+      "echoChampionDesc": "Hast 1000 Echos erhalten",
+      "giftMaster": "Geschenk-Meister",
+      "giftMasterDesc": "Hast 50 Geschenke an andere Benutzer gesendet",
+      "levelMaster": "Level-Meister",
+      "levelMasterDesc": "Hast Level 50 erreicht"
     }
   },
   "pizzeria": {
