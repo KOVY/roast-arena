@@ -464,41 +464,95 @@ export default function ProfilePage() {
             </div>
           </div>
 
-          {/* My Wallet */}
+          {/* Creator Wallet - Jobsian redesign */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7 }}
-            className="glassmorphic rounded-3xl p-6 flex flex-col gap-6 border border-white/10"
+            className="bg-black rounded-3xl p-6 flex flex-col gap-6 border border-gray-800"
           >
-            <h2 className="text-2xl font-bold bg-gradient-to-r from-[#f7931e] to-[#c73866] bg-clip-text text-transparent">
-              {t('profile.myWallet')}
-            </h2>
-
-            <div className="grid grid-cols-2 gap-4">
-              <div className="glassmorphic rounded-2xl p-4 flex flex-col items-center border border-white/10">
-                <p className="text-2xl font-bold bg-gradient-to-r from-[#ff6b35] to-[#f7931e] bg-clip-text text-transparent">
-                  {profile.coins.toLocaleString()}
-                </p>
-                <p className="text-white/70 text-sm">{t('profile.credits')}</p>
-              </div>
-
-              <div className="glassmorphic rounded-2xl p-4 flex flex-col items-center border border-white/10">
-                <p className="text-2xl font-bold bg-gradient-to-r from-[#f7931e] to-[#c73866] bg-clip-text text-transparent">
-                  {profile.earnings.toFixed(2)} {currencySymbol}
-                </p>
-                <p className="text-white/70 text-sm">{t('profile.earnings')}</p>
-              </div>
+            <div className="flex items-center justify-between">
+              <h2 className="text-lg font-bold text-gray-400">
+                {t('profile.creatorWalletTitle', 'Váš Zisk')}
+              </h2>
+              {profile.earnings > 0 && (
+                <span className="text-xs px-2 py-1 bg-[#ff6b35]/20 text-[#ff6b35] rounded-full">
+                  {t('profile.active', 'Aktivní')}
+                </span>
+              )}
             </div>
 
-            <div className="flex flex-col gap-3">
-              <button className="w-full py-4 rounded-xl bg-gradient-to-r from-[#ff6b35] to-[#f7931e] text-white font-bold shadow-md shadow-[#ff6b35]/30 hover:shadow-[#ff6b35]/50 transition-all">
-                {t('profile.withdraw')}
-              </button>
-              <button className="w-full py-3 rounded-xl bg-white/10 text-white font-bold border border-white/15 hover:bg-white/20 transition-all">
-                {t('profile.warehouse')}
-              </button>
+            {/* Balance display */}
+            <div className="text-center py-6">
+              <p className="text-4xl md:text-5xl font-bold text-white mb-2">
+                {currencySymbol} {profile.earnings.toFixed(2)}
+              </p>
+              <p className="text-gray-500 text-sm">
+                {t('profile.totalEarnings', 'Celkové výdělky')}
+              </p>
             </div>
+
+            {/* Verification status */}
+            {profile.earnings > 100 ? ( // Assuming threshold for payout
+              <div className="bg-gray-900/50 rounded-2xl p-4 border border-gray-800">
+                <div className="flex items-center">
+                  <div className="mr-3 text-green-500">
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="font-bold text-white">{t('profile.verified', 'Ověřeno')}</p>
+                    <p className="text-gray-400 text-sm">{t('profile.readyForPayout', 'Připraveno k výplatě')}</p>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="bg-gray-900/50 rounded-2xl p-4 border border-gray-800">
+                <div className="flex items-center">
+                  <div className="mr-3 text-yellow-500">
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="font-bold text-white">{t('profile.accountSetup', 'Nastavení účtu')}</p>
+                    <p className="text-gray-400 text-sm">{t('profile.needToSetup', 'Je potřeba nastavit bankovní účet')}</p>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Payout button - only shown if verified and > threshold */}
+            {profile.earnings > 100 ? (
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="w-full py-4 bg-gradient-to-r from-[#ff6b35] to-[#f7931e] rounded-xl font-bold text-white shadow-lg shadow-[#ff6b35]/30 hover:shadow-[#ff6b35]/50"
+              >
+                {t('profile.payoutNow', 'VYPLATIT ZŮSTATEK')}
+              </motion.button>
+            ) : (
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="w-full py-4 bg-gray-800 text-gray-500 rounded-xl font-bold"
+                disabled
+              >
+                {t('profile.needMoreEarnings', 'Potřebujete více výdělků')}
+              </motion.button>
+            )}
+
+            {/* Connect bank account button - shown when needed */}
+            {profile.earnings <= 100 && (
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="w-full py-3 border border-gray-700 text-white rounded-xl font-bold hover:bg-gray-800/50 transition-colors"
+              >
+                {t('profile.connectBank', 'Připojit bankovní účet')}
+              </motion.button>
+            )}
           </motion.div>
         </div>
       </div>
